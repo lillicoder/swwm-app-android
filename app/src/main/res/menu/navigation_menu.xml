@@ -5,4 +5,8 @@
         android:id="@+id/navigation_main"
         android:title="@string/activity_main" />
 
+    <item
+        android:id="@+id/navigation_secondary"
+        android:title="@string/activity_secondary" />
+
 </menu>

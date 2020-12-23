@@ -30,6 +30,10 @@
 			</intent-filter>
         </activity>
 
+		<activity
+			android:name=".SecondaryActivity"
+			android:label="@string/activity_secondary" />
+
     </application>
 
 </manifest>
