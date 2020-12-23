@@ -17,11 +17,6 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    repositories {
-        google()
-        mavenCentral()
-    }
-
     dependencies {
         // AndroidX
     	implementation "androidx.appcompat:appcompat:1.2.0"
