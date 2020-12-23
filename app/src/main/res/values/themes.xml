@@ -16,6 +16,6 @@
   -->
 <resources>
 
-    <style name="Theme.Demo" parent="Theme.AppCompat.NoActionBar" />
+    <style name="Theme.Demo" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
 </resources>
