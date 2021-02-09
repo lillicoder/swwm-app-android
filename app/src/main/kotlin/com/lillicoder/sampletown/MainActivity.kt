@@ -17,20 +17,18 @@ package com.lillicoder.sampletown
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
 
+/**
+ * Main activity for Sampletown.
+ */
 class MainActivity : DrawerActivity() {
 
     companion object {
 
+        /**
+         * Starts this activity with the given [Context].
+         * @param context Starting context.
+         */
         fun start(context: Context) {
             context.startActivity(Intent(context, MainActivity::class.java))
         }

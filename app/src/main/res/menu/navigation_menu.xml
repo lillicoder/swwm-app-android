@@ -6,7 +6,7 @@
         android:title="@string/activity_main" />
 
     <item
-        android:id="@+id/navigation_secondary"
-        android:title="@string/activity_secondary" />
+        android:id="@+id/navigation_grid"
+        android:title="@string/activity_grid" />
 
 </menu>

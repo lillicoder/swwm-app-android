@@ -31,8 +31,8 @@
         </activity>
 
 		<activity
-			android:name=".SecondaryActivity"
-			android:label="@string/activity_secondary" />
+			android:name=".recycler.GridActivity"
+			android:label="@string/activity_grid" />
 
     </application>
 

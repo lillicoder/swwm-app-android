@@ -6,12 +6,17 @@ import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.FrameLayout
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.lillicoder.sampletown.recycler.GridActivity
 
+/**
+ * Base [AppCompatActivity] for activities that need to display a [DrawerLayout].
+ */
 abstract class DrawerActivity : AppCompatActivity() {
 
     private lateinit var mDrawerToggle: ActionBarDrawerToggle
@@ -46,6 +51,7 @@ abstract class DrawerActivity : AppCompatActivity() {
     /**
      * Gets the layout resource ID for this activity's content.
      */
+    @LayoutRes
     abstract fun getContentView(): Int
 
     /**
@@ -74,7 +80,7 @@ abstract class DrawerActivity : AppCompatActivity() {
     private fun navigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.navigation_main -> MainActivity.start(this)
-            R.id.navigation_secondary -> SecondaryActivity.start(this)
+            R.id.navigation_grid -> GridActivity.start(this)
         }
 
         return false
