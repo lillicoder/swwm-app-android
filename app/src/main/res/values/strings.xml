@@ -16,7 +16,7 @@
   -->
 <resources>
 
-    <string name="app_name">AppTemplate</string>
+    <string name="app_name">Sampletown Android</string>
     <string name="activity_grid">Grid Demo</string>
     <string name="activity_main">@string/app_name</string>
     <string name="content_desc_drawer_close">Drawer Close</string>
