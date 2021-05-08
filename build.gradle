@@ -2,6 +2,9 @@ allprojects {
 	repositories {
 		google()
 		mavenCentral()
+
+		// Not all dependencies are in another repo yet, ignore jcenter warning
+		//noinspection JcenterRepositoryObsolete
 		jcenter()
 	}
 }
@@ -9,12 +12,18 @@ allprojects {
 buildscript {
 	repositories {
 		google()
+
+		// Not all dependencies are in another repo yet, ignore jcenter warning
+		//noinspection JcenterRepositoryObsolete
 		jcenter()
 	}
 
-	ext.kotlin_version = '1.4.30'
+	ext.kotlin_version = '1.5.0'
 	dependencies {
-    	classpath 'com.android.tools.build:gradle:4.1.2'
+    	classpath 'com.android.tools.build:gradle:4.2.0'
+
+		// AS 4.2 shipped with wrong version name, suppress the version mismatch warning
+		//noinspection DifferentKotlinGradleVersion
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 	}
 }
