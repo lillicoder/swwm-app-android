@@ -24,7 +24,6 @@ class GridActivity : DrawerActivity() {
         fun start(context: Context) {
             context.startActivity(Intent(context, GridActivity::class.java))
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,24 +43,25 @@ class GridActivity : DrawerActivity() {
      * Gets the list of [Item] this activity's grid displays.
      */
     private fun getItems(): List<Item> {
-        return listOf(Item(R.drawable.rect_four_by_three),
-                      Item(R.drawable.rect_sixteen_by_nine),
-                      Item(R.drawable.rect_square),
-                      Item(R.drawable.rect_sixteen_by_nine),
-                      Item(R.drawable.rect_square),
-                      Item(R.drawable.rect_four_by_three),
-                      Item(R.drawable.rect_square),
-                      Item(R.drawable.rect_four_by_three),
-                      Item(R.drawable.rect_sixteen_by_nine),
-                      Item(R.drawable.rect_four_by_three),
-                      Item(R.drawable.rect_sixteen_by_nine),
-                      Item(R.drawable.rect_square),
-                      Item(R.drawable.rect_sixteen_by_nine),
-                      Item(R.drawable.rect_square),
-                      Item(R.drawable.rect_four_by_three),
-                      Item(R.drawable.rect_square),
-                      Item(R.drawable.rect_four_by_three),
-                      Item(R.drawable.rect_sixteen_by_nine))
+        return listOf(
+            Item(R.drawable.rect_four_by_three),
+            Item(R.drawable.rect_sixteen_by_nine),
+            Item(R.drawable.rect_square),
+            Item(R.drawable.rect_sixteen_by_nine),
+            Item(R.drawable.rect_square),
+            Item(R.drawable.rect_four_by_three),
+            Item(R.drawable.rect_square),
+            Item(R.drawable.rect_four_by_three),
+            Item(R.drawable.rect_sixteen_by_nine),
+            Item(R.drawable.rect_four_by_three),
+            Item(R.drawable.rect_sixteen_by_nine),
+            Item(R.drawable.rect_square),
+            Item(R.drawable.rect_sixteen_by_nine),
+            Item(R.drawable.rect_square),
+            Item(R.drawable.rect_four_by_three),
+            Item(R.drawable.rect_square),
+            Item(R.drawable.rect_four_by_three),
+            Item(R.drawable.rect_sixteen_by_nine)
+        )
     }
-
 }

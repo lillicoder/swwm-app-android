@@ -39,7 +39,7 @@ interface Logger {
      * @param message Message to log.
      */
     fun e(tag: String?, message: String?) {
-       e(tag, message, null)
+        e(tag, message, null)
     }
 
     /**
@@ -135,5 +135,4 @@ interface Logger {
      * @param throwable Exception to log.
      */
     fun wtf(tag: String?, message: String?, throwable: Throwable?)
-
 }

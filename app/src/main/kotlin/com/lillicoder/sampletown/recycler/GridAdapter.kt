@@ -32,5 +32,4 @@ class GridAdapter(private val items: List<Item>) : RecyclerView.Adapter<Recycler
      * View holder for this adapter.
      */
     private class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
 }

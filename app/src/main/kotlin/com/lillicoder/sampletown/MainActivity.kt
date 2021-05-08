@@ -32,11 +32,9 @@ class MainActivity : DrawerActivity() {
         fun start(context: Context) {
             context.startActivity(Intent(context, MainActivity::class.java))
         }
-
     }
 
     override fun getContentView(): Int {
         return R.layout.activity_main
     }
-
 }

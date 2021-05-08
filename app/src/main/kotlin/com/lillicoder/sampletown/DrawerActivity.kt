@@ -59,13 +59,18 @@ abstract class DrawerActivity : AppCompatActivity() {
      * @param toolbar [Toolbar] for this activity.
      * @param drawer [DrawerLayout] to configure.
      */
-    private fun configureDrawer(toolbar: Toolbar, drawer: DrawerLayout): ActionBarDrawerToggle {
+    private fun configureDrawer(
+        toolbar: Toolbar,
+        drawer: DrawerLayout
+    ): ActionBarDrawerToggle {
         val toggle =
-            ActionBarDrawerToggle(this,
-                                  drawer,
-                                  toolbar,
-                                  R.string.content_desc_drawer_open,
-                                  R.string.content_desc_drawer_close)
+            ActionBarDrawerToggle(
+                this,
+                drawer,
+                toolbar,
+                R.string.content_desc_drawer_open,
+                R.string.content_desc_drawer_close
+            )
 
         drawer.addDrawerListener(toggle)
         toggle.isDrawerIndicatorEnabled = true
@@ -85,5 +90,4 @@ abstract class DrawerActivity : AppCompatActivity() {
 
         return false
     }
-
 }

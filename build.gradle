@@ -12,6 +12,9 @@ allprojects {
 buildscript {
 	repositories {
 		google()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
 
 		// Not all dependencies are in another repo yet, ignore jcenter warning
 		//noinspection JcenterRepositoryObsolete
@@ -21,6 +24,7 @@ buildscript {
 	ext.kotlin_version = '1.5.0'
 	dependencies {
     	classpath 'com.android.tools.build:gradle:4.2.0'
+		classpath 'org.jlleitschuh.gradle:ktlint-gradle:10.0.0'
 
 		// AS 4.2 shipped with wrong version name, suppress the version mismatch warning
 		//noinspection DifferentKotlinGradleVersion

@@ -40,5 +40,4 @@ class KotlinLogger : Logger {
         println("[Log] [$level.name] [$tag] $message")
         throwable?.printStackTrace()
     }
-
 }
