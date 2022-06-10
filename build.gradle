@@ -23,7 +23,7 @@ buildscript {
 
 	ext.kotlin_version = '1.5.0'
 	dependencies {
-    	classpath 'com.android.tools.build:gradle:4.2.2'
+    	classpath 'com.android.tools.build:gradle:7.2.1'
 		classpath 'org.jlleitschuh.gradle:ktlint-gradle:10.0.0'
 
 		// AS 4.2 shipped with wrong version name, suppress the version mismatch warning
