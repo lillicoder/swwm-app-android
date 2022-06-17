@@ -18,7 +18,7 @@
 
     <string name="app_name">Sampletown</string>
     <string name="activity_grid">Grid Demo</string>
-    <string name="activity_main">@string/app_name</string>
+    <string name="activity_home">@string/app_name</string>
     <string name="content_desc_drawer_close">Drawer Close</string>
     <string name="content_desc_drawer_open">Drawer Open</string>
     <string name="loren_ipsum_short">Lorem ipsum dolor sit amet</string>

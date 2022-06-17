@@ -84,7 +84,7 @@ abstract class DrawerActivity : AppCompatActivity() {
      */
     private fun navigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.navigation_main -> MainActivity.start(this)
+            R.id.navigation_home -> HomeActivity.start(this)
             R.id.navigation_grid -> GridActivity.start(this)
         }
 

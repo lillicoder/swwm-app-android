@@ -19,9 +19,9 @@ import android.content.Context
 import android.content.Intent
 
 /**
- * Main activity for Sampletown.
+ * Home activity for Sampletown.
  */
-class MainActivity : DrawerActivity() {
+class HomeActivity : DrawerActivity() {
 
     companion object {
 
@@ -30,11 +30,11 @@ class MainActivity : DrawerActivity() {
          * @param context Starting context.
          */
         fun start(context: Context) {
-            context.startActivity(Intent(context, MainActivity::class.java))
+            context.startActivity(Intent(context, HomeActivity::class.java))
         }
     }
 
     override fun getContentView(): Int {
-        return R.layout.activity_main
+        return R.layout.activity_home
     }
 }
