@@ -6,6 +6,7 @@ import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.FrameLayout
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -54,6 +55,9 @@ abstract class DrawerActivity : AppCompatActivity() {
     @LayoutRes
     abstract fun getContentView(): Int
 
+    @IdRes
+    abstract fun getNavigationId(): Int
+
     /**
      * Configures the given drawer layout for this activity.
      * @param toolbar [Toolbar] for this activity.
@@ -83,11 +87,17 @@ abstract class DrawerActivity : AppCompatActivity() {
      * Handles the selection of a navigation item in this activity's navigation drawer.
      */
     private fun navigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.navigation_home -> HomeActivity.start(this)
-            R.id.navigation_grid -> GridActivity.start(this)
+        return when (item.itemId) {
+            getNavigationId() -> true
+            R.id.navigation_home -> {
+                HomeActivity.start(this)
+                true
+            }
+            R.id.navigation_grid -> {
+                GridActivity.start(this)
+                true
+            }
+            else -> false
         }
-
-        return false
     }
 }

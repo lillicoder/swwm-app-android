@@ -37,4 +37,8 @@ class HomeActivity : DrawerActivity() {
     override fun getContentView(): Int {
         return R.layout.activity_home
     }
+
+    override fun getNavigationId(): Int {
+        return R.id.navigation_home
+    }
 }

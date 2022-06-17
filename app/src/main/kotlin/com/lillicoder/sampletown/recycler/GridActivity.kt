@@ -39,6 +39,10 @@ class GridActivity : DrawerActivity() {
         return R.layout.activity_grid
     }
 
+    override fun getNavigationId(): Int {
+        return R.id.navigation_grid
+    }
+
     /**
      * Gets the list of [Item] this activity's grid displays.
      */
