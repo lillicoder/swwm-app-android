@@ -41,4 +41,7 @@ class HomeActivity : DrawerActivity() {
     override fun getNavigationId(): Int {
         return R.id.navigation_home
     }
+
+    override fun onContentViewInflated() {
+    }
 }

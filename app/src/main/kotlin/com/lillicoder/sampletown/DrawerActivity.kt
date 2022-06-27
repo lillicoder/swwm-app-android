@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.lillicoder.sampletown.dialog.DialogsActivity
 import com.lillicoder.sampletown.recycler.GridActivity
 
 /**
@@ -37,6 +38,7 @@ abstract class DrawerActivity : AppCompatActivity() {
 
         val contentContainer = findViewById<FrameLayout>(R.id.contentContainer)
         LayoutInflater.from(this).inflate(getContentView(), contentContainer, true)
+        onContentViewInflated()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
@@ -51,12 +53,22 @@ abstract class DrawerActivity : AppCompatActivity() {
 
     /**
      * Gets the layout resource ID for this activity's content.
+     * @return Layout resource ID.
      */
     @LayoutRes
     abstract fun getContentView(): Int
 
+    /**
+     * Gets the navigation menu ID for this activity.
+     * @return Menu ID.
+     */
     @IdRes
     abstract fun getNavigationId(): Int
+
+    /**
+     * Called after view content from [getContentView()] is inflated.
+     */
+    abstract fun onContentViewInflated()
 
     /**
      * Configures the given drawer layout for this activity.
@@ -91,6 +103,10 @@ abstract class DrawerActivity : AppCompatActivity() {
             getNavigationId() -> true
             R.id.navigation_home -> {
                 HomeActivity.start(this)
+                true
+            }
+            R.id.navigation_dialogs -> {
+                DialogsActivity.start(this)
                 true
             }
             R.id.navigation_grid -> {

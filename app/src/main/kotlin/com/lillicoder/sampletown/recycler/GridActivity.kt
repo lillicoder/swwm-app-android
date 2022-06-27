@@ -43,6 +43,9 @@ class GridActivity : DrawerActivity() {
         return R.id.navigation_grid
     }
 
+    override fun onContentViewInflated() {
+    }
+
     /**
      * Gets the list of [Item] this activity's grid displays.
      */

@@ -36,6 +36,11 @@
         </activity>
 
 		<activity
+			android:name=".dialog.DialogsActivity"
+			android:label="@string/activity_dialogs"
+			android:exported="false" />
+
+		<activity
 			android:name=".recycler.GridActivity"
 			android:label="@string/activity_grid"
 			android:exported="false" />

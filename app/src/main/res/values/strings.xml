@@ -17,12 +17,29 @@
 <resources>
 
     <string name="app_name">Sampletown</string>
-    <string name="activity_grid">Grid Demo</string>
+
+    <string name="activity_dialogs">Dialogs</string>
+    <string name="activity_grid">Grids</string>
     <string name="activity_home">@string/app_name</string>
+
+    <string name="content_desc_create_dialog">Create Dialog</string>
     <string name="content_desc_drawer_close">Drawer Close</string>
     <string name="content_desc_drawer_open">Drawer Open</string>
+
     <string name="loren_ipsum_short">Lorem ipsum dolor sit amet</string>
 
+    <string name="cancel">Cancel</string>
+    <string name="cancelable">Cancelable</string>
+    <string name="cancelable_on_touch_outside">Cancelable On Touch Outside</string>
+    <string name="dialogs_get_started">Create a dialog to get started</string>
+    <string name="embedded">Embedded</string>
+    <string name="icon_not_supported">Icons Are Not Yet Supported</string>
+    <string name="linkable">Linkable</string>
     <string name="home">Home</string>
+    <string name="message">Message</string>
+    <string name="negative_button">Negative Button</string>
+    <string name="neutral_button">Neutral Button</string>
+    <string name="positive_button">Positive Button</string>
+    <string name="title">Title</string>
 
 </resources>

@@ -6,6 +6,10 @@
         android:title="@string/home" />
 
     <item
+        android:id="@+id/navigation_dialogs"
+        android:title="@string/activity_dialogs" />
+
+    <item
         android:id="@+id/navigation_grid"
         android:title="@string/activity_grid" />
 

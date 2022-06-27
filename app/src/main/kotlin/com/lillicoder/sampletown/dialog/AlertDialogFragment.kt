@@ -79,7 +79,10 @@ class AlertDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder: Builder? = getBuilder()
-        val alertDialogBuilder: AlertDialog.Builder = createAlertDialogBuilder(activity!!, builder)
+        val alertDialogBuilder: AlertDialog.Builder = createAlertDialogBuilder(
+            requireActivity(),
+            builder
+        )
 
         // Cancel on touch outside flag can only be set on the dialog itself, if we have a builder set this value
         val dialog = alertDialogBuilder.create()
@@ -107,7 +110,7 @@ class AlertDialogFragment : DialogFragment() {
         // as doing this will end up making a requestFeature() call that will crash the app
         // if the dialog isn't ready yet
         val builder = getBuilder()
-        if (builder != null && builder.linkable()) {
+        if (builder != null && builder.isLinkable()) {
             val message: View? = dialog?.findViewById(android.R.id.message)
             if (message != null && message is TextView) {
                 message.movementMethod = LinkMovementMethod.getInstance()
@@ -176,7 +179,8 @@ class AlertDialogFragment : DialogFragment() {
         private var neutralButtonText: CharSequence? = null,
         private var isCancelable: Boolean = true,
         private var isCancelableOnTouchOutside: Boolean = true,
-        private var isLinkable: Boolean = false
+        private var isLinkable: Boolean = false,
+        private var shouldEmbed: Boolean = false
     ) : Parcelable {
 
         /**
@@ -220,6 +224,21 @@ class AlertDialogFragment : DialogFragment() {
         }
 
         /**
+         * Gets the link-ify flag for this builder.
+         * @return True if the flag is active, false otherwise.
+         */
+        fun isLinkable() = isLinkable
+
+        /**
+         * Sets whether the dialog's message will have link elements.
+         * @param isLinkable True to link-ify the message text, false otherwise.
+         * @return This builder instance.
+         */
+        fun isLinkable(isLinkable: Boolean) = apply {
+            this.isLinkable = isLinkable
+        }
+
+        /**
          * Gets the dialog icon resource ID for this builder.
          * @return Icon resource ID.
          */
@@ -232,21 +251,6 @@ class AlertDialogFragment : DialogFragment() {
          */
         fun icon(@DrawableRes id: Int) = apply {
             this.iconId = id
-        }
-
-        /**
-         * Gets the link-ify flag for this builder.
-         * @return True if the flag is active, false otherwise.
-         */
-        fun linkable() = isLinkable
-
-        /**
-         * Sets whether the dialog's message will have link elements.
-         * @param isLinkable True to link-ify the message text, false otherwise.
-         * @return This builder instance.
-         */
-        fun linkable(isLinkable: Boolean) = apply {
-            this.isLinkable = isLinkable
         }
 
         /**
@@ -349,6 +353,21 @@ class AlertDialogFragment : DialogFragment() {
          */
         fun neutralButton(text: CharSequence) = apply {
             this.neutralButtonText = text
+        }
+
+        /**
+         * Determines if this dialog's content should be embedded in a layout.
+         * @return True if dialog content should be embedded, false otherwise.
+         */
+        fun shouldEmbed() = shouldEmbed
+
+        /**
+         * Sets if the dialog content should be embedded in a layout.
+         * @param shouldEmbed True to embed, false to show as a dialog.
+         * @return This builder instance.
+         */
+        fun shouldEmbed(shouldEmbed: Boolean) = apply {
+            this.shouldEmbed = shouldEmbed
         }
 
         /**
