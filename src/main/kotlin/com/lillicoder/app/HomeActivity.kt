@@ -17,7 +17,6 @@ package com.lillicoder.app
 
 import android.content.Context
 import android.content.Intent
-import com.lillicoder.app.R
 
 /**
  * Home activity for this app.

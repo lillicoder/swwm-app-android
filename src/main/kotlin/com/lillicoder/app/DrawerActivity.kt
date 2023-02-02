@@ -15,7 +15,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.lillicoder.app.dialog.DialogsActivity
 import com.lillicoder.app.recycler.GridActivity
-import com.lillicoder.app.R
 
 /**
  * Base [AppCompatActivity] for activities that need to display a [DrawerLayout].
