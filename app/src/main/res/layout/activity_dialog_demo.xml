@@ -7,6 +7,6 @@
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.lillicoder.sampletown.dialog.DialogsFragment" />
+        android:name="com.lillicoder.app.dialog.DialogsFragment" />
 
 </merge>

@@ -1,12 +1,12 @@
-package com.lillicoder.sampletown.recycler
+package com.lillicoder.app.recycler
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lillicoder.sampletown.DrawerActivity
-import com.lillicoder.sampletown.R
+import com.lillicoder.app.DrawerActivity
+import com.lillicoder.app.R
 
 /**
  * Activity that shows a grid.

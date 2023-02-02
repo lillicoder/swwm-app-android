@@ -16,7 +16,7 @@
   -->
 <resources>
 
-    <string name="app_name">Sampletown</string>
+    <string name="app_name">SWWM</string>
 
     <string name="activity_dialogs">Dialogs</string>
     <string name="activity_grid">Grids</string>

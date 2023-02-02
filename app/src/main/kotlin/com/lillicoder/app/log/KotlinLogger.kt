@@ -1,4 +1,4 @@
-package com.lillicoder.sampletown.log
+package com.lillicoder.app.log
 
 /**
  * [Logger] for pure Kotlin classes. Safe for unit tests.

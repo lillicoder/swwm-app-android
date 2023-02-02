@@ -1,9 +1,9 @@
-package com.lillicoder.sampletown.dialog
+package com.lillicoder.app.dialog
 
 import android.content.Context
 import android.content.Intent
-import com.lillicoder.sampletown.DrawerActivity
-import com.lillicoder.sampletown.R
+import com.lillicoder.app.DrawerActivity
+import com.lillicoder.app.R
 
 /**
  * Activity-based [DialogsContract.View] for creating and displaying different kinds of dialogs.

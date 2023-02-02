@@ -1,4 +1,4 @@
-package com.lillicoder.sampletown.lifecycle
+package com.lillicoder.app.lifecycle
 
 import android.os.Bundle
 

@@ -1,4 +1,4 @@
-package com.lillicoder.sampletown.dialog
+package com.lillicoder.app.dialog
 
 private const val TAG_CREATE_DIALOG_FRAGMENT = "tag-create-dialog-fragment"
 

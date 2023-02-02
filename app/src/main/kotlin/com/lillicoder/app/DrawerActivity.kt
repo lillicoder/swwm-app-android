@@ -1,4 +1,4 @@
-package com.lillicoder.sampletown
+package com.lillicoder.app
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -13,8 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.lillicoder.sampletown.dialog.DialogsActivity
-import com.lillicoder.sampletown.recycler.GridActivity
+import com.lillicoder.app.dialog.DialogsActivity
+import com.lillicoder.app.recycler.GridActivity
+import com.lillicoder.app.R
 
 /**
  * Base [AppCompatActivity] for activities that need to display a [DrawerLayout].

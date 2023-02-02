@@ -1,4 +1,4 @@
-package com.lillicoder.sampletown.log
+package com.lillicoder.app.log
 
 import android.util.Log
 
