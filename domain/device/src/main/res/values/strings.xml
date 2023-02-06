@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2023 Scott Weeden-Moody
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this project except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+
+    <string name="build_board">[Build] Board</string>
+    <string name="build_bootloader">[Build] Bootloader</string>
+    <string name="build_brand">[Build] Brand</string>
+    <string name="build_device">[Build] Device</string>
+    <string name="build_display">[Build] Display</string>
+    <string name="build_fingerprint">[Build] Fingerprint</string>
+    <string name="build_hardware">[Build] Hardware</string>
+    <string name="build_host">[Build] Host</string>
+    <string name="build_id">[Build] ID</string>
+    <string name="build_manufacturer">[Build] Manufacturer</string>
+    <string name="build_model">[Build] Model</string>
+    <string name="build_partitions">[Build] Partition(s)</string>
+    <string name="build_product">[Build] Product</string>
+    <string name="build_radio_version">[Build] Radio Version</string>
+    <string name="build_tags">[Build] Tags</string>
+    <string name="build_time">[Build] Time</string>
+    <string name="build_type">[Build] Type</string>
+    <string name="build_unknown">[Build] Unknown</string>
+    <string name="build_user">[Build] User</string>
+
+</resources>

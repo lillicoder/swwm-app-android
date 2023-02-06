@@ -16,3 +16,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "SWWM"
 include ':app'
+include ':domain:device'
+include ':ui:about'
+include ':ui:recycler'
