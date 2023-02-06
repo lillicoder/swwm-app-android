@@ -2,7 +2,6 @@ plugins {
 	id 'com.android.application'
 	id 'org.jetbrains.kotlin.android'
 	id 'org.jetbrains.kotlin.plugin.parcelize'
-	id 'org.jlleitschuh.gradle.ktlint'
 }
 
 android {
@@ -47,9 +46,4 @@ dependencies {
 	// Kotlin Coroutines
 	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
-}
-
-ktlint {
-	android = true
-	outputToConsole = true
 }
