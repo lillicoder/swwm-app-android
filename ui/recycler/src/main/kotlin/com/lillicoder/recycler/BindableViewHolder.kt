@@ -18,7 +18,6 @@ package com.lillicoder.recycler
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.lillicoder.recycler.Bindable
 
 /**
  * [RecyclerView.ViewHolder] whose view conforms to the [Bindable] interface.
