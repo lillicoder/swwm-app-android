@@ -15,33 +15,63 @@
  */
 package com.lillicoder.app
 
-import android.content.Context
-import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.NavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 
 /**
- * Home activity for this app.
+ * Home activity for SWWM.
  */
-class HomeActivity : DrawerActivity() {
+class HomeActivity : AppCompatActivity() {
 
-    companion object {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
 
-        /**
-         * Starts this activity with the given [Context].
-         * @param context Starting context.
-         */
-        fun start(context: Context) {
-            context.startActivity(Intent(context, HomeActivity::class.java))
-        }
+        // Cannot use findNavController extension function until after onCreate finishes,
+        // find the navigation controller manually
+        val navController = navController()
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+        val configuration = AppBarConfiguration(topLevelDestinations(), drawerLayout)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.setupWithNavController(navController, configuration)
+
+        val navigationView = findViewById<NavigationView>(R.id.navigation)
+        navigationView.setupWithNavController(navController)
     }
 
-    override fun getContentView(): Int {
-        return R.layout.activity_home
-    }
+    /**
+     * Gets the [NavController] for this activity.
+     * @return Nav controller or null if no controller found.
+     */
+    private fun navController() = navHostFragment().navController
 
-    override fun getNavigationId(): Int {
-        return R.id.navigation_home
-    }
+    /**
+     * Gets the [NavHostFragment] for this activity.
+     * @return Nav host fragment or null if no fragment found.
+     */
+    private fun navHostFragment() = supportFragmentManager.findFragmentById(
+        R.id.container
+    ) as NavHostFragment
 
-    override fun onContentViewInflated() {
+    /**
+     * Gets the set of top-level destinations for this activity. Top-level destinations
+     * act as siblings in a navigation hierarchy and will show the drawer icon (instead of an
+     * up arrow) when displayed.
+     * @return Top-level destination IDs.
+     */
+    private fun topLevelDestinations(): Set<Int> {
+        return setOf(
+            R.id.homeFragment,
+            R.id.dialogsFragment,
+            R.id.gridsFragment,
+        )
     }
 }

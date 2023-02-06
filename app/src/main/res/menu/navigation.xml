@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:title="@string/home" />
+        android:id="@+id/homeFragment"
+        android:title="@string/app_name" />
 
     <item
-        android:id="@+id/navigation_dialogs"
+        android:id="@+id/dialogsFragment"
         android:title="@string/activity_dialogs" />
 
     <item
-        android:id="@+id/navigation_grid"
+        android:id="@+id/gridsFragment"
         android:title="@string/activity_grid" />
 
 </menu>

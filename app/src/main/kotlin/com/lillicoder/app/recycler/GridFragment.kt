@@ -1,49 +1,33 @@
 package com.lillicoder.app.recycler
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lillicoder.app.DrawerActivity
 import com.lillicoder.app.R
 
 /**
  * Activity that shows a grid.
  */
-class GridActivity : DrawerActivity() {
+class GridFragment : Fragment() {
 
     private lateinit var mRecyclerView: RecyclerView
 
-    companion object {
-
-        /**
-         * Starts this activity with the given [Context].
-         * @param context Starting context.
-         */
-        fun start(context: Context) {
-            context.startActivity(Intent(context, GridActivity::class.java))
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        mRecyclerView = findViewById(R.id.grid)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val root = inflater.inflate(R.layout.activity_grid, container, false)
+        mRecyclerView = root.findViewById(R.id.grid)
         mRecyclerView.layoutManager =
-            GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
+            GridLayoutManager(root.context, 3, GridLayoutManager.VERTICAL, false)
         mRecyclerView.adapter = GridAdapter(getItems())
-    }
 
-    override fun getContentView(): Int {
-        return R.layout.activity_grid
-    }
-
-    override fun getNavigationId(): Int {
-        return R.id.navigation_grid
-    }
-
-    override fun onContentViewInflated() {
+        return root
     }
 
     /**

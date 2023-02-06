@@ -34,16 +34,6 @@
 			</intent-filter>
         </activity>
 
-		<activity
-			android:name="com.lillicoder.app.dialog.DialogsActivity"
-			android:label="@string/activity_dialogs"
-			android:exported="false" />
-
-		<activity
-			android:name="com.lillicoder.app.recycler.GridActivity"
-			android:label="@string/activity_grid"
-			android:exported="false" />
-
     </application>
 
 </manifest>
