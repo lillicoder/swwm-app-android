@@ -27,12 +27,12 @@
 
     <fragment
         android:id="@+id/dialogsFragment"
-        android:name="com.lillicoder.app.dialog.DialogsFragment"
+        android:name="com.lillicoder.dialogs.DialogsFragment"
         android:label="@string/activity_dialogs" />
 
     <fragment
         android:id="@+id/gridsFragment"
-        android:name="com.lillicoder.app.recycler.GridFragment"
+        android:name="com.lillicoder.collections.GridFragment"
         android:label="@string/activity_grid" />
 
 </navigation>
