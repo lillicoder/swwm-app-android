@@ -18,6 +18,7 @@ rootProject.name = "SWWM"
 include ':app'
 include ':domain:device'
 include ':ui:about'
+include ':ui:collections'
 include ':ui:dialogs'
 include ':ui:lifecycle'
 include ':ui:recycler'

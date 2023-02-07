@@ -1,11 +1,10 @@
-package com.lillicoder.app.recycler
+package com.lillicoder.collections
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.lillicoder.app.R
 
 /**
  * [RecyclerView.Adapter] for a grid of arbitrary [Item].

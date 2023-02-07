@@ -1,4 +1,4 @@
-package com.lillicoder.app.recycler
+package com.lillicoder.collections
 
 import androidx.annotation.DrawableRes
 
