@@ -1,0 +1,40 @@
+plugins {
+	id 'com.android.library'
+	id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.parcelize'
+}
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion '33.0.1'
+
+    namespace 'com.lillicoder.dialogs'
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 33
+
+        versionCode 1
+        versionName '0.0.1'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation project(':ui:lifecycle')
+
+    // AppCompat
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
+
+    // RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.8.0'
+
+    // Kotlin
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.21'
+}

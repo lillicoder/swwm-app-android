@@ -1,4 +1,4 @@
-package com.lillicoder.app.dialog
+package com.lillicoder.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.lillicoder.app.R
 
 class CreateDialogFragment : Fragment(), CreateDialogContract.View {
 

@@ -1,7 +1,7 @@
-package com.lillicoder.app.dialog
+package com.lillicoder.dialogs
 
 import androidx.fragment.app.Fragment
-import com.lillicoder.app.lifecycle.LifecyclePresenter
+import com.lillicoder.lifecycle.LifecyclePresenter
 
 /**
  * Contracts for a UI layer to create and display various kinds of dialogs.

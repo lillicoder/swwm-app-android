@@ -1,4 +1,4 @@
-package com.lillicoder.app.dialog
+package com.lillicoder.dialogs
 
 class CreateDialogPresenter(
     private val view: CreateDialogContract.View

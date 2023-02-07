@@ -1,4 +1,4 @@
-package com.lillicoder.app.dialog
+package com.lillicoder.dialogs
 
 import android.annotation.SuppressLint
 import android.app.Dialog

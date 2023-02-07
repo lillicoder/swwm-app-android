@@ -1,4 +1,4 @@
-package com.lillicoder.app.dialog
+package com.lillicoder.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.lillicoder.app.R
 
 class DialogsFragment : Fragment(), DialogsContract.View {
 

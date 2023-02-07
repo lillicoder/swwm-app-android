@@ -1,6 +1,6 @@
-package com.lillicoder.app.dialog
+package com.lillicoder.dialogs
 
-import com.lillicoder.app.lifecycle.LifecyclePresenter
+import com.lillicoder.lifecycle.LifecyclePresenter
 
 interface CreateDialogContract {
 

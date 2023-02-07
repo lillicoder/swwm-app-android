@@ -1,4 +1,4 @@
-package com.lillicoder.app.lifecycle
+package com.lillicoder.lifecycle
 
 import android.os.Bundle
 
