@@ -72,6 +72,7 @@ class HomeActivity : AppCompatActivity() {
             R.id.homeFragment,
             R.id.dialogsFragment,
             R.id.gridsFragment,
+            R.id.aboutFragment
         )
     }
 }

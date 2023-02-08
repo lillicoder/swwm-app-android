@@ -35,4 +35,9 @@
         android:name="com.lillicoder.collections.GridFragment"
         android:label="@string/activity_grid" />
 
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.lillicoder.device.about.AboutFragment"
+        android:label="@string/about" />
+
 </navigation>

@@ -29,4 +29,8 @@
         android:id="@+id/gridsFragment"
         android:title="@string/activity_grid" />
 
+    <item
+        android:id="@+id/aboutFragment"
+        android:title="@string/about" />
+
 </menu>

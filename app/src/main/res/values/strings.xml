@@ -28,6 +28,7 @@
 
     <string name="loren_ipsum_short">Lorem ipsum dolor sit amet</string>
 
+    <string name="about">About</string>
     <string name="cancel">Cancel</string>
     <string name="cancelable">Cancelable</string>
     <string name="cancelable_on_touch_outside">Cancelable On Touch Outside</string>
