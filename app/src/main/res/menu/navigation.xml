@@ -22,7 +22,7 @@
         android:title="@string/app_name" />
 
     <item
-        android:id="@+id/dialogsFragment"
+        android:id="@+id/dialogsNavGraph"
         android:title="@string/activity_dialogs" />
 
     <item

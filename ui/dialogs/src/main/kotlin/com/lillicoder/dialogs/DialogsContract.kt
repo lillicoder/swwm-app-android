@@ -1,6 +1,5 @@
 package com.lillicoder.dialogs
 
-import androidx.fragment.app.Fragment
 import com.lillicoder.lifecycle.LifecyclePresenter
 
 /**
@@ -8,21 +7,7 @@ import com.lillicoder.lifecycle.LifecyclePresenter
  */
 interface DialogsContract {
 
-    interface Presenter : LifecyclePresenter {
+    interface Presenter : LifecyclePresenter
 
-        /**
-         * Starts creation of a new dialog.
-         */
-        fun newDialog()
-    }
-
-    interface View {
-
-        /**
-         * Shows the given [Fragment] on this view using the given tag.
-         * @param fragment Fragment tos how.
-         * @param tag Fragment tag.
-         */
-        fun show(fragment: Fragment, tag: String)
-    }
+    interface View
 }

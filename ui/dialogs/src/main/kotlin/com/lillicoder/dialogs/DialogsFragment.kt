@@ -5,18 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DialogsFragment : Fragment(), DialogsContract.View {
-
-    companion object {
-
-        /**
-         * Creates a new instance of this fragment.
-         * @return New [DialogsFragment].
-         */
-        fun newInstance() = DialogsFragment()
-    }
 
     private lateinit var fab: FloatingActionButton
     private lateinit var presenter: DialogsContract.Presenter
@@ -34,18 +26,10 @@ class DialogsFragment : Fragment(), DialogsContract.View {
         val root = inflater.inflate(R.layout.view_dialogs, container, false)
 
         fab = root.findViewById(R.id.fab)
-        fab.setOnClickListener { presenter.newDialog() }
+        fab.setOnClickListener {
+            it.findNavController().navigate(R.id.action_dialogsFragment_to_createDialogFragment)
+        }
 
         return root
-    }
-
-    override fun show(fragment: Fragment, tag: String) {
-        parentFragmentManager
-            .beginTransaction()
-            .setCustomAnimations(R.anim.slide_in_right_short, R.anim.fade_out_short)
-            .add(R.id.fragmentContainer, fragment, tag)
-            .setReorderingAllowed(true)
-            .addToBackStack(null)
-            .commit()
     }
 }
