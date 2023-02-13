@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.device.about
+package com.lillicoder.android.ui.about
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

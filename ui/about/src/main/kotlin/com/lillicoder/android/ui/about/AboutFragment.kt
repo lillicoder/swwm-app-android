@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.device.about
+package com.lillicoder.android.ui.about
 
 import android.os.Bundle
 import android.view.LayoutInflater
