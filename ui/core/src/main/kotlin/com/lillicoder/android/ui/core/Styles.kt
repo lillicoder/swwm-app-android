@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.ui.core
+package com.lillicoder.android.ui.core
 
 import android.content.Context
 import android.graphics.drawable.Drawable
