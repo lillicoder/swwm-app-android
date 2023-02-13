@@ -70,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
     private fun topLevelDestinations(): Set<Int> {
         return setOf(
             R.id.homeFragment,
-            R.id.dialogsNavGraph,
+            R.id.dialogsFragment,
             R.id.gridsFragment,
             R.id.aboutFragment
         )
