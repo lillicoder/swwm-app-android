@@ -8,7 +8,7 @@ android {
     compileSdkVersion 33
     buildToolsVersion '33.0.1'
 
-    namespace 'com.lillicoder.dialogs'
+    namespace 'com.lillicoder.android.ui.dialogs'
 
     defaultConfig {
         minSdkVersion 26
