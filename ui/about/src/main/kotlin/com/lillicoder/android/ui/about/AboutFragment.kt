@@ -29,7 +29,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lillicoder.recycler.DefaultSpacingDecoration
+import com.lillicoder.android.ui.recycler.DefaultSpacingDecoration
 import kotlinx.coroutines.launch
 
 /**

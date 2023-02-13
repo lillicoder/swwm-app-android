@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.recycler
+package com.lillicoder.android.ui.recycler
 
 import android.content.Context
 import android.graphics.Rect

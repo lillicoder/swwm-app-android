@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.recycler
+package com.lillicoder.android.ui.recycler
 
 /**
  * Describes an object that can be bound to another.

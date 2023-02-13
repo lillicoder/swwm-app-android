@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.recycler
+package com.lillicoder.android.ui.recycler
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
