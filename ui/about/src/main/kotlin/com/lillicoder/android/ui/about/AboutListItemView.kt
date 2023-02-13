@@ -21,8 +21,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
+import com.lillicoder.android.domain.device.BuildInfo
 import com.lillicoder.android.ui.recycler.Bindable
-import com.lillicoder.device.BuildInfo
 
 /**
  * List item view that displays a [BuildInfo].

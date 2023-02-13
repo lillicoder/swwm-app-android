@@ -8,7 +8,7 @@ android {
     compileSdkVersion 33
     buildToolsVersion '33.0.1'
 
-    namespace 'com.lillicoder.device'
+    namespace 'com.lillicoder.android.domain.device'
 
     defaultConfig {
         minSdkVersion 26

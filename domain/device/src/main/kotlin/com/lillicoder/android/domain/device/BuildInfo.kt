@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.device
+package com.lillicoder.android.domain.device
 
 import android.os.Build
 import android.os.Parcelable

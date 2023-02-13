@@ -19,8 +19,8 @@ package com.lillicoder.android.ui.about
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.lillicoder.device.BuildInfo
-import com.lillicoder.device.DeviceInformationRepository
+import com.lillicoder.android.domain.device.BuildInfo
+import com.lillicoder.android.domain.device.DeviceInformationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

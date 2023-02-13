@@ -18,8 +18,8 @@ package com.lillicoder.android.ui.about
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.lillicoder.android.domain.device.BuildInfo
 import com.lillicoder.android.ui.recycler.BindableViewHolder
-import com.lillicoder.device.BuildInfo
 
 /**
  * [RecyclerView.Adapter] for displaying basic about information.
