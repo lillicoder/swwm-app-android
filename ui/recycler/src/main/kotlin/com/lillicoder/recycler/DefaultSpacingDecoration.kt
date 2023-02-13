@@ -34,10 +34,15 @@ class DefaultSpacingDecoration(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        // First item gets much more top spacing then all other views
         val resources = context.resources
-        when (parent.getChildAdapterPosition(view)) {
-            0 -> outRect.top = resources.getDimension(R.dimen.default_top_margin).toInt()
+        val bottomMargin = resources.getDimension(R.dimen.list_item_top_margin).toInt()
+        val topMargin = when (parent.getChildAdapterPosition(view)) {
+            // First item gets much more top spacing then all other views
+            0 -> resources.getDimension(R.dimen.default_top_margin).toInt()
+            else -> bottomMargin
         }
+
+        outRect.bottom = bottomMargin
+        outRect.top = topMargin
     }
 }
