@@ -18,7 +18,6 @@ package com.lillicoder.android.ui.about
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.lillicoder.android.ui.about.AboutListItemView
 import com.lillicoder.device.BuildInfo
 import com.lillicoder.recycler.BindableViewHolder
 

@@ -16,7 +16,7 @@
 
 package com.lillicoder.android.ui.dialogs
 
-import com.lillicoder.lifecycle.LifecyclePresenter
+import com.lillicoder.android.ui.lifecycle.LifecyclePresenter
 
 /**
  * Contracts for a UI layer to create and display various kinds of dialogs.
