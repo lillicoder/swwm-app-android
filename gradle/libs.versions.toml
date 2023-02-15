@@ -1,0 +1,26 @@
+[versions]
+android-gradle = "7.4.1"
+android-navigation = "2.5.3"
+kotlin = "1.7.21"
+kotlin-coroutines = "1.6.4"
+
+[libraries]
+android-material = { module = "com.google.android.material:material", version = "1.8.0"}
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version = "1.6.0"}
+androidx-appcompat-resources = { module = "androidx.appcompat:appcompat-resources", version = "1.6.0"}
+androidx-core-ktx = { module = "androidx.core:core-ktx", version = "1.9.0"}
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version = "1.5.5"}
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "android-navigation"}
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "android-navigation"}
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "2.5.1"}
+androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version = "1.2.1"}
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin"}
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines"}
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines"}
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-gradle" }
+android-library = { id = "com.android.library", version.ref = "android-gradle" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+ktlint-gradle = { id = "org.jlleitschuh.gradle.ktlint", version = "11.1.0" }
