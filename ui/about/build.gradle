@@ -24,18 +24,18 @@ dependencies {
     implementation project(':ui:recycler')
 
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'androidx.fragment:fragment-ktx:1.5.5'
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.fragment.ktx
 
     // ViewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation libs.androidx.lifecycle.viewmodel.ktx
 
     // RecyclerView
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation libs.androidx.recyclerview
 
     // Material Design
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation libs.android.material
 
     // Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.21'
+    implementation libs.kotlin.stdlib
 }

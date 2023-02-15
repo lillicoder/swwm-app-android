@@ -30,26 +30,26 @@ dependencies {
     implementation project(':ui:dialogs')
 
 	// AppCompat
-	implementation 'androidx.appcompat:appcompat:1.6.0'
-	implementation 'androidx.appcompat:appcompat-resources:1.6.0'
-	implementation 'androidx.core:core-ktx:1.9.0'
-	implementation 'androidx.fragment:fragment-ktx:1.5.5'
-	implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-	implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+	implementation libs.androidx.appcompat
+	implementation libs.androidx.appcompat.resources
+	implementation libs.androidx.core.ktx
+	implementation libs.androidx.fragment.ktx
+
+	// Navigation
+	implementation libs.androidx.navigation.fragment.ktx
+	implementation libs.androidx.navigation.ui.ktx
 
 	// ViewModel
-	implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+	implementation libs.androidx.lifecycle.viewmodel.ktx
 
 	// RecyclerView
-	implementation 'androidx.recyclerview:recyclerview:1.2.1'
+	implementation libs.androidx.recyclerview
 
 	// Material Design
-	implementation 'com.google.android.material:material:1.8.0'
+	implementation libs.android.material
 
 	// Kotlin
-	implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.21'
-
-	// Kotlin Coroutines
-	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+	implementation libs.kotlin.stdlib
+	implementation libs.kotlinx.coroutines.android
+	implementation libs.kotlinx.coroutines.core
 }

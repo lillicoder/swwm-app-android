@@ -21,12 +21,12 @@ android {
 
 dependencies {
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'androidx.fragment:fragment-ktx:1.5.5'
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.fragment.ktx
 
     // RecyclerView
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation libs.androidx.recyclerview
 
     // Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.21'
+    implementation libs.kotlin.stdlib
 }

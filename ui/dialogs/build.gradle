@@ -24,15 +24,15 @@ dependencies {
     implementation project(':ui:lifecycle')
 
     // AppCompat
-    implementation 'androidx.fragment:fragment-ktx:1.5.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation libs.androidx.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
 
     // RecyclerView
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation libs.androidx.recyclerview
 
     // Material Design
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation libs.android.material
 
     // Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.21'
+    implementation libs.kotlin.stdlib
 }

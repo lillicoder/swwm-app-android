@@ -21,9 +21,9 @@ android {
 }
 
 dependencies {
-    // AndroidX
-    implementation 'androidx.appcompat:appcompat-resources:1.6.0'
+    // AppCompat
+    implementation libs.androidx.appcompat.resources
     
     // Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.21'
+    implementation libs.kotlin.stdlib
 }
