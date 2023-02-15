@@ -15,6 +15,12 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         libs {
+            plugin('android-application', 'com.android.application').version('7.4.1')
+            plugin('android-library', 'com.android.library').version('7.4.1')
+            plugin('kotlin-android', 'org.jetbrains.kotlin.android').version('1.7.21')
+            plugin('kotlin-parcelize', 'org.jetbrains.kotlin.plugin.parcelize').version('1.7.21')
+            plugin('ktlint-gradle', 'org.jlleitschuh.gradle.ktlint').version('11.1.0')
+
             library('android-material', 'com.google.android.material:material:1.8.0')
             library('androidx-appcompat', 'androidx.appcompat:appcompat:1.6.0')
             library('androidx-appcompat-resources', 'androidx.appcompat:appcompat-resources:1.6.0')
