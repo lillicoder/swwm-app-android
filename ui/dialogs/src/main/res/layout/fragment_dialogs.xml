@@ -22,13 +22,33 @@
     android:layout_height="match_parent"
     tools:parentTag="androidx.fragment.app.FragmentContainerView">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/dialogs_get_started"
-        style="@style/TextAppearance.MaterialComponents.Body1" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/default_side_margin"
+            android:layout_marginStart="@dimen/default_side_margin" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/dialogs_get_started"
+            style="@style/TextAppearance.MaterialComponents.Body1" />
+
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

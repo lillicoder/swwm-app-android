@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright 2023 Scott Weeden-Moody
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +23,9 @@
 
     <fragment
         android:id="@+id/dialogsFragment"
-        android:name="com.lillicoder.dialogs.DialogsFragment"
+        android:name="com.lillicoder.android.ui.dialogs.DialogsFragment"
         android:label="Dialogs"
-        tools:layout="@layout/activity_dialog_demo">
+        tools:layout="@layout/fragment_dialogs">
 
         <action
             android:id="@+id/action_dialogsFragment_to_createDialogFragment"
@@ -34,7 +35,7 @@
 
     <fragment
         android:id="@+id/createDialogFragment"
-        android:name="com.lillicoder.dialogs.CreateDialogFragment"
+        android:name="com.lillicoder.android.ui.dialogs.CreateDialogFragment"
         android:label="Create Dialog"
         tools:layout="@layout/view_create_dialog" />
 

@@ -25,6 +25,8 @@ dependencies {
 
     // AppCompat
     implementation libs.androidx.fragment.ktx
+
+    // Navigation
     implementation libs.androidx.navigation.ui.ktx
 
     // RecyclerView
