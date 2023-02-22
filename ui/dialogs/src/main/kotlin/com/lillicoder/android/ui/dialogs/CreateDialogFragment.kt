@@ -23,19 +23,13 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
 
-class CreateDialogFragment : Fragment(), CreateDialogContract.View {
-
-    companion object {
-
-        /**
-         * Creates a new instance of this fragment.
-         * @return New [CreateDialogFragment].
-         */
-        fun newInstance() = CreateDialogFragment()
-    }
-
-    private lateinit var presenter: CreateDialogContract.Presenter
+class CreateDialogFragment : Fragment() {
 
     private lateinit var titleInput: EditText
     private lateinit var messageInput: EditText
@@ -47,17 +41,12 @@ class CreateDialogFragment : Fragment(), CreateDialogContract.View {
     private lateinit var linkable: CheckBox
     private lateinit var embed: CheckBox
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        presenter = CreateDialogPresenter(this)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.view_create_dialog, container, false).apply {
+        val root = inflater.inflate(R.layout.fragment_create_dialog, container, false).apply {
             titleInput = findViewById(R.id.title)
             messageInput = findViewById(R.id.message)
             positiveButtonInput = findViewById(R.id.positiveButton)
@@ -68,10 +57,19 @@ class CreateDialogFragment : Fragment(), CreateDialogContract.View {
             linkable = findViewById(R.id.linkable)
             embed = findViewById(R.id.embed)
         }
+
+        val viewModel: CreateDialogViewModel by viewModels { CreateDialogViewModel.factory }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { bind(it) }
+            }
+        }
+
+        return root
     }
 
-    override fun showConfiguration(builder: AlertDialogFragment.Builder) {
-        with(builder) {
+    private fun bind(state: CreateDialogViewModel.State) {
+        state.configuration?.apply {
             titleInput.setText(title())
             messageInput.setText(message())
             positiveButtonInput.setText(positiveButton())
