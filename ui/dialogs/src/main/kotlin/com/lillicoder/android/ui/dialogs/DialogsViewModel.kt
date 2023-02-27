@@ -18,13 +18,20 @@ package com.lillicoder.android.ui.dialogs
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.domain.dialogs.DialogsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
-class DialogsViewModel : ViewModel() {
+class DialogsViewModel(
+    private val repository: DialogsRepository
+) : ViewModel() {
 
     data class State(
-        val dialogs: List<String> = listOf(),
+        val configurations: List<DialogConfig> = listOf(),
         val isLoading: Boolean = false
     )
 
@@ -36,13 +43,23 @@ class DialogsViewModel : ViewModel() {
     }
 
     private fun refreshDialogs() {
+        viewModelState.update {
+            it.copy(isLoading = true)
+        }
+
+        viewModelScope.launch {
+            val configurations = repository.configurations()
+            viewModelState.update {
+                it.copy(configurations = configurations, isLoading = false)
+            }
+        }
     }
 
     companion object {
         @Suppress("UNCHECKED_CAST")
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return DialogsViewModel() as T
+                return DialogsViewModel(DialogsRepository()) as T // TODO Repo construction control
             }
         }
     }

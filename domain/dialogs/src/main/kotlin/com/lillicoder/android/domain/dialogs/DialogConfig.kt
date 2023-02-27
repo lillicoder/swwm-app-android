@@ -26,8 +26,8 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class DialogConfig(
-    @DrawableRes private var iconId: Int = 0,
-    @LayoutRes private var layoutId: Int = 0,
+    @DrawableRes var iconId: Int = 0,
+    @LayoutRes var layoutId: Int = 0,
     val title: CharSequence? = null,
     val message: CharSequence? = null,
     val positiveButtonText: CharSequence? = null,

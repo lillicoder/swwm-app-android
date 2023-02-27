@@ -32,7 +32,8 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import kotlinx.android.parcel.Parcelize
+import com.lillicoder.android.domain.dialogs.DialogConfig
+import kotlinx.parcelize.Parcelize
 
 private const val ARGUMENT_BUILDER = "argument_builder"
 
@@ -159,7 +160,7 @@ class AlertDialogFragment : DialogFragment() {
 
             // Configure body content; either a custom layout or a basic message
             if (builder.view() > 0) {
-                val body = LayoutInflater.from(context).inflate(builder.view(), null)
+                val body = layoutInflater.inflate(builder.view(), null)
                 alertDialogBuilder.setView(body)
             } else {
                 alertDialogBuilder.setMessage(builder.message())
@@ -198,6 +199,25 @@ class AlertDialogFragment : DialogFragment() {
         private var isLinkable: Boolean = false,
         private var shouldEmbed: Boolean = false
     ) : Parcelable {
+
+        /**
+         * Instantiates this builder using the given [DialogConfig].
+         * @param configuration Dialog configuration.
+         * @return Alert dialog builder.
+         */
+        constructor(configuration: DialogConfig) : this(
+            configuration.iconId,
+            configuration.layoutId,
+            configuration.title,
+            configuration.message,
+            configuration.positiveButtonText,
+            configuration.negativeButtonText,
+            configuration.neutralButtonText,
+            configuration.isCancelable,
+            configuration.isCancelableOnTouchOutside,
+            configuration.isLinkable,
+            configuration.shouldEmbed
+        )
 
         /**
          * Creates an [AlertDialogFragment] from this builder's configuration.

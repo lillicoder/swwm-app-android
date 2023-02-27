@@ -21,7 +21,9 @@ android {
 }
 
 dependencies {
+    implementation project(':domain:dialogs')
     implementation project(':ui:lifecycle')
+    implementation project(':ui:recycler')
 
     // AppCompat
     implementation libs.androidx.fragment.ktx

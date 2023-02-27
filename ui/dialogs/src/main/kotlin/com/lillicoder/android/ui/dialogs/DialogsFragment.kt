@@ -28,8 +28,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.lillicoder.android.ui.recycler.DefaultSpacingDecoration
 import kotlinx.coroutines.launch
 
 class DialogsFragment : Fragment() {
@@ -48,7 +51,17 @@ class DialogsFragment : Fragment() {
 
         empty = root.findViewById(R.id.empty)
         progressBar = root.findViewById(R.id.progressBar)
+
         recyclerView = root.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                recyclerView.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        recyclerView.addItemDecoration(DefaultSpacingDecoration(recyclerView.context))
+        recyclerView.adapter = DialogsAdapter()
 
         fab = root.findViewById(R.id.fab)
         fab.setOnClickListener {
@@ -65,6 +78,12 @@ class DialogsFragment : Fragment() {
         return root
     }
 
+    /**
+     * Gets the adapter for the dialogs list.
+     * @return Adapter.
+     */
+    private fun adapter(): DialogsAdapter = recyclerView.adapter as DialogsAdapter
+
     private fun bind(state: DialogsViewModel.State) {
         if (state.isLoading) {
             fab.visibility = View.GONE
@@ -76,12 +95,13 @@ class DialogsFragment : Fragment() {
             fab.visibility = View.VISIBLE
             progressBar.visibility = View.GONE
 
-            when (state.dialogs.isEmpty()) {
+            when (state.configurations.isEmpty()) {
                 true -> {
                     empty.visibility = View.VISIBLE
                     recyclerView.visibility = View.GONE
                 }
                 false -> {
+                    adapter().update(state.configurations)
                     empty.visibility = View.GONE
                     recyclerView.visibility = View.VISIBLE
                 }
