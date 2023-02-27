@@ -15,86 +15,103 @@
   ~ limitations under the License.
   -->
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="?android:attr/windowBackground">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingEnd="@dimen/default_side_margin"
-        android:paddingStart="@dimen/default_side_margin"
-        android:paddingTop="@dimen/default_top_margin"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/icon_not_supported" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/title"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/title" />
+            android:paddingEnd="@dimen/default_side_margin"
+            android:paddingStart="@dimen/default_side_margin"
+            android:paddingTop="@dimen/default_top_margin"
+            android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/message" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/icon_not_supported" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/positiveButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/positive_button" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/title" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/neutralButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/neutral_button" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/message" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/negativeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/negative_button" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/positiveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/positive_button" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cancelable"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/neutralButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/neutral_button" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/negativeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/negative_button" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cancelable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/cancelable" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cancelableOnTouchOutside"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancelable_on_touch_outside" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/linkable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/linkable" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/embed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/embedded" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/cancelable" />
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/content_desc_save_changes"
+            android:text="@string/save_changes"
+            app:icon="@drawable/ic_save_12" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/cancelableOnTouchOutside"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cancelable_on_touch_outside" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/linkable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/linkable" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/embed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/embedded" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </FrameLayout>
 
 </ScrollView>

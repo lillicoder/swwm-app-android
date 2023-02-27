@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2023 Scott Weeden-Moody
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this project except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="12dp"
+    android:height="12dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="?attr/colorControlNormal">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M840,277L840,780Q840,804 822,822Q804,840 780,840L180,840Q156,840 138,822Q120,804 120,780L120,180Q120,156 138,138Q156,120 180,120L683,120L840,277ZM780,304L656,180L180,180Q180,180 180,180Q180,180 180,180L180,780Q180,780 180,780Q180,780 180,780L780,780Q780,780 780,780Q780,780 780,780L780,304ZM479.77,715Q523,715 553.5,684.73Q584,654.47 584,611.23Q584,568 553.73,537.5Q523.47,507 480.23,507Q437,507 406.5,537.27Q376,567.53 376,610.77Q376,654 406.27,684.5Q436.53,715 479.77,715ZM233,376L591,376L591,233L233,233L233,376ZM180,304L180,780Q180,780 180,780Q180,780 180,780L180,780Q180,780 180,780Q180,780 180,780L180,180Q180,180 180,180Q180,180 180,180L180,180L180,304Z" />
+</vector>

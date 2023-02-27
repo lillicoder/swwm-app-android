@@ -17,16 +17,20 @@
 package com.lillicoder.android.ui.dialogs
 
 import android.os.Bundle
+import android.system.Os.bind
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
 
 class CreateDialogFragment : Fragment() {
@@ -40,6 +44,7 @@ class CreateDialogFragment : Fragment() {
     private lateinit var cancelableOnTouchOutside: CheckBox
     private lateinit var linkable: CheckBox
     private lateinit var embed: CheckBox
+    private lateinit var fab: ExtendedFloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,6 +61,9 @@ class CreateDialogFragment : Fragment() {
             cancelableOnTouchOutside = findViewById(R.id.cancelableOnTouchOutside)
             linkable = findViewById(R.id.linkable)
             embed = findViewById(R.id.embed)
+
+            fab = findViewById(R.id.fab)
+            fab.setOnClickListener { saveConfiguration() }
         }
 
         val viewModel: CreateDialogViewModel by viewModels { CreateDialogViewModel.factory }
@@ -68,6 +76,10 @@ class CreateDialogFragment : Fragment() {
         return root
     }
 
+    /**
+     * Binds this view to the given [CreateDialogViewModel.State].
+     * @param state View model state.
+     */
     private fun bind(state: CreateDialogViewModel.State) {
         state.configuration?.apply {
             titleInput.setText(title())
@@ -80,5 +92,12 @@ class CreateDialogFragment : Fragment() {
             linkable.isChecked = isLinkable()
             embed.isChecked = shouldEmbed()
         }
+    }
+
+    /**
+     * Validates and saves the current dialog configuration for this view.
+     */
+    private fun saveConfiguration() {
+        Toast.makeText(context, "TODO: Implement save", Toast.LENGTH_SHORT).show()
     }
 }
