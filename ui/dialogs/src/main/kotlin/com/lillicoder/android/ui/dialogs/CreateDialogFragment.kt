@@ -17,12 +17,12 @@
 package com.lillicoder.android.ui.dialogs
 
 import android.os.Bundle
-import android.system.Os.bind
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,7 +30,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
 
 class CreateDialogFragment : Fragment() {
@@ -64,6 +63,12 @@ class CreateDialogFragment : Fragment() {
 
             fab = findViewById(R.id.fab)
             fab.setOnClickListener { saveConfiguration() }
+
+            val scrollView = findViewById<ScrollView>(R.id.scrollView)
+            scrollView.viewTreeObserver.addOnScrollChangedListener {
+                if (!scrollView.canScrollVertically(-1)) fab.extend() // Top of scroll
+                else fab.shrink() // Anywhere else
+            }
         }
 
         val viewModel: CreateDialogViewModel by viewModels { CreateDialogViewModel.factory }
