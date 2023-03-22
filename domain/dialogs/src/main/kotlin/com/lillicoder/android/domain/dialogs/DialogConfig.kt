@@ -26,8 +26,8 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class DialogConfig(
-    @DrawableRes var iconId: Int = 0,
-    @LayoutRes var layoutId: Int = 0,
+    @DrawableRes var iconId: Int = 0, // TODO Compiles that shuffle ID orders will break this, use a canonical ID separate from res/
+    @LayoutRes var layoutId: Int = 0, // TODO Compiles that shuffle ID orders will break this, use a canonical ID separate from res/
     val title: CharSequence? = null,
     val message: CharSequence? = null,
     val positiveButtonText: CharSequence? = null,
