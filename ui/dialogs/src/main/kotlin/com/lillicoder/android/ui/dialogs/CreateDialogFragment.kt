@@ -29,7 +29,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.lillicoder.android.domain.dialogs.DialogConfig
 import kotlinx.coroutines.launch
 
 class CreateDialogFragment : Fragment() {
@@ -60,9 +63,7 @@ class CreateDialogFragment : Fragment() {
             cancelableOnTouchOutside = findViewById(R.id.cancelableOnTouchOutside)
             linkable = findViewById(R.id.linkable)
             embed = findViewById(R.id.embed)
-
             fab = findViewById(R.id.fab)
-            fab.setOnClickListener { saveConfiguration() }
 
             val scrollView = findViewById<ScrollView>(R.id.scrollView)
             scrollView.viewTreeObserver.addOnScrollChangedListener {
@@ -72,10 +73,10 @@ class CreateDialogFragment : Fragment() {
         }
 
         val viewModel: CreateDialogViewModel by viewModels { CreateDialogViewModel.factory }
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { bind(it) }
-            }
+        val navController = findNavController()
+        fab.setOnClickListener {
+            viewModel.saveConfiguration(configuration())
+            navController.navigateUp()
         }
 
         return root
@@ -86,23 +87,33 @@ class CreateDialogFragment : Fragment() {
      * @param state View model state.
      */
     private fun bind(state: CreateDialogViewModel.State) {
+        // TODO Add loading indicator
         state.configuration?.apply {
-            titleInput.setText(title())
-            messageInput.setText(message())
-            positiveButtonInput.setText(positiveButton())
-            neutralButtonInput.setText(neutralButton())
-            negativeButtonInput.setText(negativeButton())
-            cancelable.isChecked = isCancelable()
-            cancelableOnTouchOutside.isChecked = isCancelableOnTouchOutside()
-            linkable.isChecked = isLinkable()
-            embed.isChecked = shouldEmbed()
+            titleInput.setText(title)
+            messageInput.setText(message)
+            positiveButtonInput.setText(positiveButtonText)
+            neutralButtonInput.setText(neutralButtonText)
+            negativeButtonInput.setText(negativeButtonText)
+            cancelable.isChecked = isCancelable
+            cancelableOnTouchOutside.isChecked = isCancelableOnTouchOutside
+            linkable.isChecked = isLinkable
+            embed.isChecked = shouldEmbed
         }
     }
 
     /**
-     * Validates and saves the current dialog configuration for this view.
+     * Gets a [DialogConfig] reflecting this view's current configuration.
+     * @return Dialog configuration.
      */
-    private fun saveConfiguration() {
-        Toast.makeText(context, "TODO: Implement save", Toast.LENGTH_SHORT).show()
-    }
+    private fun configuration() = DialogConfig(
+        title = titleInput.text,
+        message = messageInput.text,
+        positiveButtonText = positiveButtonInput.text,
+        neutralButtonText = neutralButtonInput.text,
+        negativeButtonText = negativeButtonInput.text,
+        isCancelable = cancelable.isChecked,
+        isCancelableOnTouchOutside = cancelableOnTouchOutside.isChecked,
+        isLinkable = linkable.isChecked,
+        shouldEmbed = embed.isChecked
+    )
 }

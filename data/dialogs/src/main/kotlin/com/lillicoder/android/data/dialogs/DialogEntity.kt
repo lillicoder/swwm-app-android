@@ -60,4 +60,15 @@ data class DialogEntity(
 
     @ColumnInfo(name = Tables.Dialogs.COLUMN_SHOULD_EMBED)
     val shouldEmbed: Boolean
-)
+) {
+
+    interface Converter<T> {
+
+        /**
+         * Converts the given source type to an equivalent [DialogEntity].
+         * @param source Source type.
+         * @return Dialog entity.
+         */
+        fun convert(source: T): DialogEntity
+    }
+}

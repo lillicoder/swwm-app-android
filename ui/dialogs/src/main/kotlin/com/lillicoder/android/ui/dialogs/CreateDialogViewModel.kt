@@ -16,32 +16,39 @@
 
 package com.lillicoder.android.ui.dialogs
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.domain.dialogs.DialogsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
-class CreateDialogViewModel : ViewModel() {
+private const val ARGUMENT_CONFIGURATION_ID = "configurationId"
+
+class CreateDialogViewModel(
+    private val repository: DialogsRepository
+) : ViewModel() {
 
     data class State(
-        val configuration: AlertDialogFragment.Builder? = null
+        val configuration: DialogConfig? = null,
+        val isLoading: Boolean = true
     )
 
-    private val viewModelState = MutableStateFlow(State())
-    val uiState = viewModelState.asStateFlow()
-
-    init {
-        loadConfiguration()
-    }
-
-    private fun loadConfiguration() {
-    }
+    /**
+     * Saves the given [DialogConfig].
+     * @param configuration Configuration to save.
+     */
+    fun saveConfiguration(configuration: DialogConfig) = repository.save(configuration)
 
     companion object {
         @Suppress("UNCHECKED_CAST")
         val factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return CreateDialogViewModel() as T
+                return CreateDialogViewModel(DialogsRepository()) as T // TODO Repo construction control
             }
         }
     }

@@ -16,14 +16,33 @@
 
 package com.lillicoder.android.data.dialogs
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 
 @Dao
 interface DialogsDao {
 
+    /**
+     * Gets the [DialogEntity] matching the given ID.
+     * @param id Dialog ID.
+     * @return Dialog entity or null if there is no dialog for the given ID.
+     */
+    @Query("SELECT * FROM ${Tables.Dialogs.TABLE_NAME} WHERE ${Tables.Dialogs.COLUMN_ID} = :id")
+    fun dialog(id: Int): DialogEntity?
+
+    /**
+     * Gets all dialogs from this DAO.
+     * @return All dialogs.
+     */
     @Query("SELECT * FROM ${Tables.Dialogs.TABLE_NAME}")
     fun dialogs(): List<DialogEntity>
 
+    /**
+     * Inserts or updates the given [DialogEntity].
+     * @param dialog Dialog to upsert.
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(dialog: DialogEntity)
+    fun upsert(dialog: DialogEntity)
 }

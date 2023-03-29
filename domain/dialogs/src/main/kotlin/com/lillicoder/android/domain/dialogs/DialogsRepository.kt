@@ -16,28 +16,44 @@
 
 package com.lillicoder.android.domain.dialogs
 
+import android.content.Context
+import com.lillicoder.android.data.dialogs.DialogsDao
+import com.lillicoder.android.data.dialogs.DialogsDatabase
+
 /**
  * Repository for dialog configurations.
  */
-class DialogsRepository {
+class DialogsRepository(
+    context: Context,
+    private val dialogsDao: DialogsDao = DialogsDatabase.getInstance(context).dialogsDao()
+) {
 
     /**
      * Gets the [DialogConfig] for the given ID.
      * @param id Configuration ID.
-     * @return Dialog configuration.
+     * @return Dialog configuration or null if there is no configuration for the given ID.
      */
-    fun configuration(id: String): DialogConfig = DialogConfig()
+    fun configuration(id: Int): DialogConfig? {
+        val entity = dialogsDao.dialog(id)
+        return entity?.let { DialogConverter().convert(it) }
+    }
 
     /**
      * Gets a list of all available [DialogConfig].
      * @return Dialog configurations.
      */
-    fun configurations(): List<DialogConfig> = listOf()
+    fun configurations(): List<DialogConfig> {
+        val entities = dialogsDao.dialogs()
+        val converter = DialogConverter()
+        return entities.map { converter.convert(it) }
+    }
 
     /**
      * Saves the given [DialogConfig].
      * @param configuration Configuration to save.
      */
     fun save(configuration: DialogConfig) {
+        val entity = DialogConverter().convert(configuration)
+        dialogsDao.upsert(entity)
     }
 }

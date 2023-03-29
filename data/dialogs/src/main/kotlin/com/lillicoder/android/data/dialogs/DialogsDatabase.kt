@@ -16,8 +16,19 @@
 
 package com.lillicoder.android.data.dialogs
 
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
 
+private const val DATABASE_NAME = "dialogs.db"
+
+@Database(
+    entities = [
+        DialogEntity::class
+    ],
+    version = 1
+)
 abstract class DialogsDatabase : RoomDatabase() {
 
     /**
@@ -25,4 +36,39 @@ abstract class DialogsDatabase : RoomDatabase() {
      * @return Dialogs DAO.
      */
     abstract fun dialogsDao(): DialogsDao
+
+    companion object {
+
+        /**
+         * Needs to be:
+         *
+         * 1) Volatile for thread-safe visibility
+         * 2) Double-locked so that different threads get the right instance on creation
+         */
+
+        @Volatile
+        private var instance: DialogsDatabase? = null
+
+        /**
+         * Gets an instance of [DialogsDatabase] with the given [Context]..
+         * @param context Database context.
+         * @return Dialogs database.
+         */
+        fun getInstance(context: Context): DialogsDatabase {
+            return instance ?: synchronized(this) {
+                instance ?: buildDatabase(context).also { instance = it }
+            }
+        }
+
+        /**
+         * Builds a [DialogsDatabase] instance with the given [Context].
+         * @param context Database context.
+         * @return Dialogs database.
+         */
+        private fun buildDatabase(context: Context): DialogsDatabase = Room.databaseBuilder(
+            context.applicationContext,
+            DialogsDatabase::class.java,
+            DATABASE_NAME
+        ).build()
+    }
 }

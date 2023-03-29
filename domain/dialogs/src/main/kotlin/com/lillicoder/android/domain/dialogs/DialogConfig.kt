@@ -19,6 +19,7 @@ package com.lillicoder.android.domain.dialogs
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
+import com.lillicoder.android.data.dialogs.DialogEntity
 import kotlinx.parcelize.Parcelize
 
 /**
@@ -26,6 +27,7 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class DialogConfig(
+    val id: Int = 0,
     @DrawableRes var iconId: Int = 0, // TODO Compiles that shuffle ID orders will break this, use a canonical ID separate from res/
     @LayoutRes var layoutId: Int = 0, // TODO Compiles that shuffle ID orders will break this, use a canonical ID separate from res/
     val title: CharSequence? = null,
@@ -37,4 +39,15 @@ data class DialogConfig(
     val isCancelableOnTouchOutside: Boolean = true,
     val isLinkable: Boolean = false,
     val shouldEmbed: Boolean = false
-) : Parcelable
+) : Parcelable {
+
+    interface Converter<T> {
+
+        /**
+         * Converts the given source type to an equivalent [DialogConfig].
+         * @param source Source type.
+         * @return Dialog configuration.
+         */
+        fun convert(source: T): DialogConfig
+    }
+}
