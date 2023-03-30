@@ -19,8 +19,11 @@ package com.lillicoder.android.ui.dialogs
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.lillicoder.android.domain.dialogs.DialogConfig
 import com.lillicoder.android.domain.dialogs.DialogsRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CreateDialogViewModel(
     private val repository: DialogsRepository
@@ -30,7 +33,11 @@ class CreateDialogViewModel(
      * Saves the given [DialogConfig].
      * @param configuration Configuration to save.
      */
-    fun saveConfiguration(configuration: DialogConfig) = repository.save(configuration)
+    fun saveConfiguration(configuration: DialogConfig) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.save(configuration)
+        }
+    }
 }
 
 class CreateDialogViewModelFactory(

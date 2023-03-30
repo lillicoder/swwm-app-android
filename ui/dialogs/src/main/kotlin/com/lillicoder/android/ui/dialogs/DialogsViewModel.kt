@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.lillicoder.android.domain.dialogs.DialogConfig
 import com.lillicoder.android.domain.dialogs.DialogsRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -48,7 +49,7 @@ class DialogsViewModel(
             it.copy(isLoading = true)
         }
 
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val configurations = repository.configurations()
             viewModelState.update {
                 it.copy(configurations = configurations, isLoading = false)
