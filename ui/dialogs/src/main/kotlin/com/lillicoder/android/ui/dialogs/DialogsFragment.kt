@@ -68,7 +68,7 @@ class DialogsFragment : Fragment() {
             it.findNavController().navigate(R.id.action_dialogsFragment_to_createDialogFragment)
         }
 
-        val viewModel: DialogsViewModel by viewModels { DialogsViewModel.factory }
+        val viewModel: DialogsViewModel by viewModels { DialogsViewModelFactory(root.context) }
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { bind(it) }

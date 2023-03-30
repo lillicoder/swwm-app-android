@@ -16,6 +16,7 @@
 
 package com.lillicoder.android.ui.dialogs
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -54,13 +55,18 @@ class DialogsViewModel(
             }
         }
     }
+}
 
-    companion object {
-        @Suppress("UNCHECKED_CAST")
-        val factory = object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return DialogsViewModel(DialogsRepository()) as T // TODO Repo construction control
-            }
+class DialogsViewModelFactory(
+    private val context: Context
+) : ViewModelProvider.Factory {
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return if (modelClass.isAssignableFrom(DialogsViewModel::class.java)) {
+            DialogsViewModel(DialogsRepository(context)) as T
+        } else {
+            throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
 }

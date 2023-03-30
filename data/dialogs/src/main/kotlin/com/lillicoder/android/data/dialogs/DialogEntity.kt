@@ -35,19 +35,19 @@ data class DialogEntity(
     val layoutId: Int,
 
     @ColumnInfo(name = Tables.Dialogs.COLUMN_TITLE)
-    val title: CharSequence?,
+    val title: String?,
 
     @ColumnInfo(name = Tables.Dialogs.COLUMN_MESSAGE)
-    val message: CharSequence?,
+    val message: String?,
 
     @ColumnInfo(name = Tables.Dialogs.COLUMN_POSITIVE_BUTTON_TEXT)
-    val positiveButtonText: CharSequence?,
+    val positiveButtonText: String?,
 
     @ColumnInfo(name = Tables.Dialogs.COLUMN_NEGATIVE_BUTTON_TEXT)
-    val negativeButtonText: CharSequence?,
+    val negativeButtonText: String?,
 
     @ColumnInfo(name = Tables.Dialogs.COLUMN_NEUTRAL_BUTTON_TEXT)
-    val neutralButtonText: CharSequence?,
+    val neutralButtonText: String?,
 
     @ColumnInfo(name = Tables.Dialogs.COLUMN_IS_CANCELABLE)
     val isCancelable: Boolean,
