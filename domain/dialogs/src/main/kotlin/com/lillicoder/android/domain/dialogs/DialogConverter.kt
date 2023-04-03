@@ -50,7 +50,10 @@ class DialogConverter : DialogConfig.Converter<DialogEntity>, DialogEntity.Conve
                 positiveButtonText,
                 negativeButtonText,
                 neutralButtonText,
-                isCancelable
+                isCancelable,
+                isCancelableOnTouchOutside,
+                isLinkable,
+                shouldEmbed
             )
         }
     }

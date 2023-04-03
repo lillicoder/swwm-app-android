@@ -18,9 +18,14 @@
 
     <string name="content_desc_create_dialog">Create Dialog</string>
 
+    <string name="attributes">Attributes</string>
     <string name="cancel">Cancel</string>
     <string name="cancelable">Cancelable</string>
     <string name="cancelable_on_touch_outside">Cancelable On Touch Outside</string>
+    <string name="check_cancelable">\u2713 Cancelable</string>
+    <string name="check_cancelable_on_touch_outside">\u2713 Cancelable on Touch Outside</string>
+    <string name="check_embedded">\u2713 Embedded</string>
+    <string name="check_linkable">\u2713 Linkable</string>
     <string name="dialogs_get_started">Create a dialog to get started</string>
     <string name="embedded">Embedded</string>
     <string name="icon_not_supported">Icons Are Not Yet Supported</string>
