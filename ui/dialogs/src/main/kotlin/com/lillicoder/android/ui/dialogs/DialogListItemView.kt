@@ -23,7 +23,6 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.LinearLayoutCompat
 import com.lillicoder.android.domain.dialogs.DialogConfig
 import com.lillicoder.android.ui.recycler.Bindable
 
