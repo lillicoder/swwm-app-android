@@ -17,24 +17,72 @@
 package com.lillicoder.android.ui.dialogs
 
 import android.content.Context
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.lillicoder.android.domain.dialogs.DialogConfig
 import com.lillicoder.android.domain.dialogs.DialogsRepository
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class CreateDialogViewModel(
-    private val repository: DialogsRepository
+    private val repository: DialogsRepository,
+    state: SavedStateHandle
 ) : ViewModel() {
 
+    data class State(
+        val dialogConfig: DialogConfig? = null
+    )
+
+    private val viewModelState = MutableStateFlow(State())
+    val uiState = viewModelState.asStateFlow()
+
+    init {
+        val edit = state.get<DialogConfig>("thingToEdit")
+        viewModelState.update { it.copy(dialogConfig = edit) }
+    }
+
     /**
-     * Saves the given [DialogConfig].
-     * @param configuration Configuration to save.
+     * Updates and saves this view model's [DialogConfig] with the given values.
+     * @param title Title.
+     * @param message Message.
+     * @param positiveButtonText Positive button text.
+     * @param neutralButtonText Neutral button text.
+     * @param negativeButtonText Negative button text.
+     * @param isCancelable True if dialog can be canceled.
+     * @param isCancelableOnTouchOutside True if dialog can be canceled by touch events.
+     * @param isLinkable True if dialog has linked content (e.g. URLs).
+     * @param shouldEmbed True if dialog should be embedded in a layout.
      */
-    fun saveConfiguration(configuration: DialogConfig) {
-        viewModelScope.launch(Dispatchers.IO) {
+    fun saveConfiguration(
+        title: String,
+        message: String,
+        positiveButtonText: String,
+        neutralButtonText: String,
+        negativeButtonText: String,
+        isCancelable: Boolean,
+        isCancelableOnTouchOutside: Boolean,
+        isLinkable: Boolean,
+        shouldEmbed: Boolean
+    ) {
+        viewModelScope.launch {
+            val configuration = DialogConfig(
+                viewModelState.value.dialogConfig?.id ?: 0,
+                0,
+                0,
+                title,
+                message,
+                positiveButtonText,
+                neutralButtonText,
+                negativeButtonText,
+                isCancelable,
+                isCancelableOnTouchOutside,
+                isLinkable,
+                shouldEmbed
+            )
             repository.save(configuration)
         }
     }
@@ -42,12 +90,16 @@ class CreateDialogViewModel(
 
 class CreateDialogViewModelFactory(
     private val context: Context
-) : ViewModelProvider.Factory {
+) : AbstractSavedStateViewModelFactory() {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(
+        key: String,
+        modelClass: Class<T>,
+        handle: SavedStateHandle
+    ): T {
         return if (modelClass.isAssignableFrom(CreateDialogViewModel::class.java)) {
-            CreateDialogViewModel(DialogsRepository(context)) as T
+            CreateDialogViewModel(DialogsRepository(context), handle) as T
         } else {
             throw IllegalArgumentException("Unknown ViewModel class")
         }

@@ -18,14 +18,17 @@ package com.lillicoder.android.domain.dialogs
 
 import com.lillicoder.android.data.dialogs.DialogEntity
 
+/**
+ * Utility that can convert between instances of [DialogConfig] and [DialogEntity].
+ */
 class DialogConverter : DialogConfig.Converter<DialogEntity>, DialogEntity.Converter<DialogConfig> {
 
     override fun convert(source: DialogConfig): DialogEntity {
         return with(source) {
             DialogEntity(
-                0,
-                0,
-                0,
+                id,
+                iconId,
+                layoutId,
                 title.toString(),
                 message.toString(),
                 positiveButtonText.toString(),

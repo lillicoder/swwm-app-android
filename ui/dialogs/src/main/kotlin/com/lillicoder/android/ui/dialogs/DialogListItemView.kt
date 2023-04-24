@@ -22,16 +22,15 @@ import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import com.lillicoder.android.domain.dialogs.DialogConfig
 import com.lillicoder.android.ui.recycler.Bindable
 
 /**
  * list item view that displays a [DialogConfig].
  */
-class DialogListItemView : RelativeLayout, Bindable<DialogConfig> {
+class DialogListItemView : RelativeLayout, Bindable<DialogItemUiState> {
 
-    private var configuration: DialogConfig? = null
+    private var uiState: DialogItemUiState? = null
 
     private val title: TextView
     private val message: TextView
@@ -54,27 +53,23 @@ class DialogListItemView : RelativeLayout, Bindable<DialogConfig> {
         attributes = findViewById(R.id.attributes)
 
         delete = findViewById(R.id.delete)
-        delete.setOnClickListener {
-            Toast.makeText(context, "TODO Delete", Toast.LENGTH_SHORT).show()
-        }
+        delete.setOnClickListener { uiState?.onDelete?.invoke() }
 
         edit = findViewById(R.id.edit)
-        edit.setOnClickListener {
-            Toast.makeText(context, "TODO Edit", Toast.LENGTH_SHORT).show()
-        }
+        edit.setOnClickListener { uiState?.onEdit?.invoke() }
     }
 
-    override fun bind(source: DialogConfig) {
-        configuration = source
-        title.text = source.title
-        message.text = source.message
-        attributes.text = buildAttributes(source)
+    override fun bind(source: DialogItemUiState) {
+        uiState = source
+        title.text = source.config.title
+        message.text = source.config.message
+        attributes.text = buildAttributes(source.config)
     }
 
-    override fun boundTo(): DialogConfig? = configuration
+    override fun boundTo(): DialogItemUiState? = uiState
 
     override fun recycle() {
-        configuration = null
+        uiState = null
         title.text = null
         message.text = null
         attributes.text = null

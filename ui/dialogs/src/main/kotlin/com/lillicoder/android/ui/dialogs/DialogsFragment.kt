@@ -22,12 +22,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -84,8 +86,15 @@ class DialogsFragment : Fragment() {
      */
     private fun adapter(): DialogsAdapter = recyclerView.adapter as DialogsAdapter
 
+    /**
+     * Updates this fragment to show the state in the given [DialogsViewModel.State].
+     * @param state View state.
+     */
     private fun bind(state: DialogsViewModel.State) {
-        if (state.isLoading) {
+        if (state.stateToEdit != null) {
+            val bundle = bundleOf("thingToEdit" to state.stateToEdit)
+            findNavController().navigate(R.id.action_dialogsFragment_to_editDialogFragment, bundle)
+        } else if (state.isLoading) {
             fab.visibility = View.GONE
             recyclerView.visibility = View.GONE
             empty.visibility = View.GONE
@@ -95,13 +104,13 @@ class DialogsFragment : Fragment() {
             fab.visibility = View.VISIBLE
             progressBar.visibility = View.GONE
 
-            when (state.configurations.isEmpty()) {
+            when (state.uiStates.isEmpty()) {
                 true -> {
                     empty.visibility = View.VISIBLE
                     recyclerView.visibility = View.GONE
                 }
                 false -> {
-                    adapter().update(state.configurations)
+                    adapter().update(state.uiStates)
                     empty.visibility = View.GONE
                     recyclerView.visibility = View.VISIBLE
                 }

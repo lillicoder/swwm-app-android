@@ -19,41 +19,52 @@ package com.lillicoder.android.domain.dialogs
 import android.content.Context
 import com.lillicoder.android.data.dialogs.DialogsDao
 import com.lillicoder.android.data.dialogs.DialogsDatabase
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 
 /**
  * Repository for dialog configurations.
+ * @param context [Context] to access [DialogsDao] with.
+ * @param dialogsDao [DialogsDao] that handles CRUD operations for dialog data.
+ * @param dispatcher [CoroutineDispatcher] for background work.
  */
 class DialogsRepository(
     context: Context,
-    private val dialogsDao: DialogsDao = DialogsDatabase.getInstance(context).dialogsDao()
+    private val dialogsDao: DialogsDao = DialogsDatabase.getInstance(context).dialogsDao(),
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
+    // TODO What is the perf impact of the transform here?
     /**
-     * Gets the [DialogConfig] for the given ID.
-     * @param id Configuration ID.
-     * @return Dialog configuration or null if there is no configuration for the given ID.
+     * Gets all known [DialogConfig] as a [Flow].
      */
-    fun configuration(id: Int): DialogConfig? {
-        val entity = dialogsDao.dialog(id)
-        return entity?.let { DialogConverter().convert(it) }
+    val configurations: Flow<List<DialogConfig>> = dialogsDao.dialogs().map {
+        it.map { entity ->
+            DialogConverter().convert(entity)
+        }
     }
 
     /**
-     * Gets a list of all available [DialogConfig].
-     * @return Dialog configurations.
+     * Deletes the given [DialogConfig] from this repository.
      */
-    fun configurations(): List<DialogConfig> {
-        val entities = dialogsDao.dialogs()
-        val converter = DialogConverter()
-        return entities.map { converter.convert(it) }
+    suspend fun delete(configuration: DialogConfig) {
+        withContext(dispatcher) {
+            val entity = DialogConverter().convert(configuration)
+            dialogsDao.delete(entity)
+        }
     }
 
     /**
-     * Saves the given [DialogConfig].
+     * Saves the given [DialogConfig] to this repository.
      * @param configuration Configuration to save.
      */
-    fun save(configuration: DialogConfig) {
-        val entity = DialogConverter().convert(configuration)
-        dialogsDao.upsert(entity)
+    suspend fun save(configuration: DialogConfig) {
+        withContext(dispatcher) {
+            val entity = DialogConverter().convert(configuration)
+            dialogsDao.upsert(entity)
+        }
     }
 }

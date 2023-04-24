@@ -25,9 +25,12 @@ import android.widget.EditText
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.lillicoder.android.domain.dialogs.DialogConfig
+import kotlinx.coroutines.launch
 
 class CreateDialogFragment : Fragment() {
 
@@ -69,28 +72,45 @@ class CreateDialogFragment : Fragment() {
         val viewModel: CreateDialogViewModel by viewModels {
             CreateDialogViewModelFactory(root.context)
         }
-        val navController = findNavController()
         fab.setOnClickListener {
-            viewModel.saveConfiguration(configuration())
-            navController.navigateUp()
+            viewModel.saveConfiguration(
+                titleInput.text.toString(),
+                messageInput.text.toString(),
+                positiveButtonInput.toString(),
+                neutralButtonInput.toString(),
+                negativeButtonInput.toString(),
+                cancelable.isChecked,
+                cancelableOnTouchOutside.isChecked,
+                linkable.isChecked,
+                embed.isChecked
+            )
+            findNavController().navigateUp()
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { bind(it) }
+            }
         }
 
         return root
     }
 
     /**
-     * Gets a [DialogConfig] reflecting this view's current configuration.
-     * @return Dialog configuration.
+     * Updates this fragment to show the state in the given [CreateDialogViewModel.State].
+     * @param state View state.
      */
-    private fun configuration() = DialogConfig(
-        title = titleInput.text,
-        message = messageInput.text,
-        positiveButtonText = positiveButtonInput.text,
-        neutralButtonText = neutralButtonInput.text,
-        negativeButtonText = negativeButtonInput.text,
-        isCancelable = cancelable.isChecked,
-        isCancelableOnTouchOutside = cancelableOnTouchOutside.isChecked,
-        isLinkable = linkable.isChecked,
-        shouldEmbed = embed.isChecked
-    )
+    private fun bind(state: CreateDialogViewModel.State) {
+        state.dialogConfig?.apply {
+            titleInput.setText(title)
+            messageInput.setText(message)
+            positiveButtonInput.setText(positiveButtonText)
+            neutralButtonInput.setText(neutralButtonText)
+            negativeButtonInput.setText(negativeButtonText)
+            cancelable.isChecked = isCancelable
+            cancelableOnTouchOutside.isChecked = isCancelableOnTouchOutside
+            linkable.isChecked = isLinkable
+            embed.isChecked = shouldEmbed
+        }
+    }
 }

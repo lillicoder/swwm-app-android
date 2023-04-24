@@ -17,32 +17,33 @@
 package com.lillicoder.android.data.dialogs
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DialogsDao {
 
     /**
-     * Gets the [DialogEntity] matching the given ID.
-     * @param id Dialog ID.
-     * @return Dialog entity or null if there is no dialog for the given ID.
+     * Deletes the given [DialogEntity] from this DAO.
+     * @param entity Entity to delete.
      */
-    @Query("SELECT * FROM ${Tables.Dialogs.TABLE_NAME} WHERE ${Tables.Dialogs.COLUMN_ID} = :id")
-    fun dialog(id: Int): DialogEntity?
+    @Delete
+    suspend fun delete(entity: DialogEntity)
 
     /**
      * Gets all dialogs from this DAO.
      * @return All dialogs.
      */
     @Query("SELECT * FROM ${Tables.Dialogs.TABLE_NAME}")
-    fun dialogs(): List<DialogEntity>
+    fun dialogs(): Flow<List<DialogEntity>>
 
     /**
      * Inserts or updates the given [DialogEntity].
      * @param dialog Dialog to upsert.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun upsert(dialog: DialogEntity)
+    suspend fun upsert(dialog: DialogEntity)
 }

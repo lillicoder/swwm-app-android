@@ -33,7 +33,8 @@ class DialogsViewModel(
 ) : ViewModel() {
 
     data class State(
-        val configurations: List<DialogConfig> = listOf(),
+        val uiStates: List<DialogItemUiState> = listOf(),
+        val stateToEdit: DialogConfig? = null,
         val isLoading: Boolean = false
     )
 
@@ -45,14 +46,37 @@ class DialogsViewModel(
     }
 
     private fun refreshDialogs() {
-        viewModelState.update {
-            it.copy(isLoading = true)
+        viewModelState.update { state ->
+            state.copy(stateToEdit = null, isLoading = true)
         }
 
         viewModelScope.launch(Dispatchers.IO) {
-            val configurations = repository.configurations()
-            viewModelState.update {
-                it.copy(configurations = configurations, isLoading = false)
+            repository.configurations.collect {
+                val states = it.map { config ->
+                    DialogItemUiState(
+                        config,
+                        onDelete = {
+                            viewModelScope.launch {
+                                repository.delete(config)
+                            }
+                        },
+                        onEdit = {
+                            viewModelScope.launch(Dispatchers.IO) {
+                                viewModelState.update { state ->
+                                    state.copy(stateToEdit = config)
+                                }
+                            }
+                            viewModelScope.launch(Dispatchers.IO) {
+                                viewModelState.update { state ->
+                                    state.copy(stateToEdit = null)
+                                }
+                            }
+                        }
+                    )
+                }
+                viewModelState.update { state ->
+                    state.copy(uiStates = states, stateToEdit = null, isLoading = false)
+                }
             }
         }
     }

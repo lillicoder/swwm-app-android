@@ -31,6 +31,17 @@
             android:id="@+id/action_dialogsFragment_to_createDialogFragment"
             app:destination="@id/createDialogFragment" />
 
+        <action
+            android:id="@+id/action_dialogsFragment_to_editDialogFragment"
+            app:destination="@id/createDialogFragment">
+
+            <argument
+                android:name="thingToEdit"
+                android:defaultValue="@null"
+                app:argType="com.lillicoder.android.domain.dialogs.DialogConfig" />
+
+        </action>
+
     </fragment>
 
     <fragment

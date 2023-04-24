@@ -21,10 +21,12 @@ android {
 }
 
 dependencies {
-    // Room
-    implementation libs.androidx.room.runtime
-    ksp libs.androidx.room.compiler
-
     // Kotlin
     implementation libs.kotlin.stdlib
+    implementation libs.kotlinx.coroutines.core
+
+    // Room
+    implementation libs.androidx.room.ktx
+    implementation libs.androidx.room.runtime
+    ksp libs.androidx.room.compiler
 }

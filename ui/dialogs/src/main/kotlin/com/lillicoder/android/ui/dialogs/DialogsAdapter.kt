@@ -19,22 +19,21 @@ package com.lillicoder.android.ui.dialogs
 import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.lillicoder.android.domain.dialogs.DialogConfig
 import com.lillicoder.android.ui.recycler.BindableViewHolder
 
-class DialogsAdapter : RecyclerView.Adapter<BindableViewHolder<DialogConfig>>() {
+class DialogsAdapter : RecyclerView.Adapter<BindableViewHolder<DialogItemUiState>>() {
 
-    private val configurations: MutableList<DialogConfig> = mutableListOf()
+    private val configurations: MutableList<DialogItemUiState> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BindableViewHolder<DialogConfig> {
+    ): BindableViewHolder<DialogItemUiState> {
         val view = DialogListItemView(parent.context)
         return BindableViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: BindableViewHolder<DialogConfig>, position: Int) {
+    override fun onBindViewHolder(holder: BindableViewHolder<DialogItemUiState>, position: Int) {
         val configuration = configurations[position]
         holder.bind(configuration)
     }
@@ -42,7 +41,7 @@ class DialogsAdapter : RecyclerView.Adapter<BindableViewHolder<DialogConfig>>() 
     override fun getItemCount(): Int = configurations.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun update(updates: List<DialogConfig>) {
+    fun update(updates: List<DialogItemUiState>) {
         configurations.clear()
         configurations.addAll(updates)
         notifyDataSetChanged() // TODO Smart updates

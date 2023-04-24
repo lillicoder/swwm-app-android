@@ -16,6 +16,7 @@ androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx",
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "2.5.1"}
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version = "1.2.1"}
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "android-room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "android-room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "android-room" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin"}
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines"}
