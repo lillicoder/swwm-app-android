@@ -48,6 +48,6 @@
         android:id="@+id/createDialogFragment"
         android:name="com.lillicoder.android.ui.dialogs.CreateDialogFragment"
         android:label="Create Dialog"
-        tools:layout="@layout/view_create_dialog" />
+        tools:layout="@layout/fragment_create_dialog" />
 
 </navigation>
