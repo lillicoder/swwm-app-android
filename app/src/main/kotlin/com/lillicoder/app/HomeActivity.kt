@@ -70,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
     private fun topLevelDestinations(): Set<Int> {
         return setOf(
             R.id.homeFragment,
-            R.id.dialogsFragment,
+            com.lillicoder.android.ui.dialogs.R.id.dialogsFragment,
             R.id.gridsFragment,
             R.id.aboutFragment
         )
