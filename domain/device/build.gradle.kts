@@ -5,30 +5,32 @@ plugins {
 }
 
 android {
-    compileSdkVersion 34
-    buildToolsVersion '33.0.1'
-
-    namespace 'com.lillicoder.android.domain.device'
+    namespace = "com.lillicoder.android.domain.device"
 
     defaultConfig {
-        minSdkVersion 26
-        targetSdkVersion 33
+        compileSdk = 34
+        minSdk = 26
+        targetSdk = 34
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+    sourceSets.getByName("main") {
+        java.srcDirs("src/main/kotlin")
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
     // AppCompat
-    implementation libs.androidx.appcompat.resources
-    
+    implementation(libs.androidx.appcompat.resources)
+
     // Kotlin
-    implementation libs.kotlin.stdlib
+    implementation(libs.kotlin.stdlib)
 }

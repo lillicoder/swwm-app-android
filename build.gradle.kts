@@ -7,10 +7,11 @@ plugins {
 }
 
 subprojects {
-	apply plugin: 'org.jlleitschuh.gradle.ktlint' // Can't use alias here, use concrete name
+	apply(plugin = "org.jlleitschuh.gradle.ktlint") // Can't use alias here, use concrete name
 
-	ktlint {
-		android = true
-		outputToConsole = true
-	}
+	// TODO Determine how to set subproject values from root level
+	// ktlint {
+	// 	android = true
+	// 	outputToConsole = true
+	// }
 }
