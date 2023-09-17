@@ -3,15 +3,14 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.parcelize) apply false
-	alias(libs.plugins.ktlint.gradle) apply false
+    alias(libs.plugins.ktlint.gradle) apply false
 }
 
 subprojects {
 	apply(plugin = "org.jlleitschuh.gradle.ktlint") // Can't use alias here, use concrete name
 
-	// TODO Determine how to set subproject values from root level
-	// ktlint {
-	// 	android = true
-	// 	outputToConsole = true
-	// }
+	configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+		android.set(true)
+		outputToConsole.set(true)
+	}
 }
