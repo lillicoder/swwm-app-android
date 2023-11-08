@@ -18,11 +18,9 @@
 <resources>
 
     <color name="primaryColor">#b39ddb</color>
-    <color name="primaryLightColor">#e6ceff</color>
     <color name="primaryDarkColor">#836fa9</color>
 
     <color name="secondaryColor">#80deea</color>
-    <color name="secondaryLightColor">#b4ffff</color>
     <color name="secondaryDarkColor">#4bacb8</color>
 
     <color name="primaryTextColor">#000000</color>
