@@ -24,4 +24,5 @@
     android:background="?attr/colorPrimary"
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.MaterialComponents" />
+    app:popupTheme="@style/ThemeOverlay.MaterialComponents"
+    tools:ignore="Overdraw" />
