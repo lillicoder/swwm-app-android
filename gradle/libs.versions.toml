@@ -3,7 +3,7 @@ android-gradle = "8.1.2"
 androidx-navigation = "2.7.5"
 androidx-room = "2.5.2"
 androidx-appcompat = "1.6.1"
-kotlin = "1.8.22"
+kotlin = "1.9.0"
 kotlin-coroutines = "1.7.1"
 
 [libraries]
@@ -25,7 +25,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
-android-ksp = { id = "com.google.devtools.ksp", version = "1.8.22-1.0.11" }
+android-ksp = { id = "com.google.devtools.ksp", version = "1.9.0-1.0.13" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
