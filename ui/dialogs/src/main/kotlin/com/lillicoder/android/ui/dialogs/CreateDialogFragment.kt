@@ -64,8 +64,13 @@ class CreateDialogFragment : Fragment() {
 
             val scrollView = findViewById<ScrollView>(R.id.scrollView)
             scrollView.viewTreeObserver.addOnScrollChangedListener {
-                if (!scrollView.canScrollVertically(-1)) fab.extend() // Top of scroll
-                else fab.shrink() // Anywhere else
+                if (!scrollView.canScrollVertically(-1)) {
+                    // Top of scroll
+                    fab.extend()
+                } else {
+                    // Anywhere else
+                    fab.shrink()
+                }
             }
         }
 
