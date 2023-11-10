@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.ksp)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.androidx.room)
     alias(libs.plugins.kotlin.android)
 }
 
@@ -12,8 +13,8 @@ android {
         minSdk = 26
         targetSdk = 34
 
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
+        room {
+            schemaDirectory(path = "$projectDir/schemas")
         }
     }
 
