@@ -16,10 +16,16 @@ android {
         room {
             schemaDirectory(path = "$projectDir/schemas")
         }
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     sourceSets.getByName("main") {
         java.srcDirs("src/main/kotlin")
+    }
+
+    sourceSets.getByName("androidTest") {
+        java.srcDirs("src/androidTest/kotlin")
     }
 
     compileOptions {
@@ -41,4 +47,12 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+
+    // Tests
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.core.ktx)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit.ktx)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
 }
