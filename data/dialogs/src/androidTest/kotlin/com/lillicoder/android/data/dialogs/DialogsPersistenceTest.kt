@@ -72,7 +72,7 @@ class DialogsPersistenceTest {
      * invoking [DialogsDao.delete].
      */
     @Test
-    fun delete() = runTest{
+    fun delete() = runTest {
         // Save an entity
         val entity = createEntity()
         dao.upsert(entity)
