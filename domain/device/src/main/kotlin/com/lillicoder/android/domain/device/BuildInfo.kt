@@ -16,13 +16,12 @@
 
 package com.lillicoder.android.domain.device
 
-import android.os.Build
 import android.os.Parcelable
 import androidx.annotation.StringRes
 import kotlinx.parcelize.Parcelize
 
 /**
- * Represents a single piece of information from [Build] about current device hardware.
+ * Represents a single piece of information about current device hardware.
  */
 @Parcelize
 data class BuildInfo(
@@ -32,7 +31,7 @@ data class BuildInfo(
     @StringRes val name: Int,
 
     /**
-     * Build value.
+     * Information value.
      */
     val value: String
 ) : Parcelable

@@ -16,12 +16,12 @@
 
 package com.lillicoder.android.domain.device
 
-import android.os.Build
-
 /**
  * Repository that can provide device information.
  */
-class DeviceInformationRepository {
+class DeviceInformationRepository(
+    private val provider: BuildInfoProvider = AndroidBuildInfoProvider()
+) {
 
     /**
      * Gets a list of [BuildInfo] about the current device hardware.
@@ -31,24 +31,23 @@ class DeviceInformationRepository {
         // Serial number omitted due to security restrictions;
         // partitions omitted due to Android Q SDK level requirement
         return listOf(
-            BuildInfo(R.string.build_board, Build.BOARD),
-            BuildInfo(R.string.build_bootloader, Build.BOOTLOADER),
-            BuildInfo(R.string.build_brand, Build.BRAND),
-            BuildInfo(R.string.build_device, Build.DEVICE),
-            BuildInfo(R.string.build_display, Build.DISPLAY),
-            BuildInfo(R.string.build_fingerprint, Build.FINGERPRINT),
-            BuildInfo(R.string.build_hardware, Build.HARDWARE),
-            BuildInfo(R.string.build_host, Build.HOST),
-            BuildInfo(R.string.build_id, Build.ID),
-            BuildInfo(R.string.build_manufacturer, Build.MANUFACTURER),
-            BuildInfo(R.string.build_model, Build.MODEL),
-            BuildInfo(R.string.build_product, Build.PRODUCT),
-            BuildInfo(R.string.build_radio_version, Build.getRadioVersion() ?: "null"),
-            BuildInfo(R.string.build_tags, Build.TAGS),
-            BuildInfo(R.string.build_time, Build.TIME.toString()),
-            BuildInfo(R.string.build_type, Build.TYPE),
-            BuildInfo(R.string.build_unknown, Build.UNKNOWN),
-            BuildInfo(R.string.build_user, Build.USER)
+            provider.board(),
+            provider.bootloader(),
+            provider.brand(),
+            provider.device(),
+            provider.display(),
+            provider.fingerprint(),
+            provider.hardware(),
+            provider.host(),
+            provider.id(),
+            provider.manufacturer(),
+            provider.model(),
+            provider.product(),
+            provider.radioVersion(),
+            provider.tags(),
+            provider.time(),
+            provider.type(),
+            provider.user()
         )
     }
 }

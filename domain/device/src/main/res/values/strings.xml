@@ -33,7 +33,6 @@
     <string name="build_tags">[Build] Tags</string>
     <string name="build_time">[Build] Time</string>
     <string name="build_type">[Build] Type</string>
-    <string name="build_unknown">[Build] Unknown</string>
     <string name="build_user">[Build] User</string>
 
 </resources>

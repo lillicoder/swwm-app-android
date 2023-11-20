@@ -17,6 +17,10 @@ android {
         java.srcDirs("src/main/kotlin")
     }
 
+    sourceSets.getByName("test") {
+        java.srcDirs("src/test/kotlin")
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -33,4 +37,7 @@ dependencies {
 
     // Kotlin
     implementation(libs.kotlin.stdlib)
+
+    // Junit
+    testImplementation(libs.junit)
 }

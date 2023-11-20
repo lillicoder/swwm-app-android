@@ -26,6 +26,7 @@ androidx-test-core-ktx = { module = "androidx.test:core-ktx", version.ref = "and
 androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androix-test-ext" }
 androidx-test-ext-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androix-test-ext" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test" }
+junit = { module = "junit:junit", version = "4.13.2" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
