@@ -29,12 +29,12 @@
 
     <fragment
         android:id="@+id/gridsFragment"
-        android:name="com.lillicoder.collections.GridFragment"
+        android:name="com.lillicoder.android.ui.collections.GridFragment"
         android:label="@string/activity_grid" />
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.lillicoder.device.about.AboutFragment"
+        android:name="com.lillicoder.android.ui.about.AboutFragment"
         android:label="@string/about" />
 
 </navigation>
