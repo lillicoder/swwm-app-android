@@ -33,12 +33,20 @@ class DeviceInformationRepositoryTest() {
         repository = DeviceInformationRepository(FakeBuildInfoProvider())
     }
 
+    /**
+     * Tests that the correct number of hardware info entries is
+     * returned from [DeviceInformationRepository.hardware].
+     */
     @Test
     fun `Hardware list has correct size`() {
         val hardware = repository.hardware()
         assertThat(hardware.size, equalTo(17))
     }
 
+    /**
+     * Tests that the correct order and values  of hardware info entries is
+     * returned from [DeviceInformationRepository.hardware].
+     */
     @Test
     fun `Hardware list has correct order and values for each field`() {
         val expected = listOf(

@@ -18,6 +18,10 @@ android {
         java.srcDirs("src/main/kotlin")
     }
 
+    sourceSets.getByName("test") {
+        java.srcDirs("src/test/kotlin")
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -41,4 +45,7 @@ dependencies {
     // Room
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+
+    // Junit
+    testImplementation(libs.junit)
 }

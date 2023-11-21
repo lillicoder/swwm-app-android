@@ -118,7 +118,7 @@ class DialogsPersistenceTest {
     }
 
     /**
-     * Creates a simple dummy [DialogEntity] for use in tests.
+     * Creates a simple [DialogEntity] for use in tests.
      * @return Test entity.
      */
     private fun createEntity() = DialogEntity(
