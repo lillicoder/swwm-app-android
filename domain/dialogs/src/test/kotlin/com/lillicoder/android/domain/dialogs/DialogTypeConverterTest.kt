@@ -63,8 +63,8 @@ class DialogTypeConverterTest {
      */
     @Test
     fun `Converts an entity to a config`() {
-       val entity = createEntity()
-       val config = converter.convert(entity)
+        val entity = createEntity()
+        val config = converter.convert(entity)
 
         assertThat(entity.id, equalTo(config.id))
         assertThat(entity.iconId, equalTo(config.iconId))
