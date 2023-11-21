@@ -23,19 +23,19 @@ import org.junit.Before
 import org.junit.Test
 
 /**
- * Unit tests for [DialogConverter].
+ * Unit tests for [DialogTypeConverter].
  */
-class DialogConverterTest {
+class DialogTypeConverterTest {
 
-    private lateinit var converter: DialogConverter
+    private lateinit var converter: DialogTypeConverter
 
     @Before
     fun setup() {
-        converter = DialogConverter()
+        converter = DialogTypeConverter()
     }
 
     /**
-     * Tests if a [DialogConfig] is properly converted by [DialogConverter.convert]
+     * Tests if a [DialogConfig] is properly converted by [DialogTypeConverter.convert]
      * to an equivalent [DialogEntity].
      */
     @Test
@@ -58,7 +58,7 @@ class DialogConverterTest {
     }
 
     /**
-     * Tests if a [DialogEntity] is properly converted by [DialogConverter.convert]
+     * Tests if a [DialogEntity] is properly converted by [DialogTypeConverter.convert]
      * to an equivalent [DialogConfig].
      */
     @Test

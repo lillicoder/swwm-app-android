@@ -21,9 +21,14 @@ import com.lillicoder.android.data.dialogs.DialogEntity
 /**
  * Utility that can convert between instances of [DialogConfig] and [DialogEntity].
  */
-class DialogConverter : DialogConfig.Converter<DialogEntity>, DialogEntity.Converter<DialogConfig> {
+class DialogTypeConverter {
 
-    override fun convert(source: DialogConfig): DialogEntity {
+    /**
+     * Converts the given [DialogConfig] to an equivalent [DialogEntity].
+     * @param source Config to convert.
+     * @return Dialog entity.
+     */
+    fun convert(source: DialogConfig): DialogEntity {
         return with(source) {
             DialogEntity(
                 id,
@@ -42,7 +47,12 @@ class DialogConverter : DialogConfig.Converter<DialogEntity>, DialogEntity.Conve
         }
     }
 
-    override fun convert(source: DialogEntity): DialogConfig {
+    /**
+     * Converts the given [DialogEntity] to an equivalent [DialogConfig].
+     * @param source Entity to convert.
+     * @return Dialog config.
+     */
+    fun convert(source: DialogEntity): DialogConfig {
         return with(source) {
             DialogConfig(
                 id,

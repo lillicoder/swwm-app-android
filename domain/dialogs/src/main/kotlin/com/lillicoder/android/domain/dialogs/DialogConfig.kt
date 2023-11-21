@@ -38,15 +38,4 @@ data class DialogConfig(
     val isCancelableOnTouchOutside: Boolean = true,
     val isLinkable: Boolean = false,
     val shouldEmbed: Boolean = false
-) : Parcelable {
-
-    interface Converter<T> {
-
-        /**
-         * Converts the given source type to an equivalent [DialogConfig].
-         * @param source Source type.
-         * @return Dialog configuration.
-         */
-        fun convert(source: T): DialogConfig
-    }
-}
+) : Parcelable

@@ -43,7 +43,7 @@ class DialogsRepository(
      */
     val configurations: Flow<List<DialogConfig>> = dialogsDao.dialogs().map {
         it.map { entity ->
-            DialogConverter().convert(entity)
+            DialogTypeConverter().convert(entity)
         }
     }
 
@@ -52,7 +52,7 @@ class DialogsRepository(
      */
     suspend fun delete(configuration: DialogConfig) {
         withContext(dispatcher) {
-            val entity = DialogConverter().convert(configuration)
+            val entity = DialogTypeConverter().convert(configuration)
             dialogsDao.delete(entity)
         }
     }
@@ -63,7 +63,7 @@ class DialogsRepository(
      */
     suspend fun save(configuration: DialogConfig) {
         withContext(dispatcher) {
-            val entity = DialogConverter().convert(configuration)
+            val entity = DialogTypeConverter().convert(configuration)
             dialogsDao.upsert(entity)
         }
     }
