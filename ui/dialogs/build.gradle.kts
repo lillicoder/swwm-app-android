@@ -30,7 +30,6 @@ android {
 dependencies {
     implementation(project(":data:dialogs"))
     implementation(project(":domain:dialogs"))
-    implementation(project(":ui:lifecycle"))
     implementation(project(":ui:recycler"))
 
     // AppCompat
