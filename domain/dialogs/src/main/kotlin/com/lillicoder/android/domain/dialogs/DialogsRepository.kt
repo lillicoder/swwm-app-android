@@ -27,15 +27,21 @@ import kotlinx.coroutines.withContext
 
 /**
  * Repository for dialog configurations.
- * @param context [Context] to access [DialogsDao] with.
  * @param dialogsDao [DialogsDao] that handles CRUD operations for dialog data.
  * @param dispatcher [CoroutineDispatcher] for background work.
  */
 class DialogsRepository(
-    context: Context,
-    private val dialogsDao: DialogsDao = DialogsDatabase.getInstance(context).dialogsDao(),
+    private val dialogsDao: DialogsDao,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
+
+    /**
+     * Instantiates this repository with the given [Context].
+     * @param context Context to access the default [DialogsDao] with.
+     */
+    constructor(context: Context) : this(
+        dialogsDao = DialogsDatabase.getInstance(context).dialogsDao()
+    )
 
     // TODO What is the perf impact of the transform here?
     /**

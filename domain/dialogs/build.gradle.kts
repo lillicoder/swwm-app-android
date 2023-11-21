@@ -46,6 +46,6 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
 
-    // Junit
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

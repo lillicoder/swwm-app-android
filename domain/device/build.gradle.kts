@@ -38,6 +38,5 @@ dependencies {
     // Kotlin
     implementation(libs.kotlin.stdlib)
 
-    // Junit
     testImplementation(libs.junit)
 }
