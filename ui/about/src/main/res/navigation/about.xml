@@ -18,19 +18,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/appNavGraph"
-    app:startDestination="@id/homeFragment">
+    android:id="@+id/aboutNavGraph"
+    app:startDestination="@id/aboutFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.lillicoder.app.HomeFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/aboutFragment"
+        android:name="com.lillicoder.android.ui.about.AboutFragment"
+        android:label="@string/about"
+        tools:layout="@layout/fragment_about" />
 
-    <include app:graph="@navigation/dialogs" />
-
-    <include app:graph="@navigation/collections" />
-
-    <include app:graph="@navigation/about" />
-    
 </navigation>

@@ -16,6 +16,7 @@
 
 <resources>
 
+    <string name="about">About</string>
     <string name="body">Body</string>
     <string name="title">Title</string>
 

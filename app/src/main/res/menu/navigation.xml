@@ -26,11 +26,11 @@
         android:title="@string/activity_dialogs" />
 
     <item
-        android:id="@+id/gridsFragment"
+        android:id="@+id/collectionsNavGraph"
         android:title="@string/activity_grid" />
 
     <item
-        android:id="@+id/aboutFragment"
+        android:id="@+id/aboutNavGraph"
         android:title="@string/about" />
 
 </menu>

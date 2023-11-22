@@ -14,23 +14,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+<resources>
 
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/appNavGraph"
-    app:startDestination="@id/homeFragment">
+    <string name="activity_grid">Grids</string>
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.lillicoder.app.HomeFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_home" />
-
-    <include app:graph="@navigation/dialogs" />
-
-    <include app:graph="@navigation/collections" />
-
-    <include app:graph="@navigation/about" />
-    
-</navigation>
+</resources>

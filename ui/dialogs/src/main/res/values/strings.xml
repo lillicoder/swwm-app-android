@@ -18,6 +18,8 @@
 
     <string name="content_desc_create_dialog">Create Dialog</string>
 
+    <string name="activity_dialogs">Dialogs</string>
+
     <string name="attributes">Attributes</string>
     <string name="cancel">Cancel</string>
     <string name="cancelable">Cancelable</string>

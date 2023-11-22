@@ -71,8 +71,8 @@ class HomeActivity : AppCompatActivity() {
         return setOf(
             R.id.homeFragment,
             com.lillicoder.android.ui.dialogs.R.id.dialogsFragment,
-            R.id.gridsFragment,
-            R.id.aboutFragment
+            com.lillicoder.android.ui.collections.R.id.gridsFragment,
+            com.lillicoder.android.ui.about.R.id.aboutFragment
         )
     }
 }

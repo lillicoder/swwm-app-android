@@ -18,8 +18,6 @@
 
     <string name="app_name">SWWM</string>
 
-    <string name="activity_dialogs">Dialogs</string>
-    <string name="activity_grid">Grids</string>
     <string name="activity_home">@string/app_name</string>
 
     <string name="loren_ipsum_short">Lorem ipsum dolor sit amet</string>
