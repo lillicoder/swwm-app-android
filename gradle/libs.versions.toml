@@ -2,7 +2,7 @@
 android-gradle = "8.1.4"
 androidx-appcompat = "1.6.1"
 androidx-navigation = "2.7.5"
-androidx-room = "2.6.0"
+androidx-room = "2.6.1"
 androidx-test = "1.5.2"
 androix-test-ext = "1.1.5"
 kotlin = "1.9.0"
