@@ -16,80 +16,87 @@
 
 package com.lillicoder.android.ui.dialogs
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.lillicoder.android.domain.dialogs.DialogConfig
 import com.lillicoder.android.domain.dialogs.DialogsRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+/**
+ * [ViewModel] for [DialogsFragment].
+ */
 class DialogsViewModel(
     private val repository: DialogsRepository
 ) : ViewModel() {
 
+    /**
+     * UI state for this view model.
+     */
     data class State(
+        /**
+         * List of [DialogItemUiState] for all known dialog configurations .
+         */
         val uiStates: List<DialogItemUiState> = listOf(),
-        val stateToEdit: DialogConfig? = null,
-        val isLoading: Boolean = false
+
+        /**
+         * Indicates if loading dialog configurations is ongoing.
+         */
+        val isLoading: Boolean = true
     )
 
-    private val viewModelState = MutableStateFlow(State())
-    val uiState = viewModelState.asStateFlow()
+    /**
+     * UI state flow for this view model.
+     */
+    val uiState = repository.configurations.map { configs ->
+        val states = toUiStates(configs)
+        State(states, false)
+    }.stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5000L),
+        State()
+    )
 
-    init {
-        refreshDialogs()
-    }
+    private val navigateToEdit = MutableSharedFlow<DialogConfig>(replay = 0)
 
-    private fun refreshDialogs() {
-        viewModelState.update { state ->
-            state.copy(stateToEdit = null, isLoading = true)
-        }
+    /**
+     * Shared flow for when a navigation request to edit a [DialogConfig] is fired.
+     */
+    val edit = navigateToEdit.asSharedFlow()
 
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.configurations.collect {
-                val states = it.map { config ->
-                    DialogItemUiState(
-                        config,
-                        onDelete = {
-                            viewModelScope.launch {
-                                repository.delete(config)
-                            }
-                        },
-                        onEdit = {
-                            viewModelScope.launch(Dispatchers.IO) {
-                                viewModelState.update { state ->
-                                    state.copy(stateToEdit = config)
-                                }
-                            }
-                            viewModelScope.launch(Dispatchers.IO) {
-                                viewModelState.update { state ->
-                                    state.copy(stateToEdit = null)
-                                }
-                            }
-                        }
-                    )
-                }
-                viewModelState.update { state ->
-                    state.copy(uiStates = states, stateToEdit = null, isLoading = false)
-                }
-            }
+    /**
+     * Converts the given list of [DialogConfig] to an equivalent list of [DialogItemUiState].
+     * @param configs Dialog configs to convert.
+     * @return Dialog item UI states for each dialog config.
+     */
+    private fun toUiStates(configs: List<DialogConfig>): List<DialogItemUiState> {
+        return configs.map { config ->
+            DialogItemUiState(
+                config,
+                onDelete = { viewModelScope.launch { repository.delete(config) } },
+                onEdit = { viewModelScope.launch { navigateToEdit.emit(config) } }
+            )
         }
     }
 }
 
+/**
+ * [ViewModelProvider.Factory] for [DialogsViewModel].
+ * @param repository [DialogsRepository] for dialog configuration CRUD operations.
+ */
 class DialogsViewModelFactory(
-    private val context: Context
+    private val repository: DialogsRepository
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(DialogsViewModel::class.java)) {
-            DialogsViewModel(DialogsRepository(context)) as T
+            DialogsViewModel(repository) as T
         } else {
             throw IllegalArgumentException("Unknown ViewModel class")
         }

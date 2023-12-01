@@ -34,6 +34,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.domain.dialogs.DialogsRepository
 import com.lillicoder.android.ui.recycler.DefaultSpacingDecoration
 import kotlinx.coroutines.launch
 
@@ -70,10 +72,17 @@ class DialogsFragment : Fragment() {
             it.findNavController().navigate(R.id.action_dialogsFragment_to_createDialogFragment)
         }
 
-        val viewModel: DialogsViewModel by viewModels { DialogsViewModelFactory(root.context) }
+        val viewModel: DialogsViewModel by viewModels {
+            DialogsViewModelFactory(DialogsRepository(root.context.applicationContext))
+        }
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { bind(it) }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.edit.collect { edit(it) }
             }
         }
 
@@ -91,30 +100,52 @@ class DialogsFragment : Fragment() {
      * @param state View state.
      */
     private fun bind(state: DialogsViewModel.State) {
-        if (state.stateToEdit != null) {
-            val bundle = bundleOf("thingToEdit" to state.stateToEdit)
-            findNavController().navigate(R.id.action_dialogsFragment_to_editDialogFragment, bundle)
-        } else if (state.isLoading) {
-            fab.visibility = View.GONE
-            recyclerView.visibility = View.GONE
-            empty.visibility = View.GONE
-
-            progressBar.visibility = View.VISIBLE
-        } else {
-            fab.visibility = View.VISIBLE
-            progressBar.visibility = View.GONE
-
-            when (state.uiStates.isEmpty()) {
-                true -> {
-                    empty.visibility = View.VISIBLE
-                    recyclerView.visibility = View.GONE
-                }
-                false -> {
-                    adapter().update(state.uiStates)
-                    empty.visibility = View.GONE
-                    recyclerView.visibility = View.VISIBLE
-                }
+        when (state.isLoading) {
+            true -> showProgressBar()
+            else -> when(state.uiStates.isEmpty()) {
+                true -> showEmpty()
+                else -> showDialogs(state.uiStates)
             }
         }
+    }
+
+    /**
+     * Navigates to the edit view for the given [DialogConfig].
+     * @param config Config to edit.
+     */
+    private fun edit(config: DialogConfig) {
+        val bundle = bundleOf("thingToEdit" to config)
+        findNavController().navigate(R.id.action_dialogsFragment_to_editDialogFragment, bundle)
+    }
+
+    /**
+     * Shows the dialogs list for this view.
+     */
+    private fun showDialogs(states: List<DialogItemUiState>) {
+        adapter().update(states)
+        progressBar.visibility = View.GONE
+        empty.visibility = View.GONE
+        fab.visibility = View.VISIBLE
+        recyclerView.visibility = View.VISIBLE
+    }
+
+    /**
+     * Shows the empty state for this view.
+     */
+    private fun showEmpty() {
+        progressBar.visibility = View.GONE
+        recyclerView.visibility = View.GONE
+        fab.visibility = View.VISIBLE
+        empty.visibility = View.VISIBLE
+    }
+
+    /**
+     * Shows the progress bar for this view.
+     */
+    private fun showProgressBar() {
+        fab.visibility = View.GONE
+        recyclerView.visibility = View.GONE
+        empty.visibility = View.GONE
+        progressBar.visibility = View.VISIBLE
     }
 }
