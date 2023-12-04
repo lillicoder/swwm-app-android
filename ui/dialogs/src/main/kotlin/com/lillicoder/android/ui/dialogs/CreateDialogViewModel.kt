@@ -41,8 +41,8 @@ class CreateDialogViewModel(
     val uiState = viewModelState.asStateFlow()
 
     init {
-        val edit = state.get<DialogConfig>("thingToEdit")
-        viewModelState.update { it.copy(dialogConfig = edit) }
+        val args = CreateDialogFragmentArgs.fromSavedStateHandle(state)
+        viewModelState.update { it.copy(dialogConfig = args.dialog) }
     }
 
     /**

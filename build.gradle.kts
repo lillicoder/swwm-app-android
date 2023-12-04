@@ -6,6 +6,15 @@ plugins {
     alias(libs.plugins.ktlint.gradle) apply false
 }
 
+buildscript {
+    repositories {
+        google()
+    }
+    dependencies {
+        classpath(libs.androidx.navigation.safe.args.gradle.plugin)
+    }
+}
+
 subprojects {
 	apply(plugin = "org.jlleitschuh.gradle.ktlint") // Can't use alias here, use concrete name
 

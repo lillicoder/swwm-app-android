@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
+    id("androidx.navigation.safeargs.kotlin") // Doesn't play nice with libs toml, using raw id
 }
 
 android {

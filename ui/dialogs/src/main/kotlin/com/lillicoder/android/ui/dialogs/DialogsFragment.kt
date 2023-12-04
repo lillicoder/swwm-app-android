@@ -22,7 +22,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -69,7 +68,8 @@ class DialogsFragment : Fragment() {
 
         fab = root.findViewById(R.id.fab)
         fab.setOnClickListener {
-            it.findNavController().navigate(R.id.action_dialogsFragment_to_createDialogFragment)
+            val action = DialogsFragmentDirections.actionDialogsToCreate()
+            it.findNavController().navigate(action)
         }
 
         val viewModel: DialogsViewModel by viewModels {
@@ -114,8 +114,8 @@ class DialogsFragment : Fragment() {
      * @param config Config to edit.
      */
     private fun edit(config: DialogConfig) {
-        val bundle = bundleOf("thingToEdit" to config)
-        findNavController().navigate(R.id.action_dialogsFragment_to_editDialogFragment, bundle)
+        val action = DialogsFragmentDirections.actionDialogsToCreate(config)
+        findNavController().navigate(action)
     }
 
     /**
