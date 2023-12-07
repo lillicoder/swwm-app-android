@@ -33,6 +33,16 @@ private fun View.resolveAttribute(@AttrRes id: Int): Int = with(TypedValue()) {
 }
 
 /**
+ * Sets this view's padding to match the default side padding and top/bottom padding
+ * for items displayed in a standard list.
+ */
+fun View.setDefaultListItemPadding() {
+    val sidePadding = context.resources.getDimension(R.dimen.default_side_margin).toInt()
+    val topBottomPadding = context.resources.getDimension(R.dimen.default_divider_margin).toInt()
+    setPadding(sidePadding, topBottomPadding, sidePadding, topBottomPadding)
+}
+
+/**
  * Sets this view's background to the drawable mapped to [android.R.attr.selectableItemBackground].
  */
 fun View.setSelectableBackground() {

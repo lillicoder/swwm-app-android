@@ -23,6 +23,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.ui.common.setDefaultListItemPadding
 import com.lillicoder.android.ui.common.setSelectableBackground
 import com.lillicoder.android.ui.recycler.Bindable
 
@@ -49,6 +50,7 @@ class DialogListItemView : RelativeLayout, Bindable<DialogItemUiState> {
         defStyle: Int
     ) : super(context, attrs, defStyle) {
         setSelectableBackground()
+        setDefaultListItemPadding()
 
         LayoutInflater.from(context).inflate(R.layout.list_item_dialog, this)
         title = findViewById(R.id.title)
