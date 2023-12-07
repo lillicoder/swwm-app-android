@@ -39,6 +39,8 @@
         android:label="Create Dialog"
         tools:layout="@layout/fragment_create_dialog">
 
+        <!-- Warning on name tag is due to an IDE bug:
+             https://issuetracker.google.com/issues/293665984 -->
         <argument
             android:name="dialog"
             android:defaultValue="@null"
