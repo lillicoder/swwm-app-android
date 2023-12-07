@@ -24,7 +24,7 @@ import org.junit.Test
 /**
  * Unit tests for [DeviceInformationRepository].
  */
-class DeviceInformationRepositoryTest() {
+class DeviceInformationRepositoryTest {
 
     private lateinit var repository: DeviceInformationRepository
 

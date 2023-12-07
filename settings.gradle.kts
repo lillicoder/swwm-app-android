@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage") // repositoriesMode{} and repositories{} are incubating
+
 pluginManagement {
     repositories {
         gradlePluginPortal()

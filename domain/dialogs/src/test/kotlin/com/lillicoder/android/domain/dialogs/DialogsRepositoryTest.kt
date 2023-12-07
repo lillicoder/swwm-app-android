@@ -19,7 +19,6 @@ package com.lillicoder.android.domain.dialogs
 import com.lillicoder.android.data.dialogs.DialogEntity
 import com.lillicoder.android.data.dialogs.DialogsDao
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.equalTo
@@ -27,7 +26,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 
-class DialogsRepositoryTest() {
+class DialogsRepositoryTest {
 
     private lateinit var repository: DialogsRepository
 
