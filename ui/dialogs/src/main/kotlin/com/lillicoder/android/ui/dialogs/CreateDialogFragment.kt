@@ -81,9 +81,9 @@ class CreateDialogFragment : Fragment() {
             viewModel.saveConfiguration(
                 titleInput.text.toString(),
                 messageInput.text.toString(),
-                positiveButtonInput.toString(),
-                neutralButtonInput.toString(),
-                negativeButtonInput.toString(),
+                positiveButtonInput.text.toString(),
+                neutralButtonInput.text.toString(),
+                negativeButtonInput.text.toString(),
                 cancelable.isChecked,
                 cancelableOnTouchOutside.isChecked,
                 linkable.isChecked,
