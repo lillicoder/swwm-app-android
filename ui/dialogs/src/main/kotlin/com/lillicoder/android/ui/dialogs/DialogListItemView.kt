@@ -23,6 +23,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.ui.common.setSelectableBackground
 import com.lillicoder.android.ui.recycler.Bindable
 
 /**
@@ -47,6 +48,8 @@ class DialogListItemView : RelativeLayout, Bindable<DialogItemUiState> {
         attrs: AttributeSet?,
         defStyle: Int
     ) : super(context, attrs, defStyle) {
+        setSelectableBackground()
+
         LayoutInflater.from(context).inflate(R.layout.list_item_dialog, this)
         title = findViewById(R.id.title)
         message = findViewById(R.id.message)
