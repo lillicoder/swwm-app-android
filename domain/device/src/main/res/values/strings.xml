@@ -27,7 +27,6 @@
     <string name="build_id">[Build] ID</string>
     <string name="build_manufacturer">[Build] Manufacturer</string>
     <string name="build_model">[Build] Model</string>
-    <string name="build_partitions">[Build] Partition(s)</string>
     <string name="build_product">[Build] Product</string>
     <string name="build_radio_version">[Build] Radio Version</string>
     <string name="build_tags">[Build] Tags</string>
