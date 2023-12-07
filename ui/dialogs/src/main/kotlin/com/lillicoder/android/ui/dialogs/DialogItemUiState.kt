@@ -24,5 +24,6 @@ import com.lillicoder.android.domain.dialogs.DialogConfig
 data class DialogItemUiState(
     val config: DialogConfig,
     val onDelete: () -> Unit,
+    val onDetail: () -> Unit,
     val onEdit: () -> Unit
 )

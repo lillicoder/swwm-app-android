@@ -69,6 +69,13 @@ class DialogsViewModel(
      */
     val edit = navigateToEdit.asSharedFlow()
 
+    private val navigateToDetail = MutableSharedFlow<DialogConfig>(replay = 0)
+
+    /**
+     * Shared flow for when a navigation request to view a [DialogConfig] is fired.
+     */
+    val detail = navigateToDetail.asSharedFlow()
+
     /**
      * Converts the given list of [DialogConfig] to an equivalent list of [DialogItemUiState].
      * @param configs Dialog configs to convert.
@@ -79,6 +86,7 @@ class DialogsViewModel(
             DialogItemUiState(
                 config,
                 onDelete = { viewModelScope.launch { repository.delete(config) } },
+                onDetail = { viewModelScope.launch { navigateToDetail.emit(config) } },
                 onEdit = { viewModelScope.launch { navigateToEdit.emit(config) } }
             )
         }

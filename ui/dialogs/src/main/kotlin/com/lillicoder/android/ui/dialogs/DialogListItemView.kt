@@ -52,6 +52,8 @@ class DialogListItemView : RelativeLayout, Bindable<DialogItemUiState> {
         message = findViewById(R.id.message)
         attributes = findViewById(R.id.attributes)
 
+        setOnClickListener { uiState?.onDetail?.invoke() }
+
         delete = findViewById(R.id.delete)
         delete.setOnClickListener { uiState?.onDelete?.invoke() }
 

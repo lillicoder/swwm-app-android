@@ -308,7 +308,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param message Message to set.
          * @return This builder instance.
          */
-        fun message(message: CharSequence) = apply {
+        fun message(message: CharSequence?) = apply {
             this.message = message
         }
 
@@ -334,7 +334,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param text Text to set.
          * @return This builder instance.
          */
-        fun positiveButton(text: CharSequence) = apply {
+        fun positiveButton(text: CharSequence?) = apply {
             this.positiveButtonText = text
         }
 
@@ -360,7 +360,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param text Text to set.
          * @return This builder instance.
          */
-        fun negativeButton(text: CharSequence) = apply {
+        fun negativeButton(text: CharSequence?) = apply {
             this.negativeButtonText = text
         }
 
@@ -386,7 +386,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param text Text to set.
          * @return This builder instance.
          */
-        fun neutralButton(text: CharSequence) = apply {
+        fun neutralButton(text: CharSequence?) = apply {
             this.neutralButtonText = text
         }
 
@@ -426,7 +426,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param title Title to set.
          * @return This builder instance.
          */
-        fun title(title: CharSequence) = apply {
+        fun title(title: CharSequence?) = apply {
             this.title = title
         }
 

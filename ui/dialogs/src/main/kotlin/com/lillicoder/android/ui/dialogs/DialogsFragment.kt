@@ -17,6 +17,7 @@
 package com.lillicoder.android.ui.dialogs
 
 import android.os.Bundle
+import android.system.Os.bind
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -85,6 +86,11 @@ class DialogsFragment : Fragment() {
                 viewModel.edit.collect { edit(it) }
             }
         }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.detail.collect { detail(it) }
+            }
+        }
 
         return root
     }
@@ -106,6 +112,27 @@ class DialogsFragment : Fragment() {
                 true -> showEmpty()
                 else -> showDialogs(state.uiStates)
             }
+        }
+    }
+
+    /**
+     * Navigates to the detail view for the given [DialogConfig].
+     * @param config Config to show.
+     */
+    private fun detail(config: DialogConfig) {
+        config.apply {
+            val dialog = AlertDialogFragment.Builder()
+                .title(title)
+                .message(message)
+                .positiveButton(positiveButtonText)
+                .negativeButton(negativeButtonText)
+                .neutralButton(neutralButtonText)
+                .isCancelable(isCancelable)
+                .isCancelableOnTouchOutside(isCancelableOnTouchOutside)
+                .isLinkable(isLinkable)
+                .shouldEmbed(shouldEmbed)
+                .create(null)
+            dialog.show(childFragmentManager, null)
         }
     }
 
