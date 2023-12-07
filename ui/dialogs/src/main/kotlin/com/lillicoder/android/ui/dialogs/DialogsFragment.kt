@@ -102,7 +102,7 @@ class DialogsFragment : Fragment() {
     private fun bind(state: DialogsViewModel.State) {
         when (state.isLoading) {
             true -> showProgressBar()
-            else -> when(state.uiStates.isEmpty()) {
+            else -> when (state.uiStates.isEmpty()) {
                 true -> showEmpty()
                 else -> showDialogs(state.uiStates)
             }
