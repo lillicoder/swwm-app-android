@@ -35,6 +35,7 @@ android {
 dependencies {
     implementation(project(":ui:about"))
     implementation(project(":ui:collections"))
+    implementation(project(":ui:common"))
     implementation(project(":ui:dialogs"))
 
     // AppCompat

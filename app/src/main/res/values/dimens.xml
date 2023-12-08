@@ -16,9 +16,6 @@
   -->
 <resources>
 
-	<dimen name="default_side_margin">24dp</dimen>
-	<dimen name="default_top_margin">24dp</dimen>
-
 	<!-- attr/listPreferredItemPadding* attributes don't have the correct value
          for whatever reason and the default side margin is too big -->
 	<dimen name="drawer_header_side_margin">22dp</dimen>
