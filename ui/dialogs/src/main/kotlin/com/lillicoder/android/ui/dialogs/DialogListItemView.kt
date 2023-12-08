@@ -98,11 +98,6 @@ class DialogListItemView : RelativeLayout, Bindable<DialogItemUiState> {
                 append(resources.getString(R.string.check_cancelable_on_touch_outside))
             }
 
-            if (config.shouldEmbed) {
-                append(" ")
-                append(resources.getString(R.string.check_embedded))
-            }
-
             if (config.isLinkable) {
                 append(" ")
                 append(resources.getString(R.string.check_linkable))

@@ -2,27 +2,15 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e6199577dccd031165007bb0ec6a33ef",
+    "identityHash": "75038952aaad23105f218fa515fdcf4d",
     "entities": [
       {
         "tableName": "dialogs",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `icon_id` INTEGER NOT NULL, `layout_id` INTEGER NOT NULL, `title` TEXT, `message` TEXT, `positive_button_text` TEXT, `negative_button_text` TEXT, `neutral_button_text` TEXT, `is_cancelable` INTEGER NOT NULL, `is_cancelable_on_touch_outside` INTEGER NOT NULL, `is_linkable` INTEGER NOT NULL, `should_embed` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `message` TEXT, `positive_button_text` TEXT, `negative_button_text` TEXT, `neutral_button_text` TEXT, `is_cancelable` INTEGER NOT NULL, `is_cancelable_on_touch_outside` INTEGER NOT NULL, `is_linkable` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "iconId",
-            "columnName": "icon_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "layoutId",
-            "columnName": "layout_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -73,12 +61,6 @@
             "columnName": "is_linkable",
             "affinity": "INTEGER",
             "notNull": true
-          },
-          {
-            "fieldPath": "shouldEmbed",
-            "columnName": "should_embed",
-            "affinity": "INTEGER",
-            "notNull": true
           }
         ],
         "primaryKey": {
@@ -94,7 +76,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e6199577dccd031165007bb0ec6a33ef')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '75038952aaad23105f218fa515fdcf4d')"
     ]
   }
 }

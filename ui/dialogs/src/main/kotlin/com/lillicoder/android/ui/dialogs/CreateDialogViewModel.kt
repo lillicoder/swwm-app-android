@@ -55,7 +55,6 @@ class CreateDialogViewModel(
      * @param isCancelable True if dialog can be canceled.
      * @param isCancelableOnTouchOutside True if dialog can be canceled by touch events.
      * @param isLinkable True if dialog has linked content (e.g. URLs).
-     * @param shouldEmbed True if dialog should be embedded in a layout.
      */
     fun saveConfiguration(
         title: String,
@@ -65,14 +64,11 @@ class CreateDialogViewModel(
         negativeButtonText: String,
         isCancelable: Boolean,
         isCancelableOnTouchOutside: Boolean,
-        isLinkable: Boolean,
-        shouldEmbed: Boolean
+        isLinkable: Boolean
     ) {
         viewModelScope.launch {
             val configuration = DialogConfig(
                 viewModelState.value.dialogConfig?.id ?: 0,
-                0,
-                0,
                 title,
                 message,
                 positiveButtonText,
@@ -80,8 +76,7 @@ class CreateDialogViewModel(
                 negativeButtonText,
                 isCancelable,
                 isCancelableOnTouchOutside,
-                isLinkable,
-                shouldEmbed
+                isLinkable
             )
             repository.save(configuration)
         }

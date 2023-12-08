@@ -17,8 +17,6 @@
 package com.lillicoder.android.domain.dialogs
 
 import android.os.Parcelable
-import androidx.annotation.DrawableRes
-import androidx.annotation.LayoutRes
 import kotlinx.parcelize.Parcelize
 
 /**
@@ -27,8 +25,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class DialogConfig(
     val id: Int = 0,
-    @DrawableRes var iconId: Int = 0, // TODO Compiles that shuffle ID orders will break this
-    @LayoutRes var layoutId: Int = 0, // TODO Compiles that shuffle ID orders will break this
     val title: CharSequence? = null,
     val message: CharSequence? = null,
     val positiveButtonText: CharSequence? = null,
@@ -36,6 +32,5 @@ data class DialogConfig(
     val neutralButtonText: CharSequence? = null,
     val isCancelable: Boolean = true,
     val isCancelableOnTouchOutside: Boolean = true,
-    val isLinkable: Boolean = false,
-    val shouldEmbed: Boolean = false
+    val isLinkable: Boolean = false
 ) : Parcelable

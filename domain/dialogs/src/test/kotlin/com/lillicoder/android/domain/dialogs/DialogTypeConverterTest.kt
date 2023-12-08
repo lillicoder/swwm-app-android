@@ -44,8 +44,6 @@ class DialogTypeConverterTest {
         val entity = converter.convert(config)
 
         assertThat(config.id, equalTo(entity.id))
-        assertThat(config.iconId, equalTo(entity.iconId))
-        assertThat(config.layoutId, equalTo(entity.layoutId))
         assertThat(config.title, equalTo(entity.title))
         assertThat(config.message, equalTo(entity.message))
         assertThat(config.positiveButtonText, equalTo(entity.positiveButtonText))
@@ -54,7 +52,6 @@ class DialogTypeConverterTest {
         assertThat(config.isCancelable, equalTo(entity.isCancelable))
         assertThat(config.isCancelableOnTouchOutside, equalTo(entity.isCancelableOnTouchOutside))
         assertThat(config.isLinkable, equalTo(entity.isLinkable))
-        assertThat(config.shouldEmbed, equalTo(entity.shouldEmbed))
     }
 
     /**
@@ -67,8 +64,6 @@ class DialogTypeConverterTest {
         val config = converter.convert(entity)
 
         assertThat(entity.id, equalTo(config.id))
-        assertThat(entity.iconId, equalTo(config.iconId))
-        assertThat(entity.layoutId, equalTo(config.layoutId))
         assertThat(entity.title, equalTo(config.title))
         assertThat(entity.message, equalTo(config.message))
         assertThat(entity.positiveButtonText, equalTo(config.positiveButtonText))
@@ -77,7 +72,6 @@ class DialogTypeConverterTest {
         assertThat(entity.isCancelable, equalTo(config.isCancelable))
         assertThat(entity.isCancelableOnTouchOutside, equalTo(config.isCancelableOnTouchOutside))
         assertThat(entity.isLinkable, equalTo(config.isLinkable))
-        assertThat(entity.shouldEmbed, equalTo(config.shouldEmbed))
     }
 
     /**
@@ -86,8 +80,6 @@ class DialogTypeConverterTest {
      */
     private fun createConfig() = DialogConfig(
         id = 1,
-        iconId = 2,
-        layoutId = 3,
         title = "Test",
         message = "Test dialog",
         positiveButtonText = "Test positive",
@@ -95,8 +87,7 @@ class DialogTypeConverterTest {
         neutralButtonText = "Test neutral",
         isCancelable = false,
         isCancelableOnTouchOutside = false,
-        isLinkable = false,
-        shouldEmbed = false
+        isLinkable = false
     )
 
     /**
@@ -105,8 +96,6 @@ class DialogTypeConverterTest {
      */
     private fun createEntity() = DialogEntity(
         id = 1,
-        iconId = 2,
-        layoutId = 3,
         title = "Test",
         message = "Test dialog",
         positiveButtonText = "Test positive",
@@ -114,7 +103,6 @@ class DialogTypeConverterTest {
         neutralButtonText = "Test neutral",
         isCancelable = false,
         isCancelableOnTouchOutside = false,
-        isLinkable = false,
-        shouldEmbed = false
+        isLinkable = false
     )
 }

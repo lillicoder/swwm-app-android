@@ -26,14 +26,6 @@ data class DialogEntity(
     @ColumnInfo(name = Tables.Dialogs.COLUMN_ID)
     val id: Int,
 
-    // TODO Compiles that shuffle ID orders will break this, use a canonical ID separate from res/
-    @ColumnInfo(name = Tables.Dialogs.COLUMN_ICON_ID)
-    val iconId: Int,
-
-    // TODO Compiles that shuffle ID orders will break this, use a canonical ID separate from res/
-    @ColumnInfo(name = Tables.Dialogs.COLUMN_LAYOUT_ID)
-    val layoutId: Int,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_TITLE)
     val title: String?,
 
@@ -56,8 +48,5 @@ data class DialogEntity(
     val isCancelableOnTouchOutside: Boolean,
 
     @ColumnInfo(name = Tables.Dialogs.COLUMN_IS_LINKABLE)
-    val isLinkable: Boolean,
-
-    @ColumnInfo(name = Tables.Dialogs.COLUMN_SHOULD_EMBED)
-    val shouldEmbed: Boolean
+    val isLinkable: Boolean
 )

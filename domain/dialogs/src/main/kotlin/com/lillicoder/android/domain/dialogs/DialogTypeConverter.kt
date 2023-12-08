@@ -32,8 +32,6 @@ class DialogTypeConverter {
         return with(source) {
             DialogEntity(
                 id,
-                iconId,
-                layoutId,
                 title.toString(),
                 message.toString(),
                 positiveButtonText.toString(),
@@ -41,8 +39,7 @@ class DialogTypeConverter {
                 neutralButtonText.toString(),
                 isCancelable,
                 isCancelableOnTouchOutside,
-                isLinkable,
-                shouldEmbed
+                isLinkable
             )
         }
     }
@@ -56,8 +53,6 @@ class DialogTypeConverter {
         return with(source) {
             DialogConfig(
                 id,
-                iconId,
-                layoutId,
                 title,
                 message,
                 positiveButtonText,
@@ -65,8 +60,7 @@ class DialogTypeConverter {
                 neutralButtonText,
                 isCancelable,
                 isCancelableOnTouchOutside,
-                isLinkable,
-                shouldEmbed
+                isLinkable
             )
         }
     }

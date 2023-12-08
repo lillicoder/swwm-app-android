@@ -70,8 +70,6 @@ class DialogsRepositoryTest {
      */
     private fun createConfig() = DialogConfig(
         id = 1,
-        iconId = 2,
-        layoutId = 3,
         title = "Test",
         message = "Test dialog",
         positiveButtonText = "Test positive",
@@ -79,8 +77,7 @@ class DialogsRepositoryTest {
         neutralButtonText = "Test neutral",
         isCancelable = false,
         isCancelableOnTouchOutside = false,
-        isLinkable = false,
-        shouldEmbed = false
+        isLinkable = false
     )
 
     /**

@@ -28,8 +28,6 @@ object Tables {
 
         const val TABLE_NAME = "dialogs"
         const val COLUMN_ID = "id"
-        const val COLUMN_ICON_ID = "icon_id"
-        const val COLUMN_LAYOUT_ID = "layout_id"
         const val COLUMN_TITLE = "title"
         const val COLUMN_MESSAGE = "message"
         const val COLUMN_POSITIVE_BUTTON_TEXT = "positive_button_text"
@@ -38,6 +36,5 @@ object Tables {
         const val COLUMN_IS_CANCELABLE = "is_cancelable"
         const val COLUMN_IS_CANCELABLE_ON_TOUCH_OUTSIDE = "is_cancelable_on_touch_outside"
         const val COLUMN_IS_LINKABLE = "is_linkable"
-        const val COLUMN_SHOULD_EMBED = "should_embed"
     }
 }

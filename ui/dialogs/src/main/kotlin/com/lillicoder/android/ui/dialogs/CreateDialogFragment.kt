@@ -42,7 +42,6 @@ class CreateDialogFragment : Fragment() {
     private lateinit var cancelable: CheckBox
     private lateinit var cancelableOnTouchOutside: CheckBox
     private lateinit var linkable: CheckBox
-    private lateinit var embed: CheckBox
     private lateinit var fab: ExtendedFloatingActionButton
 
     override fun onCreateView(
@@ -59,7 +58,6 @@ class CreateDialogFragment : Fragment() {
             cancelable = findViewById(R.id.cancelable)
             cancelableOnTouchOutside = findViewById(R.id.cancelableOnTouchOutside)
             linkable = findViewById(R.id.linkable)
-            embed = findViewById(R.id.embed)
             fab = findViewById(R.id.fab)
 
             val scrollView = findViewById<ScrollView>(R.id.scrollView)
@@ -86,8 +84,7 @@ class CreateDialogFragment : Fragment() {
                 negativeButtonInput.text.toString(),
                 cancelable.isChecked,
                 cancelableOnTouchOutside.isChecked,
-                linkable.isChecked,
-                embed.isChecked
+                linkable.isChecked
             )
             findNavController().navigateUp()
         }
@@ -115,7 +112,6 @@ class CreateDialogFragment : Fragment() {
             cancelable.isChecked = isCancelable
             cancelableOnTouchOutside.isChecked = isCancelableOnTouchOutside
             linkable.isChecked = isLinkable
-            embed.isChecked = shouldEmbed
         }
     }
 }

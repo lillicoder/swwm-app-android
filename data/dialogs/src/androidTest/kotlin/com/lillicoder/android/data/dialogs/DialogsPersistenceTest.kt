@@ -104,8 +104,6 @@ class DialogsPersistenceTest {
         // Verify all saved fields match starting entity
         val dialog = dialogs[0]
         assertThat(dialog.id, equalTo(entity.id))
-        assertThat(dialog.iconId, equalTo(entity.iconId))
-        assertThat(dialog.layoutId, equalTo(entity.layoutId))
         assertThat(dialog.title, equalTo(entity.title))
         assertThat(dialog.message, equalTo(entity.message))
         assertThat(dialog.positiveButtonText, equalTo(entity.positiveButtonText))
@@ -114,7 +112,6 @@ class DialogsPersistenceTest {
         assertThat(dialog.isCancelable, equalTo(entity.isCancelable))
         assertThat(dialog.isCancelableOnTouchOutside, equalTo(entity.isCancelableOnTouchOutside))
         assertThat(dialog.isLinkable, equalTo(entity.isLinkable))
-        assertThat(dialog.shouldEmbed, equalTo(entity.shouldEmbed))
     }
 
     /**
@@ -123,8 +120,6 @@ class DialogsPersistenceTest {
      */
     private fun createEntity() = DialogEntity(
         id = 1,
-        iconId = 2,
-        layoutId = 3,
         title = "Test",
         message = "Test dialog",
         positiveButtonText = "Test positive",
@@ -132,7 +127,6 @@ class DialogsPersistenceTest {
         neutralButtonText = "Test neutral",
         isCancelable = false,
         isCancelableOnTouchOutside = false,
-        isLinkable = false,
-        shouldEmbed = false
+        isLinkable = false
     )
 }

@@ -17,13 +17,14 @@
 package com.lillicoder.android.ui.dialogs
 
 import android.os.Bundle
-import android.system.Os.bind
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -45,6 +46,8 @@ class DialogsFragment : Fragment() {
     private lateinit var progressBar: ProgressBar
     private lateinit var recyclerView: RecyclerView
     private lateinit var empty: TextView
+
+    private val showDialogTag = "showDialog"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -130,9 +133,12 @@ class DialogsFragment : Fragment() {
                 .isCancelable(isCancelable)
                 .isCancelableOnTouchOutside(isCancelableOnTouchOutside)
                 .isLinkable(isLinkable)
-                .shouldEmbed(shouldEmbed)
-                .create(null)
-            dialog.show(childFragmentManager, null)
+                .create()
+            dialog.show(parentFragmentManager, showDialogTag)
+            setFragmentResultListener(showDialogTag) { _, bundle ->
+                val event: AlertDialogFragment.Event? = bundle.getParcelable("event")
+                Toast.makeText(context, "$event received.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

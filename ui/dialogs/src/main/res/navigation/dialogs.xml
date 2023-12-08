@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/createDialogFragment"
         android:name="com.lillicoder.android.ui.dialogs.CreateDialogFragment"
-        android:label="Create Dialog"
+        android:label="@string/create_dialog"
         tools:layout="@layout/fragment_create_dialog">
 
         <!-- Warning on name tag is due to an IDE bug:

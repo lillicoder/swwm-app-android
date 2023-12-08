@@ -23,14 +23,19 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Parcelable
 import android.text.method.LinkMovementMethod
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.lillicoder.android.domain.dialogs.DialogConfig
 import kotlinx.parcelize.Parcelize
 
@@ -46,11 +51,9 @@ class AlertDialogFragment : DialogFragment() {
         /**
          * Creates a new instance of [AlertDialogFragment] with the given [Builder].
          * @param builder Builder.
-         * @param listener [Fragment] to receive event callbacks.
          */
-        fun newInstance(builder: Builder, listener: Fragment?): AlertDialogFragment {
+        fun newInstance(builder: Builder): AlertDialogFragment {
             val dialog = AlertDialogFragment()
-            dialog.setTargetFragment(listener, 0)
 
             val arguments = Bundle()
             arguments.putParcelable(ARGUMENT_BUILDER, builder)
@@ -60,38 +63,40 @@ class AlertDialogFragment : DialogFragment() {
         }
     }
 
-    interface Listener {
+    @Parcelize
+    enum class Event : Parcelable {
+        /**
+         * Event fired when the dialog's positive button is clicked.
+         */
+        POSITIVE_BUTTON_CLICK,
 
         /**
-         * Callback fired when the dialog's positive button is clicked.
-         * @param tag of the [AlertDialogFragment] that fired the event.
+         * Event fired when the dialog's negative button is clicked.
          */
-        fun onPositiveButtonClick(tag: String?) {}
+        NEGATIVE_BUTTON_CLICK,
 
         /**
-         * Callback fired when the dialog's negative button is clicked.
-         * @param tag of the [AlertDialogFragment] that fired the event.
+         * Event fired when the dialog's neutral button is clicked.
          */
-        fun onNegativeButtonClick(tag: String?) {}
+        NEUTRAL_BUTTON_CLICK,
 
         /**
-         * Callback fired when the dialog's neutral button is clicked.
-         * @param tag of the [AlertDialogFragment] that fired the event.
+         * Event fired when the dialog is cancelled.
          */
-        fun onNeutralButtonClick(tag: String?) {}
+        CANCEL,
 
         /**
-         * Callback fired when the dialog is cancelled.
-         * @param tag of the [AlertDialogFragment] that fired the event.
+         * Event fired when the dialog is dismissed.
          */
-        fun onCancel(tag: String?) {}
-
-        /**
-         * Callback fired when the dialog is dismissed.
-         * @param tag of the [AlertDialogFragment] that fired the event.
-         */
-        fun onDismiss(tag: String?) {}
+        DISMISS
     }
+
+    private lateinit var icon: ImageView
+    private lateinit var title: TextView
+    private lateinit var message: TextView
+    private lateinit var positiveButton: Button
+    private lateinit var neutralButton: Button
+    private lateinit var negativeButton: Button
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder: Builder? = getBuilder()
@@ -109,14 +114,37 @@ class AlertDialogFragment : DialogFragment() {
         return dialog
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val root = inflater.inflate(R.layout.fragment_alert_dialog, container, false).apply {
+            icon = findViewById(R.id.icon)
+            title = findViewById(R.id.alertTitle)
+            message = findViewById(R.id.message)
+
+            positiveButton = findViewById(R.id.button1)
+            positiveButton.setOnClickListener { setEventAsResult(Event.POSITIVE_BUTTON_CLICK) }
+
+            neutralButton = findViewById(R.id.button3)
+            neutralButton.setOnClickListener { setEventAsResult(Event.NEUTRAL_BUTTON_CLICK) }
+
+            negativeButton = findViewById(R.id.button2)
+            negativeButton.setOnClickListener { setEventAsResult(Event.NEGATIVE_BUTTON_CLICK) }
+        }
+
+        return root
+    }
+
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
-        (targetFragment as Listener?)?.onCancel(tag)
+        setEventAsResult(Event.CANCEL)
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        (targetFragment as Listener?)?.onDismiss(tag)
+        setEventAsResult(Event.DISMISS)
     }
 
     override fun onStart() {
@@ -127,9 +155,42 @@ class AlertDialogFragment : DialogFragment() {
         // if the dialog isn't ready yet
         val builder = getBuilder()
         if (builder != null && builder.isLinkable()) {
-            val message: View? = dialog?.findViewById(android.R.id.message)
-            if (message != null && message is TextView) {
-                message.movementMethod = LinkMovementMethod.getInstance()
+            val view: View = dialog?.findViewById(android.R.id.message) ?: message
+            if (view is TextView) {
+                view.movementMethod = LinkMovementMethod.getInstance()
+            }
+        }
+
+        if (dialog == null) {
+            // Embedded, set config now
+            builder?.apply {
+                icon.setImageResource(icon())
+                title.text = title()
+                message.text = message()
+
+                when (val text = positiveButton()) {
+                    null -> positiveButton.visibility = View.INVISIBLE
+                    else -> {
+                        positiveButton.text = text
+                        positiveButton.visibility = View.VISIBLE
+                    }
+                }
+
+                when (val text = neutralButton()) {
+                    null -> neutralButton.visibility = View.INVISIBLE
+                    else -> {
+                        neutralButton.text = text
+                        neutralButton.visibility = View.VISIBLE
+                    }
+                }
+
+                when (val text = negativeButton()) {
+                    null -> negativeButton.visibility = View.INVISIBLE
+                    else -> {
+                        negativeButton.text = text
+                        negativeButton.visibility = View.VISIBLE
+                    }
+                }
             }
         }
     }
@@ -149,8 +210,11 @@ class AlertDialogFragment : DialogFragment() {
      * @return Alert dialog builder.
      */
     @SuppressLint("ResourceType")
-    private fun createAlertDialogBuilder(context: Context, builder: Builder?): AlertDialog.Builder {
-        val alertDialogBuilder = AlertDialog.Builder(context)
+    private fun createAlertDialogBuilder(
+        context: Context,
+        builder: Builder?
+    ): MaterialAlertDialogBuilder {
+        val alertDialogBuilder = MaterialAlertDialogBuilder(context)
         if (builder != null) {
             isCancelable = builder.isCancelable()
             alertDialogBuilder
@@ -165,19 +229,27 @@ class AlertDialogFragment : DialogFragment() {
                 alertDialogBuilder.setMessage(builder.message())
             }
 
-            val listener = targetFragment as Listener?
             alertDialogBuilder
-                .setPositiveButton(
-                    builder.positiveButton()
-                ) { _, _ -> listener?.onPositiveButtonClick(tag) }
-                .setNegativeButton(
-                    builder.negativeButton()
-                ) { _, _ -> listener?.onNegativeButtonClick(tag) }
-                .setNeutralButton(
-                    builder.neutralButton()
-                ) { _, _ -> listener?.onNeutralButtonClick(tag) }
+                .setPositiveButton(builder.positiveButton()) { _, _ ->
+                    setEventAsResult(Event.POSITIVE_BUTTON_CLICK)
+                }
+                .setNegativeButton(builder.negativeButton()) { _, _ ->
+                    setEventAsResult(Event.NEGATIVE_BUTTON_CLICK)
+                }
+                .setNeutralButton(builder.neutralButton()) { _, _ ->
+                    setEventAsResult(Event.NEUTRAL_BUTTON_CLICK)
+                }
         }
         return alertDialogBuilder
+    }
+
+    /**
+     * Sets the fragment result for this fragment to the given [Event].
+     * @param event Event to set.
+     */
+    private fun setEventAsResult(event: Event) {
+        val tag = tag ?: ""
+        setFragmentResult(tag, Bundle().apply { putSerializable("event", event) })
     }
 
     /**
@@ -205,26 +277,22 @@ class AlertDialogFragment : DialogFragment() {
          * @return Alert dialog builder.
          */
         constructor(configuration: DialogConfig) : this(
-            configuration.iconId,
-            configuration.layoutId,
-            configuration.title,
-            configuration.message,
-            configuration.positiveButtonText,
-            configuration.negativeButtonText,
-            configuration.neutralButtonText,
-            configuration.isCancelable,
-            configuration.isCancelableOnTouchOutside,
-            configuration.isLinkable,
-            configuration.shouldEmbed
+            title = configuration.title,
+            message = configuration.message,
+            positiveButtonText = configuration.positiveButtonText,
+            negativeButtonText = configuration.negativeButtonText,
+            neutralButtonText = configuration.neutralButtonText,
+            isCancelable = configuration.isCancelable,
+            isCancelableOnTouchOutside = configuration.isCancelableOnTouchOutside,
+            isLinkable = configuration.isLinkable
         )
 
         /**
          * Creates an [AlertDialogFragment] from this builder's configuration.
-         * @param listener [Fragment] for events generated by the created dialog.
          * @return Configured dialog.
          */
-        fun <F> create(listener: F?): AlertDialogFragment where F : Fragment, F : Listener {
-            return newInstance(this, listener)
+        fun create(): AlertDialogFragment {
+            return newInstance(this)
         }
 
         /**
