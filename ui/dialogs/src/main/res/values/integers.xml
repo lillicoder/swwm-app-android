@@ -16,12 +16,6 @@
 
 <resources>
 
-    <!-- Default content margin for a card-based view; from
-         https://m2.material.io/components/cards#specs -->
-    <dimen name="default_card_margin">16dp</dimen>
-
-    <dimen name="default_divider_margin">8dp</dimen>
-    <dimen name="default_side_margin">24dp</dimen>
-    <dimen name="default_top_margin">24dp</dimen>
+    <integer name="default_card_column_span">1</integer>
 
 </resources>

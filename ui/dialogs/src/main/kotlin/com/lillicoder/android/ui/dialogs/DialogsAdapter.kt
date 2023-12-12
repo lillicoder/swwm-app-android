@@ -29,7 +29,7 @@ class DialogsAdapter : RecyclerView.Adapter<BindableViewHolder<DialogItemUiState
         parent: ViewGroup,
         viewType: Int
     ): BindableViewHolder<DialogItemUiState> {
-        val view = DialogListItemView(parent.context)
+        val view = DialogCardView(parent.context)
         return BindableViewHolder(view)
     }
 

@@ -26,8 +26,10 @@
     <string name="check_cancelable_on_touch_outside">\u2713 Cancelable on Touch Outside</string>
     <string name="check_linkable">\u2713 Linkable</string>
     <string name="create_dialog">Create Dialog</string>
+    <string name="delete">Delete</string>
     <string name="details">Details</string>
     <string name="dialogs_get_started">Create a dialog to get started</string>
+    <string name="edit">Edit</string>
     <string name="icon_not_supported">Icons Are Not Yet Supported</string>
     <string name="linkable">Linkable</string>
     <string name="message">Message</string>

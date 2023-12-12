@@ -17,6 +17,8 @@
 <resources>
 
     <dimen name="default_top_margin">24dp</dimen>
+    <dimen name="grid_item_side_margin">8dp</dimen>
+    <dimen name="grid_item_top_margin">16dp</dimen>
     <dimen name="list_item_top_margin">8dp</dimen>
 
 </resources>

@@ -32,6 +32,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -60,14 +61,20 @@ class DialogsFragment : Fragment() {
         progressBar = root.findViewById(R.id.progressBar)
 
         recyclerView = root.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
+
+        val columnCount = recyclerView.context.resources.getInteger(
+            R.integer.default_card_column_span
+        )
+        recyclerView.layoutManager = GridLayoutManager(
+            recyclerView.context,
+            columnCount
+        )
         recyclerView.addItemDecoration(
-            DividerItemDecoration(
+            DefaultSpacingDecoration(
                 recyclerView.context,
-                DividerItemDecoration.VERTICAL
+                columnCount
             )
         )
-        recyclerView.addItemDecoration(DefaultSpacingDecoration(recyclerView.context))
         recyclerView.adapter = DialogsAdapter()
 
         fab = root.findViewById(R.id.fab)

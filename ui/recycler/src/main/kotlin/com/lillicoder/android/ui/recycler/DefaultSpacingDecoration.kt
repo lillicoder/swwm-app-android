@@ -25,7 +25,8 @@ import androidx.recyclerview.widget.RecyclerView
  * [RecyclerView.ItemDecoration] that handles default margin spacing between items.
  */
 class DefaultSpacingDecoration(
-    private val context: Context
+    private val context: Context,
+    private val columnCount: Int = 1
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -35,12 +36,29 @@ class DefaultSpacingDecoration(
         state: RecyclerView.State
     ) {
         val resources = context.resources
-        val topMargin = when (parent.getChildAdapterPosition(view)) {
-            // First item gets much more top spacing then all other views
-            0 -> resources.getDimension(R.dimen.default_top_margin).toInt()
-            else -> 0
+        val position = parent.getChildAdapterPosition(view)
+        val topMargin = when (position in (0..<columnCount)) {
+            // First row gets much more top spacing then all other views
+            true -> resources.getDimension(R.dimen.default_top_margin).toInt()
+            else -> when(columnCount < 2) {
+                true -> resources.getDimension(R.dimen.list_item_top_margin).toInt()
+                else -> resources.getDimension(R.dimen.grid_item_top_margin).toInt()
+            }
         }
 
+        val sideMargin = resources.getDimension(R.dimen.grid_item_side_margin).toInt()
+        val columnIndex = position % columnCount
+        val leftMargin = when(columnIndex) {
+            0 -> 0 // Start of a row, no left margin needed
+            else -> sideMargin
+        }
+        val rightMargin = when(columnIndex) {
+            columnCount - 1 -> 0 // End of a row, no right margin needed
+            else -> sideMargin
+        }
+
+        outRect.left = leftMargin
+        outRect.right = rightMargin
         outRect.top = topMargin
     }
 }

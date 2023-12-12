@@ -18,41 +18,41 @@ package com.lillicoder.android.ui.dialogs
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
-import android.widget.ImageView
-import android.widget.RelativeLayout
+import android.widget.Button
 import android.widget.TextView
+import com.google.android.material.card.MaterialCardView
 import com.lillicoder.android.domain.dialogs.DialogConfig
-import com.lillicoder.android.ui.common.setDefaultListItemPadding
-import com.lillicoder.android.ui.common.setSelectableBackground
 import com.lillicoder.android.ui.recycler.Bindable
 
 /**
- * list item view that displays a [DialogConfig].
+ * Card view that displays a [DialogConfig].
  */
-class DialogListItemView : RelativeLayout, Bindable<DialogItemUiState> {
+class DialogCardView : MaterialCardView, Bindable<DialogItemUiState> {
 
     private var uiState: DialogItemUiState? = null
 
     private val title: TextView
     private val message: TextView
     private val attributes: TextView
-    private val delete: ImageView
-    private val edit: ImageView
+    private val delete: Button
+    private val edit: Button
 
     constructor(context: Context) : this(context, null)
 
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, -1)
+    constructor(context: Context, attrs: AttributeSet?) : this(
+        context,
+        attrs,
+        com.google.android.material.R.attr.materialCardViewStyle
+    )
 
     constructor(
         context: Context,
         attrs: AttributeSet?,
         defStyle: Int
     ) : super(context, attrs, defStyle) {
-        setSelectableBackground()
-        setDefaultListItemPadding()
-
-        LayoutInflater.from(context).inflate(R.layout.list_item_dialog, this)
+        LayoutInflater.from(context).inflate(R.layout.card_view_dialog, this)
         title = findViewById(R.id.title)
         message = findViewById(R.id.message)
         attributes = findViewById(R.id.attributes)
@@ -65,6 +65,8 @@ class DialogListItemView : RelativeLayout, Bindable<DialogItemUiState> {
         edit = findViewById(R.id.edit)
         edit.setOnClickListener { uiState?.onEdit?.invoke() }
     }
+
+
 
     override fun bind(source: DialogItemUiState) {
         uiState = source

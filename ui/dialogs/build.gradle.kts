@@ -34,6 +34,9 @@ dependencies {
     implementation(project(":ui:common"))
     implementation(project(":ui:recycler"))
 
+    // CardView
+    implementation(libs.androidx.cardview)
+
     // AppCompat
     implementation(libs.androidx.fragment.ktx)
 

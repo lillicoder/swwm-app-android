@@ -16,7 +16,7 @@
   -->
 <resources>
 
-    <style name="Theme.Demo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Demo" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
         <item name="colorOnPrimary">@color/primaryTextColor</item>

@@ -19,7 +19,7 @@ package com.lillicoder.android.ui.dialogs
 import com.lillicoder.android.domain.dialogs.DialogConfig
 
 /**
- * UI model for a [DialogListItemView].
+ * UI model for a [DialogCardView].
  */
 data class DialogItemUiState(
     val config: DialogConfig,
