@@ -10,7 +10,6 @@ android {
     defaultConfig {
         compileSdk = 34
         minSdk = 26
-        targetSdk = 34
     }
 
     sourceSets.getByName("main") {

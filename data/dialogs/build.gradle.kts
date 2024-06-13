@@ -11,7 +11,6 @@ android {
     defaultConfig {
         compileSdk = 34
         minSdk = 26
-        targetSdk = 34
 
         room {
             schemaDirectory(path = "$projectDir/schemas")
