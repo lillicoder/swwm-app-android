@@ -32,5 +32,5 @@ data class DialogConfig(
     val neutralButtonText: CharSequence? = null,
     val isCancelable: Boolean = true,
     val isCancelableOnTouchOutside: Boolean = true,
-    val isLinkable: Boolean = false
+    val isLinkable: Boolean = false,
 ) : Parcelable

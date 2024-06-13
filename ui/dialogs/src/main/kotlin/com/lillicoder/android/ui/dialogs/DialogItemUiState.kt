@@ -25,5 +25,5 @@ data class DialogItemUiState(
     val config: DialogConfig,
     val onDelete: () -> Unit,
     val onDetail: () -> Unit,
-    val onEdit: () -> Unit
+    val onEdit: () -> Unit,
 )

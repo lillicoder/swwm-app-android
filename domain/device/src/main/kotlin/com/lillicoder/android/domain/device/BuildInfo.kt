@@ -22,16 +22,11 @@ import kotlinx.parcelize.Parcelize
 
 /**
  * Represents a single piece of information about current device hardware.
+ * @param name Resource ID of the name for this info.
+ * @param value Info value.
  */
 @Parcelize
 data class BuildInfo(
-    /**
-     * Resource ID of the name for this value.
-     */
     @StringRes val name: Int,
-
-    /**
-     * Information value.
-     */
-    val value: String
+    val value: String,
 ) : Parcelable

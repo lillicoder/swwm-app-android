@@ -27,21 +27,30 @@ import androidx.recyclerview.widget.RecyclerView
  * @param items Backing items.
  */
 class GridAdapter(private val items: List<Item>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): RecyclerView.ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.grid_item_image, parent, false)
+            LayoutInflater.from(
+                parent.context,
+            ).inflate(
+                R.layout.grid_item_image,
+                parent,
+                false,
+            )
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        position: Int,
+    ) {
         val resourceId = items[position].imageResourceId
         holder.itemView.findViewById<ImageView>(R.id.gridItemImage).setImageResource(resourceId)
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount() = items.size
 
     /**
      * View holder for this adapter.

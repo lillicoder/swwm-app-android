@@ -36,14 +36,13 @@ import kotlinx.coroutines.launch
  * [Fragment] that displays a list of app and device information.
  */
 class AboutFragment : Fragment() {
-
     private lateinit var progressBar: ProgressBar
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val root = inflater.inflate(R.layout.fragment_about, container, false)
         progressBar = root.findViewById(R.id.progressBar)
@@ -53,8 +52,8 @@ class AboutFragment : Fragment() {
         recyclerView.addItemDecoration(
             DividerItemDecoration(
                 context,
-                DividerItemDecoration.VERTICAL
-            )
+                DividerItemDecoration.VERTICAL,
+            ),
         )
         recyclerView.addItemDecoration(DefaultSpacingDecoration(root.context))
         recyclerView.adapter = AboutAdapter()

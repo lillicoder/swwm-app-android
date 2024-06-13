@@ -20,9 +20,8 @@ package com.lillicoder.android.domain.device
  * Repository that can provide device information.
  */
 class DeviceInformationRepository(
-    private val provider: BuildInfoProvider = AndroidBuildInfoProvider()
+    private val provider: BuildInfoProvider = AndroidBuildInfoProvider(),
 ) {
-
     /**
      * Gets a list of [BuildInfo] about the current device hardware.
      * @return Hardware information.
@@ -47,7 +46,7 @@ class DeviceInformationRepository(
             provider.tags(),
             provider.time(),
             provider.type(),
-            provider.user()
+            provider.user(),
         )
     }
 }

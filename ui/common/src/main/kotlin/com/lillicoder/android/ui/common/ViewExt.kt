@@ -27,10 +27,13 @@ import androidx.annotation.AttrRes
  * @return Concrete resource ID mapped to the given attribute ID.
  */
 @AnyRes
-private fun View.resolveAttribute(@AttrRes id: Int): Int = with(TypedValue()) {
-    context.theme.resolveAttribute(id, this, true)
-    return resourceId
-}
+private fun View.resolveAttribute(
+    @AttrRes id: Int,
+): Int =
+    with(TypedValue()) {
+        context.theme.resolveAttribute(id, this, true)
+        return resourceId
+    }
 
 /**
  * Sets this view's padding to match the default side padding and top/bottom padding

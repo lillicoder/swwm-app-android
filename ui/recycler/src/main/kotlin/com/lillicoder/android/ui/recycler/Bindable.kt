@@ -20,7 +20,6 @@ package com.lillicoder.android.ui.recycler
  * Describes an object that can be bound to another.
  */
 interface Bindable<T> {
-
     /**
      * Binds this instance to the given value.
      * @param source [T] to bind to.

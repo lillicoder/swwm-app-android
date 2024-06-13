@@ -25,28 +25,20 @@ data class DialogEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = Tables.Dialogs.COLUMN_ID)
     val id: Int,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_TITLE)
     val title: String?,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_MESSAGE)
     val message: String?,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_POSITIVE_BUTTON_TEXT)
     val positiveButtonText: String?,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_NEGATIVE_BUTTON_TEXT)
     val negativeButtonText: String?,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_NEUTRAL_BUTTON_TEXT)
     val neutralButtonText: String?,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_IS_CANCELABLE)
     val isCancelable: Boolean,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_IS_CANCELABLE_ON_TOUCH_OUTSIDE)
     val isCancelableOnTouchOutside: Boolean,
-
     @ColumnInfo(name = Tables.Dialogs.COLUMN_IS_LINKABLE)
-    val isLinkable: Boolean
+    val isLinkable: Boolean,
 )

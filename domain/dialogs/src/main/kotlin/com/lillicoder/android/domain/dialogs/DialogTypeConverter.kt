@@ -22,7 +22,6 @@ import com.lillicoder.android.data.dialogs.DialogEntity
  * Utility that can convert between instances of [DialogConfig] and [DialogEntity].
  */
 class DialogTypeConverter {
-
     /**
      * Converts the given [DialogConfig] to an equivalent [DialogEntity].
      * @param source Config to convert.
@@ -39,7 +38,7 @@ class DialogTypeConverter {
                 neutralButtonText.toString(),
                 isCancelable,
                 isCancelableOnTouchOutside,
-                isLinkable
+                isLinkable,
             )
         }
     }
@@ -60,7 +59,7 @@ class DialogTypeConverter {
                 neutralButtonText,
                 isCancelable,
                 isCancelableOnTouchOutside,
-                isLinkable
+                isLinkable,
             )
         }
     }

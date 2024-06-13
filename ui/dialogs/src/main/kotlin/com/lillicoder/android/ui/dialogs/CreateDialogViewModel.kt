@@ -30,11 +30,10 @@ import kotlinx.coroutines.launch
 
 class CreateDialogViewModel(
     private val repository: DialogsRepository,
-    state: SavedStateHandle
+    state: SavedStateHandle,
 ) : ViewModel() {
-
     data class State(
-        val dialogConfig: DialogConfig? = null
+        val dialogConfig: DialogConfig? = null,
     )
 
     private val viewModelState = MutableStateFlow(State())
@@ -64,34 +63,34 @@ class CreateDialogViewModel(
         negativeButtonText: String,
         isCancelable: Boolean,
         isCancelableOnTouchOutside: Boolean,
-        isLinkable: Boolean
+        isLinkable: Boolean,
     ) {
         viewModelScope.launch {
-            val configuration = DialogConfig(
-                viewModelState.value.dialogConfig?.id ?: 0,
-                title,
-                message,
-                positiveButtonText,
-                neutralButtonText,
-                negativeButtonText,
-                isCancelable,
-                isCancelableOnTouchOutside,
-                isLinkable
-            )
+            val configuration =
+                DialogConfig(
+                    viewModelState.value.dialogConfig?.id ?: 0,
+                    title,
+                    message,
+                    positiveButtonText,
+                    neutralButtonText,
+                    negativeButtonText,
+                    isCancelable,
+                    isCancelableOnTouchOutside,
+                    isLinkable,
+                )
             repository.save(configuration)
         }
     }
 }
 
 class CreateDialogViewModelFactory(
-    private val context: Context
+    private val context: Context,
 ) : AbstractSavedStateViewModelFactory() {
-
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(
         key: String,
         modelClass: Class<T>,
-        handle: SavedStateHandle
+        handle: SavedStateHandle,
     ): T {
         return if (modelClass.isAssignableFrom(CreateDialogViewModel::class.java)) {
             CreateDialogViewModel(DialogsRepository(context), handle) as T

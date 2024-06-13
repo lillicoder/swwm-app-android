@@ -32,26 +32,26 @@ import kotlinx.coroutines.withContext
  */
 class DialogsRepository(
     private val dialogsDao: DialogsDao,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
-
     /**
      * Instantiates this repository with the given [Context].
      * @param context Context to access the default [DialogsDao] with.
      */
     constructor(context: Context) : this(
-        dialogsDao = DialogsDatabase.getInstance(context).dialogsDao()
+        dialogsDao = DialogsDatabase.getInstance(context).dialogsDao(),
     )
 
-    // TODO What is the perf impact of the transform here?
     /**
      * Gets all known [DialogConfig] as a [Flow].
      */
-    val configurations: Flow<List<DialogConfig>> = dialogsDao.dialogs().map {
-        it.map { entity ->
-            DialogTypeConverter().convert(entity)
+    val configurations: Flow<List<DialogConfig>> =
+        dialogsDao.dialogs().map {
+            // TODO What is the perf impact of the transform here?
+            it.map { entity ->
+                DialogTypeConverter().convert(entity)
+            }
         }
-    }
 
     /**
      * Deletes the given [DialogConfig] from this repository.

@@ -45,9 +45,7 @@ private const val ARGUMENT_BUILDER = "argument_builder"
  * [DialogFragment] analog to the [AlertDialog] class.
  */
 class AlertDialogFragment : DialogFragment() {
-
     companion object {
-
         /**
          * Creates a new instance of [AlertDialogFragment] with the given [Builder].
          * @param builder Builder.
@@ -88,7 +86,7 @@ class AlertDialogFragment : DialogFragment() {
         /**
          * Event fired when the dialog is dismissed.
          */
-        DISMISS
+        DISMISS,
     }
 
     private lateinit var icon: ImageView
@@ -100,10 +98,11 @@ class AlertDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder: Builder? = getBuilder()
-        val alertDialogBuilder: AlertDialog.Builder = createAlertDialogBuilder(
-            requireActivity(),
-            builder
-        )
+        val alertDialogBuilder: AlertDialog.Builder =
+            createAlertDialogBuilder(
+                requireActivity(),
+                builder,
+            )
 
         // Cancel on touch outside flag can only be set on the dialog itself, if we have a builder set this value
         val dialog = alertDialogBuilder.create()
@@ -117,22 +116,27 @@ class AlertDialogFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_alert_dialog, container, false).apply {
-            icon = findViewById(R.id.icon)
-            title = findViewById(R.id.alertTitle)
-            message = findViewById(R.id.message)
+        val root =
+            inflater.inflate(
+                R.layout.fragment_alert_dialog,
+                container,
+                false,
+            ).apply {
+                icon = findViewById(R.id.icon)
+                title = findViewById(R.id.alertTitle)
+                message = findViewById(R.id.message)
 
-            positiveButton = findViewById(R.id.button1)
-            positiveButton.setOnClickListener { setEventAsResult(Event.POSITIVE_BUTTON_CLICK) }
+                positiveButton = findViewById(R.id.button1)
+                positiveButton.setOnClickListener { setEventAsResult(Event.POSITIVE_BUTTON_CLICK) }
 
-            neutralButton = findViewById(R.id.button3)
-            neutralButton.setOnClickListener { setEventAsResult(Event.NEUTRAL_BUTTON_CLICK) }
+                neutralButton = findViewById(R.id.button3)
+                neutralButton.setOnClickListener { setEventAsResult(Event.NEUTRAL_BUTTON_CLICK) }
 
-            negativeButton = findViewById(R.id.button2)
-            negativeButton.setOnClickListener { setEventAsResult(Event.NEGATIVE_BUTTON_CLICK) }
-        }
+                negativeButton = findViewById(R.id.button2)
+                negativeButton.setOnClickListener { setEventAsResult(Event.NEGATIVE_BUTTON_CLICK) }
+            }
 
         return root
     }
@@ -212,7 +216,7 @@ class AlertDialogFragment : DialogFragment() {
     @SuppressLint("ResourceType")
     private fun createAlertDialogBuilder(
         context: Context,
-        builder: Builder?
+        builder: Builder?,
     ): MaterialAlertDialogBuilder {
         val alertDialogBuilder = MaterialAlertDialogBuilder(context)
         if (builder != null) {
@@ -268,9 +272,8 @@ class AlertDialogFragment : DialogFragment() {
         private var isCancelable: Boolean = true,
         private var isCancelableOnTouchOutside: Boolean = true,
         private var isLinkable: Boolean = false,
-        private var shouldEmbed: Boolean = false
+        private var shouldEmbed: Boolean = false,
     ) : Parcelable {
-
         /**
          * Instantiates this builder using the given [DialogConfig].
          * @param configuration Dialog configuration.
@@ -284,16 +287,14 @@ class AlertDialogFragment : DialogFragment() {
             neutralButtonText = configuration.neutralButtonText,
             isCancelable = configuration.isCancelable,
             isCancelableOnTouchOutside = configuration.isCancelableOnTouchOutside,
-            isLinkable = configuration.isLinkable
+            isLinkable = configuration.isLinkable,
         )
 
         /**
          * Creates an [AlertDialogFragment] from this builder's configuration.
          * @return Configured dialog.
          */
-        fun create(): AlertDialogFragment {
-            return newInstance(this)
-        }
+        fun create() = newInstance(this)
 
         /**
          * Gets the dialog is cancelable flag for this builder.
@@ -306,9 +307,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param isCancelable True to enable cancel, false to disable cancel.
          * @return This builder instance.
          */
-        fun isCancelable(isCancelable: Boolean) = apply {
-            this.isCancelable = isCancelable
-        }
+        fun isCancelable(isCancelable: Boolean) = apply { this.isCancelable = isCancelable }
 
         /**
          * Gets the dialog is cancelable on touch outside flag for this builder.
@@ -322,9 +321,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param isCancelable True to enable cancel on touch outside, false to disable.
          * @return This builder instance.
          */
-        fun isCancelableOnTouchOutside(isCancelable: Boolean) = apply {
-            this.isCancelableOnTouchOutside = isCancelable
-        }
+        fun isCancelableOnTouchOutside(isCancelable: Boolean) = apply { this.isCancelableOnTouchOutside = isCancelable }
 
         /**
          * Gets the link-ify flag for this builder.
@@ -337,9 +334,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param isLinkable True to link-ify the message text, false otherwise.
          * @return This builder instance.
          */
-        fun isLinkable(isLinkable: Boolean) = apply {
-            this.isLinkable = isLinkable
-        }
+        fun isLinkable(isLinkable: Boolean) = apply { this.isLinkable = isLinkable }
 
         /**
          * Gets the dialog icon resource ID for this builder.
@@ -352,9 +347,9 @@ class AlertDialogFragment : DialogFragment() {
          * Sets the resource ID of the icon to be used in the dialog title.
          * @return This builder instance.
          */
-        fun icon(@DrawableRes id: Int) = apply {
-            this.iconId = id
-        }
+        fun icon(
+            @DrawableRes id: Int,
+        ) = apply { this.iconId = id }
 
         /**
          * Gets the dialog message for this builder.
@@ -367,18 +362,17 @@ class AlertDialogFragment : DialogFragment() {
          * @param id Resource ID of the message to set.
          * @return This builder instance.
          */
-        fun message(context: Context, @StringRes id: Int) = apply {
-            this.message = context.getText(id)
-        }
+        fun message(
+            context: Context,
+            @StringRes id: Int,
+        ) = apply { this.message = context.getText(id) }
 
         /**
          * Sets the message of the dialog generated by this builder.
          * @param message Message to set.
          * @return This builder instance.
          */
-        fun message(message: CharSequence?) = apply {
-            this.message = message
-        }
+        fun message(message: CharSequence?) = apply { this.message = message }
 
         /**
          * Gets the dialog positive button text for this builder.
@@ -393,18 +387,17 @@ class AlertDialogFragment : DialogFragment() {
          * @param id Resource ID of the text to set.
          * @return This builder instance.
          */
-        fun positiveButton(context: Context, @StringRes id: Int) = apply {
-            this.positiveButtonText = context.getText(id)
-        }
+        fun positiveButton(
+            context: Context,
+            @StringRes id: Int,
+        ) = apply { this.positiveButtonText = context.getText(id) }
 
         /**
          * Sets the text for the positive button of the dialog generated by this builder.
          * @param text Text to set.
          * @return This builder instance.
          */
-        fun positiveButton(text: CharSequence?) = apply {
-            this.positiveButtonText = text
-        }
+        fun positiveButton(text: CharSequence?) = apply { this.positiveButtonText = text }
 
         /**
          * Gets the dialog negative button text for this builder.
@@ -419,18 +412,17 @@ class AlertDialogFragment : DialogFragment() {
          * @param id Resource ID of the text to set.
          * @return This builder instance.
          */
-        fun negativeButton(context: Context, @StringRes id: Int) = apply {
-            this.negativeButtonText = context.getText(id)
-        }
+        fun negativeButton(
+            context: Context,
+            @StringRes id: Int,
+        ) = apply { this.negativeButtonText = context.getText(id) }
 
         /**
          * Sets the text for the negative button of the dialog generated by this builder.
          * @param text Text to set.
          * @return This builder instance.
          */
-        fun negativeButton(text: CharSequence?) = apply {
-            this.negativeButtonText = text
-        }
+        fun negativeButton(text: CharSequence?) = apply { this.negativeButtonText = text }
 
         /**
          * Gets the dialog neutral button text for this builder.
@@ -445,18 +437,17 @@ class AlertDialogFragment : DialogFragment() {
          * @param id Resource ID of the text to set.
          * @return This builder instance.
          */
-        fun neutralButton(context: Context, @StringRes id: Int) = apply {
-            this.neutralButtonText = context.getText(id)
-        }
+        fun neutralButton(
+            context: Context,
+            @StringRes id: Int,
+        ) = apply { this.neutralButtonText = context.getText(id) }
 
         /**
          * Sets the text for the neutral button of the dialog generated by this builder.
          * @param text Text to set.
          * @return This builder instance.
          */
-        fun neutralButton(text: CharSequence?) = apply {
-            this.neutralButtonText = text
-        }
+        fun neutralButton(text: CharSequence?) = apply { this.neutralButtonText = text }
 
         /**
          * Determines if this dialog's content should be embedded in a layout.
@@ -469,9 +460,7 @@ class AlertDialogFragment : DialogFragment() {
          * @param shouldEmbed True to embed, false to show as a dialog.
          * @return This builder instance.
          */
-        fun shouldEmbed(shouldEmbed: Boolean) = apply {
-            this.shouldEmbed = shouldEmbed
-        }
+        fun shouldEmbed(shouldEmbed: Boolean) = apply { this.shouldEmbed = shouldEmbed }
 
         /**
          * Gets the dialog title for this builder.
@@ -485,18 +474,17 @@ class AlertDialogFragment : DialogFragment() {
          * @param id Resource ID of the title to set.
          * @return This builder instance.
          */
-        fun title(context: Context, @StringRes id: Int) = apply {
-            this.title = context.getText(id)
-        }
+        fun title(
+            context: Context,
+            @StringRes id: Int,
+        ) = apply { this.title = context.getText(id) }
 
         /**
          * Sets the title of the dialog generated by this builder.
          * @param title Title to set.
          * @return This builder instance.
          */
-        fun title(title: CharSequence?) = apply {
-            this.title = title
-        }
+        fun title(title: CharSequence?) = apply { this.title = title }
 
         /**
          * Gets the dialog view layout ID for this builder.
@@ -505,8 +493,8 @@ class AlertDialogFragment : DialogFragment() {
         @LayoutRes
         fun view() = layoutId
 
-        fun view(@LayoutRes id: Int) = apply {
-            this.layoutId = id
-        }
+        fun view(
+            @LayoutRes id: Int,
+        ) = apply { this.layoutId = id }
     }
 }

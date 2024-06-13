@@ -29,7 +29,6 @@ import com.google.android.material.navigation.NavigationView
  * Home activity for SWWM.
  */
 class HomeActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -57,9 +56,10 @@ class HomeActivity : AppCompatActivity() {
      * Gets the [NavHostFragment] for this activity.
      * @return Nav host fragment or null if no fragment found.
      */
-    private fun navHostFragment() = supportFragmentManager.findFragmentById(
-        R.id.container
-    ) as NavHostFragment
+    private fun navHostFragment() =
+        supportFragmentManager.findFragmentById(
+            R.id.container,
+        ) as NavHostFragment
 
     /**
      * Gets the set of top-level destinations for this activity. Top-level destinations
@@ -72,7 +72,7 @@ class HomeActivity : AppCompatActivity() {
             R.id.homeFragment,
             com.lillicoder.android.ui.dialogs.R.id.dialogsFragment,
             com.lillicoder.android.ui.collections.R.id.gridsFragment,
-            com.lillicoder.android.ui.about.R.id.aboutFragment
+            com.lillicoder.android.ui.about.R.id.aboutFragment,
         )
     }
 }

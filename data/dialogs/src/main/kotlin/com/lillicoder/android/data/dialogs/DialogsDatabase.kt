@@ -25,12 +25,11 @@ private const val DATABASE_NAME = "dialogs.db"
 
 @Database(
     entities = [
-        DialogEntity::class
+        DialogEntity::class,
     ],
-    version = 1
+    version = 1,
 )
 abstract class DialogsDatabase : RoomDatabase() {
-
     /**
      * Gets the [DialogsDao] for this database.
      * @return Dialogs DAO.
@@ -38,7 +37,6 @@ abstract class DialogsDatabase : RoomDatabase() {
     abstract fun dialogsDao(): DialogsDao
 
     companion object {
-
         /**
          * Needs to be:
          *
@@ -65,10 +63,11 @@ abstract class DialogsDatabase : RoomDatabase() {
          * @param context Database context.
          * @return Dialogs database.
          */
-        private fun buildDatabase(context: Context): DialogsDatabase = Room.databaseBuilder(
-            context.applicationContext,
-            DialogsDatabase::class.java,
-            DATABASE_NAME
-        ).build()
+        private fun buildDatabase(context: Context): DialogsDatabase =
+            Room.databaseBuilder(
+                context.applicationContext,
+                DialogsDatabase::class.java,
+                DATABASE_NAME,
+            ).build()
     }
 }

@@ -26,10 +26,9 @@ import androidx.fragment.app.Fragment
  * [Fragment] that display the home page for SWWM.
  */
 class HomeFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? = inflater.inflate(R.layout.fragment_home, container, false)
 }

@@ -25,7 +25,6 @@ import org.junit.Test
  * Unit tests for [DeviceInformationRepository].
  */
 class DeviceInformationRepositoryTest {
-
     private lateinit var repository: DeviceInformationRepository
 
     @Before
@@ -49,25 +48,26 @@ class DeviceInformationRepositoryTest {
      */
     @Test
     fun `Hardware list has correct order and values for each field`() {
-        val expected = listOf(
-            BuildInfo(1, "board"),
-            BuildInfo(2, "bootloader"),
-            BuildInfo(3, "brand"),
-            BuildInfo(4, "device"),
-            BuildInfo(5, "display"),
-            BuildInfo(6, "fingerprint"),
-            BuildInfo(7, "hardware"),
-            BuildInfo(8, "host"),
-            BuildInfo(9, "id"),
-            BuildInfo(10, "manufacturer"),
-            BuildInfo(11, "model"),
-            BuildInfo(12, "product"),
-            BuildInfo(13, "radioVersion"),
-            BuildInfo(14, "tags"),
-            BuildInfo(15, "time"),
-            BuildInfo(16, "type"),
-            BuildInfo(17, "user")
-        )
+        val expected =
+            listOf(
+                BuildInfo(1, "board"),
+                BuildInfo(2, "bootloader"),
+                BuildInfo(3, "brand"),
+                BuildInfo(4, "device"),
+                BuildInfo(5, "display"),
+                BuildInfo(6, "fingerprint"),
+                BuildInfo(7, "hardware"),
+                BuildInfo(8, "host"),
+                BuildInfo(9, "id"),
+                BuildInfo(10, "manufacturer"),
+                BuildInfo(11, "model"),
+                BuildInfo(12, "product"),
+                BuildInfo(13, "radioVersion"),
+                BuildInfo(14, "tags"),
+                BuildInfo(15, "time"),
+                BuildInfo(16, "type"),
+                BuildInfo(17, "user"),
+            )
         val hardware = repository.hardware()
         assertThat(hardware, equalTo(expected))
     }
@@ -77,22 +77,37 @@ class DeviceInformationRepositoryTest {
  * Fake [BuildInfoProvider] for use with unit tests.
  */
 class FakeBuildInfoProvider : BuildInfoProvider {
-
     override fun board() = BuildInfo(1, "board")
+
     override fun bootloader() = BuildInfo(2, "bootloader")
+
     override fun brand() = BuildInfo(3, "brand")
+
     override fun device() = BuildInfo(4, "device")
+
     override fun display() = BuildInfo(5, "display")
+
     override fun fingerprint() = BuildInfo(6, "fingerprint")
+
     override fun hardware() = BuildInfo(7, "hardware")
+
     override fun host() = BuildInfo(8, "host")
+
     override fun id() = BuildInfo(9, "id")
+
     override fun manufacturer() = BuildInfo(10, "manufacturer")
+
     override fun model() = BuildInfo(11, "model")
+
     override fun product() = BuildInfo(12, "product")
+
     override fun radioVersion() = BuildInfo(13, "radioVersion")
+
     override fun tags() = BuildInfo(14, "tags")
+
     override fun time() = BuildInfo(15, "time")
+
     override fun type() = BuildInfo(16, "type")
+
     override fun user() = BuildInfo(17, "user")
 }

@@ -27,7 +27,6 @@ import org.junit.Before
 import org.junit.Test
 
 class DialogsRepositoryTest {
-
     private lateinit var repository: DialogsRepository
 
     @Before
@@ -37,54 +36,56 @@ class DialogsRepositoryTest {
     }
 
     @Test
-    fun `Repository successfully deletes a saved config`() = runTest {
-        val config = createConfig()
-        repository.save(config)
+    fun `Repository successfully deletes a saved config`() =
+        runTest {
+            val config = createConfig()
+            repository.save(config)
 
-        // Ensure data is present
-        repository.configurations.collect {
-            assertThat(it.size, equalTo(1))
+            // Ensure data is present
+            repository.configurations.collect {
+                assertThat(it.size, equalTo(1))
+            }
+
+            repository.delete(config)
+
+            repository.configurations.collect {
+                assertThat(it.isEmpty(), equalTo(true))
+            }
         }
-
-        repository.delete(config)
-
-        repository.configurations.collect {
-            assertThat(it.isEmpty(), equalTo(true))
-        }
-    }
 
     @Test
-    fun `Repository successfully saves a config`() = runTest {
-        val config = createConfig()
-        repository.save(config)
+    fun `Repository successfully saves a config`() =
+        runTest {
+            val config = createConfig()
+            repository.save(config)
 
-        repository.configurations.collect {
-            assertThat(it.size, equalTo(1))
-            assertThat(it[0], equalTo(config))
+            repository.configurations.collect {
+                assertThat(it.size, equalTo(1))
+                assertThat(it[0], equalTo(config))
+            }
         }
-    }
 
     /**
      * Creates a simple [DialogConfig] for use in tests.
      * @return Test config.
      */
-    private fun createConfig() = DialogConfig(
-        id = 1,
-        title = "Test",
-        message = "Test dialog",
-        positiveButtonText = "Test positive",
-        negativeButtonText = "Test negative",
-        neutralButtonText = "Test neutral",
-        isCancelable = false,
-        isCancelableOnTouchOutside = false,
-        isLinkable = false
-    )
+    private fun createConfig() =
+        DialogConfig(
+            id = 1,
+            title = "Test",
+            message = "Test dialog",
+            positiveButtonText = "Test positive",
+            negativeButtonText = "Test negative",
+            neutralButtonText = "Test neutral",
+            isCancelable = false,
+            isCancelableOnTouchOutside = false,
+            isLinkable = false,
+        )
 
     /**
      * Fake implementation of [DialogsDao] for testing.
      */
     private class FakeDialogsDao : DialogsDao {
-
         private val dialogs: MutableSet<DialogEntity> = mutableSetOf()
 
         override suspend fun delete(entity: DialogEntity) {

@@ -31,9 +31,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.lillicoder.android.domain.dialogs.DialogConfig
@@ -42,7 +40,6 @@ import com.lillicoder.android.ui.recycler.DefaultSpacingDecoration
 import kotlinx.coroutines.launch
 
 class DialogsFragment : Fragment() {
-
     private lateinit var fab: FloatingActionButton
     private lateinit var progressBar: ProgressBar
     private lateinit var recyclerView: RecyclerView
@@ -53,7 +50,7 @@ class DialogsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val root = inflater.inflate(R.layout.fragment_dialogs, container, false)
 
@@ -62,18 +59,20 @@ class DialogsFragment : Fragment() {
 
         recyclerView = root.findViewById(R.id.recyclerView)
 
-        val columnCount = recyclerView.context.resources.getInteger(
-            R.integer.default_card_column_span
-        )
-        recyclerView.layoutManager = GridLayoutManager(
-            recyclerView.context,
-            columnCount
-        )
+        val columnCount =
+            recyclerView.context.resources.getInteger(
+                R.integer.default_card_column_span,
+            )
+        recyclerView.layoutManager =
+            GridLayoutManager(
+                recyclerView.context,
+                columnCount,
+            )
         recyclerView.addItemDecoration(
             DefaultSpacingDecoration(
                 recyclerView.context,
-                columnCount
-            )
+                columnCount,
+            ),
         )
         recyclerView.adapter = DialogsAdapter()
 
@@ -118,10 +117,11 @@ class DialogsFragment : Fragment() {
     private fun bind(state: DialogsViewModel.State) {
         when (state.isLoading) {
             true -> showProgressBar()
-            else -> when (state.uiStates.isEmpty()) {
-                true -> showEmpty()
-                else -> showDialogs(state.uiStates)
-            }
+            else ->
+                when (state.uiStates.isEmpty()) {
+                    true -> showEmpty()
+                    else -> showDialogs(state.uiStates)
+                }
         }
     }
 
@@ -131,16 +131,17 @@ class DialogsFragment : Fragment() {
      */
     private fun detail(config: DialogConfig) {
         config.apply {
-            val dialog = AlertDialogFragment.Builder()
-                .title(title)
-                .message(message)
-                .positiveButton(positiveButtonText)
-                .negativeButton(negativeButtonText)
-                .neutralButton(neutralButtonText)
-                .isCancelable(isCancelable)
-                .isCancelableOnTouchOutside(isCancelableOnTouchOutside)
-                .isLinkable(isLinkable)
-                .create()
+            val dialog =
+                AlertDialogFragment.Builder()
+                    .title(title)
+                    .message(message)
+                    .positiveButton(positiveButtonText)
+                    .negativeButton(negativeButtonText)
+                    .neutralButton(neutralButtonText)
+                    .isCancelable(isCancelable)
+                    .isCancelableOnTouchOutside(isCancelableOnTouchOutside)
+                    .isLinkable(isLinkable)
+                    .create()
             dialog.show(parentFragmentManager, showDialogTag)
             setFragmentResultListener(showDialogTag) { _, bundle ->
                 val event: AlertDialogFragment.Event? = bundle.getParcelable("event")

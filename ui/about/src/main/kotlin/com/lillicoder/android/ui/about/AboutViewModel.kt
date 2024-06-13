@@ -30,12 +30,11 @@ import kotlinx.coroutines.launch
  * [ViewModel] that can display basic app information.
  */
 class AboutViewModel(
-    private val repository: DeviceInformationRepository
+    private val repository: DeviceInformationRepository,
 ) : ViewModel() {
-
     data class State(
         val info: List<BuildInfo> = listOf(),
-        val isLoading: Boolean = false
+        val isLoading: Boolean = false,
     )
 
     private val viewModelState = MutableStateFlow(State())
@@ -60,10 +59,11 @@ class AboutViewModel(
 
     companion object {
         @Suppress("UNCHECKED_CAST")
-        val factory = object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return AboutViewModel(DeviceInformationRepository()) as T
+        val factory =
+            object : ViewModelProvider.Factory {
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                    return AboutViewModel(DeviceInformationRepository()) as T
+                }
             }
-        }
     }
 }

@@ -18,7 +18,6 @@ package com.lillicoder.android.ui.dialogs
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
@@ -30,7 +29,6 @@ import com.lillicoder.android.ui.recycler.Bindable
  * Card view that displays a [DialogConfig].
  */
 class DialogCardView : MaterialCardView, Bindable<DialogItemUiState> {
-
     private var uiState: DialogItemUiState? = null
 
     private val title: TextView
@@ -41,16 +39,19 @@ class DialogCardView : MaterialCardView, Bindable<DialogItemUiState> {
 
     constructor(context: Context) : this(context, null)
 
-    constructor(context: Context, attrs: AttributeSet?) : this(
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+    ) : this(
         context,
         attrs,
-        com.google.android.material.R.attr.materialCardViewStyle
+        com.google.android.material.R.attr.materialCardViewStyle,
     )
 
     constructor(
         context: Context,
         attrs: AttributeSet?,
-        defStyle: Int
+        defStyle: Int,
     ) : super(context, attrs, defStyle) {
         LayoutInflater.from(context).inflate(R.layout.card_view_dialog, this)
         title = findViewById(R.id.title)
@@ -65,8 +66,6 @@ class DialogCardView : MaterialCardView, Bindable<DialogItemUiState> {
         edit = findViewById(R.id.edit)
         edit.setOnClickListener { uiState?.onEdit?.invoke() }
     }
-
-
 
     override fun bind(source: DialogItemUiState) {
         uiState = source

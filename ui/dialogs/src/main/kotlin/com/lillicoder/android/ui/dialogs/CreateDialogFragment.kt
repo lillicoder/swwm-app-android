@@ -33,7 +33,6 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import kotlinx.coroutines.launch
 
 class CreateDialogFragment : Fragment() {
-
     private lateinit var titleInput: EditText
     private lateinit var messageInput: EditText
     private lateinit var positiveButtonInput: EditText
@@ -47,30 +46,31 @@ class CreateDialogFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_create_dialog, container, false).apply {
-            titleInput = findViewById(R.id.title)
-            messageInput = findViewById(R.id.message)
-            positiveButtonInput = findViewById(R.id.positiveButton)
-            neutralButtonInput = findViewById(R.id.neutralButton)
-            negativeButtonInput = findViewById(R.id.negativeButton)
-            cancelable = findViewById(R.id.cancelable)
-            cancelableOnTouchOutside = findViewById(R.id.cancelableOnTouchOutside)
-            linkable = findViewById(R.id.linkable)
-            fab = findViewById(R.id.fab)
+        val root =
+            inflater.inflate(R.layout.fragment_create_dialog, container, false).apply {
+                titleInput = findViewById(R.id.title)
+                messageInput = findViewById(R.id.message)
+                positiveButtonInput = findViewById(R.id.positiveButton)
+                neutralButtonInput = findViewById(R.id.neutralButton)
+                negativeButtonInput = findViewById(R.id.negativeButton)
+                cancelable = findViewById(R.id.cancelable)
+                cancelableOnTouchOutside = findViewById(R.id.cancelableOnTouchOutside)
+                linkable = findViewById(R.id.linkable)
+                fab = findViewById(R.id.fab)
 
-            val scrollView = findViewById<ScrollView>(R.id.scrollView)
-            scrollView.viewTreeObserver.addOnScrollChangedListener {
-                if (!scrollView.canScrollVertically(-1)) {
-                    // Top of scroll
-                    fab.extend()
-                } else {
-                    // Anywhere else
-                    fab.shrink()
+                val scrollView = findViewById<ScrollView>(R.id.scrollView)
+                scrollView.viewTreeObserver.addOnScrollChangedListener {
+                    if (!scrollView.canScrollVertically(-1)) {
+                        // Top of scroll
+                        fab.extend()
+                    } else {
+                        // Anywhere else
+                        fab.shrink()
+                    }
                 }
             }
-        }
 
         val viewModel: CreateDialogViewModel by viewModels {
             CreateDialogViewModelFactory(root.context)
@@ -84,7 +84,7 @@ class CreateDialogFragment : Fragment() {
                 negativeButtonInput.text.toString(),
                 cancelable.isChecked,
                 cancelableOnTouchOutside.isChecked,
-                linkable.isChecked
+                linkable.isChecked,
             )
             findNavController().navigateUp()
         }

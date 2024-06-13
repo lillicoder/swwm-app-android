@@ -20,12 +20,10 @@ package com.lillicoder.android.data.dialogs
  * Constants for all tables and their related names and columns.
  */
 object Tables {
-
     /**
      * Constants for the dialogs table.
      */
     object Dialogs {
-
         const val TABLE_NAME = "dialogs"
         const val COLUMN_ID = "id"
         const val COLUMN_TITLE = "title"

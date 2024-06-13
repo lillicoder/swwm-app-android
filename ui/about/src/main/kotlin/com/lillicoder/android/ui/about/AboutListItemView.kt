@@ -28,7 +28,6 @@ import com.lillicoder.android.ui.recycler.Bindable
  * List item view that displays a [BuildInfo].
  */
 class AboutListItemView : LinearLayoutCompat, Bindable<BuildInfo> {
-
     private val title: TextView
     private val body: TextView
 
@@ -41,7 +40,7 @@ class AboutListItemView : LinearLayoutCompat, Bindable<BuildInfo> {
     constructor(
         context: Context,
         attrs: AttributeSet?,
-        defStyle: Int
+        defStyle: Int,
     ) : super(context, attrs, defStyle) {
         orientation = VERTICAL
 
@@ -57,9 +56,7 @@ class AboutListItemView : LinearLayoutCompat, Bindable<BuildInfo> {
         body.text = source.value
     }
 
-    override fun boundTo(): BuildInfo? {
-        return information
-    }
+    override fun boundTo() = information
 
     override fun recycle() {
         information = null

@@ -20,7 +20,6 @@ package com.lillicoder.android.domain.device
  * Describes a provider of device hardware and build information.
  */
 interface BuildInfoProvider {
-
     /**
      * Gets the name of the underlying board, like "goldfish".
      * @return Board info.

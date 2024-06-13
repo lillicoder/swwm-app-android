@@ -26,7 +26,6 @@ import org.junit.Test
  * Unit tests for [DialogTypeConverter].
  */
 class DialogTypeConverterTest {
-
     private lateinit var converter: DialogTypeConverter
 
     @Before
@@ -78,31 +77,33 @@ class DialogTypeConverterTest {
      * Creates a simple [DialogConfig] for use in tests.
      * @return Test config.
      */
-    private fun createConfig() = DialogConfig(
-        id = 1,
-        title = "Test",
-        message = "Test dialog",
-        positiveButtonText = "Test positive",
-        negativeButtonText = "Test negative",
-        neutralButtonText = "Test neutral",
-        isCancelable = false,
-        isCancelableOnTouchOutside = false,
-        isLinkable = false
-    )
+    private fun createConfig() =
+        DialogConfig(
+            id = 1,
+            title = "Test",
+            message = "Test dialog",
+            positiveButtonText = "Test positive",
+            negativeButtonText = "Test negative",
+            neutralButtonText = "Test neutral",
+            isCancelable = false,
+            isCancelableOnTouchOutside = false,
+            isLinkable = false,
+        )
 
     /**
      * Creates a simple [DialogEntity] for use in tests.
      * @return Test entity.
      */
-    private fun createEntity() = DialogEntity(
-        id = 1,
-        title = "Test",
-        message = "Test dialog",
-        positiveButtonText = "Test positive",
-        negativeButtonText = "Test negative",
-        neutralButtonText = "Test neutral",
-        isCancelable = false,
-        isCancelableOnTouchOutside = false,
-        isLinkable = false
-    )
+    private fun createEntity() =
+        DialogEntity(
+            id = 1,
+            title = "Test",
+            message = "Test dialog",
+            positiveButtonText = "Test positive",
+            negativeButtonText = "Test negative",
+            neutralButtonText = "Test neutral",
+            isCancelable = false,
+            isCancelableOnTouchOutside = false,
+            isLinkable = false,
+        )
 }

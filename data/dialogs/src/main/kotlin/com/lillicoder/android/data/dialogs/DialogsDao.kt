@@ -25,7 +25,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DialogsDao {
-
     /**
      * Deletes the given [DialogEntity] from this DAO.
      * @param entity Entity to delete.

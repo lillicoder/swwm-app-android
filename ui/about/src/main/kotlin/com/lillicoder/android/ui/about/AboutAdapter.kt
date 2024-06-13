@@ -25,25 +25,25 @@ import com.lillicoder.android.ui.recycler.BindableViewHolder
  * [RecyclerView.Adapter] for displaying basic about information.
  */
 class AboutAdapter : RecyclerView.Adapter<BindableViewHolder<BuildInfo>>() {
-
     private val information: MutableList<BuildInfo> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): BindableViewHolder<BuildInfo> {
         val view = AboutListItemView(parent.context)
         return BindableViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: BindableViewHolder<BuildInfo>, position: Int) {
+    override fun onBindViewHolder(
+        holder: BindableViewHolder<BuildInfo>,
+        position: Int,
+    ) {
         val info = information[position]
         holder.bind(info)
     }
 
-    override fun getItemCount(): Int {
-        return information.size
-    }
+    override fun getItemCount() = information.size
 
     /**
      * Updates this adapter's list of [BuildInfo].

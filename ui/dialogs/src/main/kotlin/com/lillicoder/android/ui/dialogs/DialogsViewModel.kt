@@ -32,35 +32,30 @@ import kotlinx.coroutines.launch
  * [ViewModel] for [DialogsFragment].
  */
 class DialogsViewModel(
-    private val repository: DialogsRepository
+    private val repository: DialogsRepository,
 ) : ViewModel() {
-
     /**
      * UI state for this view model.
+     * @param uiStates List of [DialogItemUiState] for all known dialog configurations.
+     * @param isLoading Indicates if loading dialog configurations is ongoing.
      */
     data class State(
-        /**
-         * List of [DialogItemUiState] for all known dialog configurations .
-         */
         val uiStates: List<DialogItemUiState> = listOf(),
-
-        /**
-         * Indicates if loading dialog configurations is ongoing.
-         */
-        val isLoading: Boolean = true
+        val isLoading: Boolean = true,
     )
 
     /**
      * UI state flow for this view model.
      */
-    val uiState = repository.configurations.map { configs ->
-        val states = toUiStates(configs)
-        State(states, false)
-    }.stateIn(
-        viewModelScope,
-        SharingStarted.WhileSubscribed(5000L),
-        State()
-    )
+    val uiState =
+        repository.configurations.map { configs ->
+            val states = toUiStates(configs)
+            State(states, false)
+        }.stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000L),
+            State(),
+        )
 
     private val navigateToEdit = MutableSharedFlow<DialogConfig>(replay = 0)
 
@@ -87,7 +82,7 @@ class DialogsViewModel(
                 config,
                 onDelete = { viewModelScope.launch { repository.delete(config) } },
                 onDetail = { viewModelScope.launch { navigateToDetail.emit(config) } },
-                onEdit = { viewModelScope.launch { navigateToEdit.emit(config) } }
+                onEdit = { viewModelScope.launch { navigateToEdit.emit(config) } },
             )
         }
     }
@@ -98,9 +93,8 @@ class DialogsViewModel(
  * @param repository [DialogsRepository] for dialog configuration CRUD operations.
  */
 class DialogsViewModelFactory(
-    private val repository: DialogsRepository
+    private val repository: DialogsRepository,
 ) : ViewModelProvider.Factory {
-
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(DialogsViewModel::class.java)) {

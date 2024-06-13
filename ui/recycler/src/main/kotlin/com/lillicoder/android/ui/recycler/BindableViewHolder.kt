@@ -23,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView
  * [RecyclerView.ViewHolder] whose view conforms to the [Bindable] interface.
  */
 open class BindableViewHolder<T>(view: View) : RecyclerView.ViewHolder(view), Bindable<T> {
-
     override fun bind(source: T) {
         bindableView().bind(source)
     }
