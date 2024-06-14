@@ -19,7 +19,7 @@ package com.lillicoder.android.data.device
 import android.os.Build
 
 /*
- * Copyright 2023 Scott Weeden-Moody
+ * Copyright 2024 Scott Weeden-Moody
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this project except in compliance with the License.
