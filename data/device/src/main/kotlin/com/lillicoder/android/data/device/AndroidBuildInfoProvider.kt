@@ -17,7 +17,6 @@
 package com.lillicoder.android.data.device
 
 import android.os.Build
-import com.lillicoder.android.domain.device.R
 
 /*
  * Copyright 2023 Scott Weeden-Moody
