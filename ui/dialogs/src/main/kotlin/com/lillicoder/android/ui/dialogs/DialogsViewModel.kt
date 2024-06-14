@@ -19,8 +19,8 @@ package com.lillicoder.android.ui.dialogs
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.lillicoder.android.domain.dialogs.Dialog
-import com.lillicoder.android.domain.dialogs.DialogsRepository
+import com.lillicoder.android.data.dialogs.Dialog
+import com.lillicoder.android.data.dialogs.DialogsRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asSharedFlow

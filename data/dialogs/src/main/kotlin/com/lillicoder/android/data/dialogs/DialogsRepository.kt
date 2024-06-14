@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-package com.lillicoder.android.domain.dialogs
+package com.lillicoder.android.data.dialogs
 
 import android.content.Context
-import com.lillicoder.android.data.dialogs.DialogsDao
-import com.lillicoder.android.data.dialogs.DialogsDatabase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

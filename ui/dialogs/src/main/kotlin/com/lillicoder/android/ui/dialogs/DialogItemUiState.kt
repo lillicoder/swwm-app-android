@@ -16,7 +16,7 @@
 
 package com.lillicoder.android.ui.dialogs
 
-import com.lillicoder.android.domain.dialogs.Dialog
+import com.lillicoder.android.data.dialogs.Dialog
 
 /**
  * UI model for a [DialogCardView].

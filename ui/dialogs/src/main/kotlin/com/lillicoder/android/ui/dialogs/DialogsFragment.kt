@@ -34,8 +34,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.lillicoder.android.domain.dialogs.Dialog
-import com.lillicoder.android.domain.dialogs.DialogsRepository
+import com.lillicoder.android.data.dialogs.Dialog
+import com.lillicoder.android.data.dialogs.DialogsRepository
 import com.lillicoder.android.ui.recycler.DefaultSpacingDecoration
 import kotlinx.coroutines.launch
 

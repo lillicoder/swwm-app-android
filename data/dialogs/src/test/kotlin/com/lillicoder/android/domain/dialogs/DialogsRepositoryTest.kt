@@ -16,8 +16,10 @@
 
 package com.lillicoder.android.domain.dialogs
 
+import com.lillicoder.android.data.dialogs.Dialog
 import com.lillicoder.android.data.dialogs.DialogEntity
 import com.lillicoder.android.data.dialogs.DialogsDao
+import com.lillicoder.android.data.dialogs.DialogsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest

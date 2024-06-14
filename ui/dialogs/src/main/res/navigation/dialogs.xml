@@ -44,7 +44,7 @@
         <argument
             android:name="dialog"
             android:defaultValue="@null"
-            app:argType="com.lillicoder.android.domain.dialogs.Dialog"
+            app:argType="com.lillicoder.android.data.dialogs.Dialog"
             app:nullable="true" />
 
     </fragment>

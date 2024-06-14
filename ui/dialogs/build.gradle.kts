@@ -45,7 +45,6 @@ android {
 
 dependencies {
     implementation(project(":data:dialogs"))
-    implementation(project(":domain:dialogs"))
     implementation(project(":ui:common"))
     implementation(project(":ui:recycler"))
 

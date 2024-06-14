@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.android.domain.dialogs
-
-import com.lillicoder.android.data.dialogs.DialogEntity
+package com.lillicoder.android.data.dialogs
 
 /**
  * Utility that can convert between instances of [Dialog] and [DialogEntity].

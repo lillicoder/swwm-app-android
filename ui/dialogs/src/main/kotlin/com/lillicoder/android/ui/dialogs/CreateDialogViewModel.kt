@@ -21,8 +21,8 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.lillicoder.android.domain.dialogs.Dialog
-import com.lillicoder.android.domain.dialogs.DialogsRepository
+import com.lillicoder.android.data.dialogs.Dialog
+import com.lillicoder.android.data.dialogs.DialogsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

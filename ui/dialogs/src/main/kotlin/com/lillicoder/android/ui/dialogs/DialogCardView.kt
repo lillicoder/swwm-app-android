@@ -22,7 +22,7 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
-import com.lillicoder.android.domain.dialogs.Dialog
+import com.lillicoder.android.data.dialogs.Dialog
 import com.lillicoder.android.ui.recycler.Bindable
 
 /**

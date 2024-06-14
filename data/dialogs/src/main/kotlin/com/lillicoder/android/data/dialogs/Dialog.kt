@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.android.domain.dialogs
+package com.lillicoder.android.data.dialogs
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

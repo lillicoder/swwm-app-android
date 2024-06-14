@@ -19,6 +19,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.androidx.room)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -58,12 +59,18 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.core)
 
+    // AppCompat
+    implementation(libs.androidx.appcompat.resources)
+
     // Room
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
 
     // Tests
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.core.ktx)
     androidTestImplementation(libs.androidx.test.ext.junit)
