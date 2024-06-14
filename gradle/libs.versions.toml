@@ -5,7 +5,7 @@ androidx-navigation = "2.7.7"
 androidx-room = "2.6.1"
 androidx-test = "1.5.0"
 androix-test-ext = "1.1.5"
-kotlin = "1.9.21"
+kotlin = "2.0.0"
 kotlin-coroutines = "1.7.3"
 
 [libraries]
@@ -36,7 +36,7 @@ kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-t
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
-android-ksp = { id = "com.google.devtools.ksp", version = "1.9.21-1.0.16" }
+android-ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.22" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 androidx-room = {id = "androidx.room", version.ref = "androidx-room" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
