@@ -15,23 +15,18 @@
  */
 
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
+    id("androidx.navigation.safeargs.kotlin") // Doesn't play nice with libs toml, using raw id
 }
 
 android {
-    namespace = "com.lillicoder.app"
+    namespace = "com.lillicoder.android.feature.dialogs"
 
     defaultConfig {
-        applicationId = "com.lillicoder.app"
-		
         compileSdk = 34
         minSdk = 26
-        targetSdk = 34
-
-        versionCode = 1
-        versionName = "0.0.1"
     }
 
     sourceSets.getByName("main") {
@@ -49,23 +44,19 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature:about"))
-    implementation(project(":feature:collections"))
+    implementation(project(":data:dialogs"))
     implementation(project(":feature:common"))
-    implementation(project(":feature:dialogs"))
+    implementation(project(":feature:recycler"))
+
+    // CardView
+    implementation(libs.androidx.cardview)
 
     // AppCompat
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.appcompat.resources)
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.fragment.ktx)
 
     // Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-
-    // ViewModel
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     // RecyclerView
     implementation(libs.androidx.recyclerview)
@@ -75,6 +66,4 @@ dependencies {
 
     // Kotlin
     implementation(libs.kotlin.stdlib)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.coroutines.core)
 }

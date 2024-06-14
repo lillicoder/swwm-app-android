@@ -14,30 +14,16 @@
  * limitations under the License.
  */
 
-@file:Suppress("UnstableApiUsage") // repositoriesMode{} and repositories{} are incubating
+package com.lillicoder.android.feature.dialogs
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
+import com.lillicoder.android.data.dialogs.Dialog
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-rootProject.name = "SWWM"
-include(":app")
-include(":data:device")
-include(":data:dialogs")
-include(":feature:about")
-include(":feature:collections")
-include(":feature:common")
-include(":feature:dialogs")
-include(":feature:recycler")
+/**
+ * UI model for a [DialogCardView].
+ */
+data class DialogItemUiState(
+    val dialog: Dialog,
+    val onDelete: () -> Unit,
+    val onDetail: () -> Unit,
+    val onEdit: () -> Unit,
+)

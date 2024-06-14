@@ -14,30 +14,14 @@
  * limitations under the License.
  */
 
-@file:Suppress("UnstableApiUsage") // repositoriesMode{} and repositories{} are incubating
+package com.lillicoder.android.feature.collections
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
+import androidx.annotation.DrawableRes
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-rootProject.name = "SWWM"
-include(":app")
-include(":data:device")
-include(":data:dialogs")
-include(":feature:about")
-include(":feature:collections")
-include(":feature:common")
-include(":feature:dialogs")
-include(":feature:recycler")
+/**
+ * Represents an arbitrary item.
+ * @param imageResourceId Image resource ID.
+ */
+data class Item(
+    @DrawableRes val imageResourceId: Int,
+)

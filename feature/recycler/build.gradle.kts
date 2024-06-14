@@ -14,30 +14,37 @@
  * limitations under the License.
  */
 
-@file:Suppress("UnstableApiUsage") // repositoriesMode{} and repositories{} are incubating
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+}
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
+android {
+    namespace = "com.lillicoder.android.feature.recycler"
+
+    defaultConfig {
+        compileSdk = 34
+        minSdk = 26
+    }
+
+    sourceSets.getByName("main") {
+        java.srcDirs("src/main/kotlin")
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+dependencies {
+    // RecyclerView
+    implementation(libs.androidx.recyclerview)
 
-rootProject.name = "SWWM"
-include(":app")
-include(":data:device")
-include(":data:dialogs")
-include(":feature:about")
-include(":feature:collections")
-include(":feature:common")
-include(":feature:dialogs")
-include(":feature:recycler")
+    // Kotlin
+    implementation(libs.kotlin.stdlib)
+}

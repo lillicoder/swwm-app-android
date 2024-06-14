@@ -14,30 +14,26 @@
  * limitations under the License.
  */
 
-@file:Suppress("UnstableApiUsage") // repositoriesMode{} and repositories{} are incubating
+package com.lillicoder.android.feature.recycler
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+/**
+ * Describes an object that can be bound to another.
+ */
+interface Bindable<T> {
+    /**
+     * Binds this instance to the given value.
+     * @param source [T] to bind to.
+     */
+    fun bind(source: T)
+
+    /**
+     * Gets the [T] this instance is bound to.
+     * @return Bound source or null if no binding.
+     */
+    fun boundTo(): T?
+
+    /**
+     * Recycles any bound state.
+     */
+    fun recycle()
 }
-
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-rootProject.name = "SWWM"
-include(":app")
-include(":data:device")
-include(":data:dialogs")
-include(":feature:about")
-include(":feature:collections")
-include(":feature:common")
-include(":feature:dialogs")
-include(":feature:recycler")
