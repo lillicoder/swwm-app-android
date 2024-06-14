@@ -19,8 +19,8 @@ package com.lillicoder.android.ui.about
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.lillicoder.android.domain.device.BuildInfo
-import com.lillicoder.android.domain.device.DeviceInformationRepository
+import com.lillicoder.android.data.device.BuildInfo
+import com.lillicoder.android.data.device.DeviceInformationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -30,10 +30,10 @@ import kotlinx.coroutines.launch
  * [ViewModel] that can display basic app information.
  */
 class AboutViewModel(
-    private val repository: DeviceInformationRepository,
+    private val repository: com.lillicoder.android.data.device.DeviceInformationRepository,
 ) : ViewModel() {
     data class State(
-        val info: List<BuildInfo> = listOf(),
+        val info: List<com.lillicoder.android.data.device.BuildInfo> = listOf(),
         val isLoading: Boolean = false,
     )
 
@@ -62,7 +62,7 @@ class AboutViewModel(
         val factory =
             object : ViewModelProvider.Factory {
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return AboutViewModel(DeviceInformationRepository()) as T
+                    return AboutViewModel(com.lillicoder.android.data.device.DeviceInformationRepository()) as T
                 }
             }
     }

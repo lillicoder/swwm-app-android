@@ -34,8 +34,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "SWWM"
 include(":app")
+include(":data:device")
 include(":data:dialogs")
-include(":domain:device")
 include(":domain:dialogs")
 include(":ui:about")
 include(":ui:collections")

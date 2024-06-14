@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lillicoder.android.domain.device
+package com.lillicoder.android.data.device
 
 /**
  * Repository that can provide device information.

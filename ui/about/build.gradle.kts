@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain:device"))
+    implementation(project(":data:device"))
     implementation(project(":ui:common"))
     implementation(project(":ui:recycler"))
 

@@ -18,25 +18,25 @@ package com.lillicoder.android.ui.about
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.lillicoder.android.domain.device.BuildInfo
+import com.lillicoder.android.data.device.BuildInfo
 import com.lillicoder.android.ui.recycler.BindableViewHolder
 
 /**
  * [RecyclerView.Adapter] for displaying basic about information.
  */
-class AboutAdapter : RecyclerView.Adapter<BindableViewHolder<BuildInfo>>() {
-    private val information: MutableList<BuildInfo> = mutableListOf()
+class AboutAdapter : RecyclerView.Adapter<BindableViewHolder<com.lillicoder.android.data.device.BuildInfo>>() {
+    private val information: MutableList<com.lillicoder.android.data.device.BuildInfo> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): BindableViewHolder<BuildInfo> {
+    ): BindableViewHolder<com.lillicoder.android.data.device.BuildInfo> {
         val view = AboutListItemView(parent.context)
         return BindableViewHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: BindableViewHolder<BuildInfo>,
+        holder: BindableViewHolder<com.lillicoder.android.data.device.BuildInfo>,
         position: Int,
     ) {
         val info = information[position]
@@ -49,7 +49,7 @@ class AboutAdapter : RecyclerView.Adapter<BindableViewHolder<BuildInfo>>() {
      * Updates this adapter's list of [BuildInfo].
      * @param updates Hardware info to show.
      */
-    fun update(updates: List<BuildInfo>) {
+    fun update(updates: List<com.lillicoder.android.data.device.BuildInfo>) {
         information.clear()
         information.addAll(updates)
         notifyItemRangeInserted(0, information.size)
