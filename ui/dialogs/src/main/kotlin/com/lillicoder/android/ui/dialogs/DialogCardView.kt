@@ -22,11 +22,11 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
-import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.domain.dialogs.Dialog
 import com.lillicoder.android.ui.recycler.Bindable
 
 /**
- * Card view that displays a [DialogConfig].
+ * Card view that displays a [Dialog].
  */
 class DialogCardView : MaterialCardView, Bindable<DialogItemUiState> {
     private var uiState: DialogItemUiState? = null
@@ -69,9 +69,9 @@ class DialogCardView : MaterialCardView, Bindable<DialogItemUiState> {
 
     override fun bind(source: DialogItemUiState) {
         uiState = source
-        title.text = source.config.title
-        message.text = source.config.message
-        attributes.text = buildAttributes(source.config)
+        title.text = source.dialog.title
+        message.text = source.dialog.message
+        attributes.text = buildAttributes(source.dialog)
     }
 
     override fun boundTo(): DialogItemUiState? = uiState
@@ -84,22 +84,22 @@ class DialogCardView : MaterialCardView, Bindable<DialogItemUiState> {
     }
 
     /**
-     * Builds an attributes display string for the given [DialogConfig].
-     * @param config Dialog configuration.
+     * Builds an attributes display string for the given [Dialog].
+     * @param dialog Dialog.
      * @return Attributes display string.
      */
-    private fun buildAttributes(config: DialogConfig): String {
+    private fun buildAttributes(dialog: Dialog): String {
         return buildString {
-            if (config.isCancelable) {
+            if (dialog.isCancelable) {
                 append(resources.getString(R.string.check_cancelable))
             }
 
-            if (config.isCancelableOnTouchOutside) {
+            if (dialog.isCancelableOnTouchOutside) {
                 append(" ")
                 append(resources.getString(R.string.check_cancelable_on_touch_outside))
             }
 
-            if (config.isLinkable) {
+            if (dialog.isLinkable) {
                 append(" ")
                 append(resources.getString(R.string.check_linkable))
             }

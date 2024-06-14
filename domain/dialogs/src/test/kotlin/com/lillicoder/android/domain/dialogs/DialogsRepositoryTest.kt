@@ -42,13 +42,13 @@ class DialogsRepositoryTest {
             repository.save(config)
 
             // Ensure data is present
-            repository.configurations.collect {
+            repository.dialogs.collect {
                 assertThat(it.size, equalTo(1))
             }
 
             repository.delete(config)
 
-            repository.configurations.collect {
+            repository.dialogs.collect {
                 assertThat(it.isEmpty(), equalTo(true))
             }
         }
@@ -59,18 +59,18 @@ class DialogsRepositoryTest {
             val config = createConfig()
             repository.save(config)
 
-            repository.configurations.collect {
+            repository.dialogs.collect {
                 assertThat(it.size, equalTo(1))
                 assertThat(it[0], equalTo(config))
             }
         }
 
     /**
-     * Creates a simple [DialogConfig] for use in tests.
+     * Creates a simple [Dialog] for use in tests.
      * @return Test config.
      */
     private fun createConfig() =
-        DialogConfig(
+        Dialog(
             id = 1,
             title = "Test",
             message = "Test dialog",

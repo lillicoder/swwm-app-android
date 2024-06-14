@@ -21,7 +21,7 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.domain.dialogs.Dialog
 import com.lillicoder.android.domain.dialogs.DialogsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -33,7 +33,7 @@ class CreateDialogViewModel(
     state: SavedStateHandle,
 ) : ViewModel() {
     data class State(
-        val dialogConfig: DialogConfig? = null,
+        val dialog: Dialog? = null,
     )
 
     private val viewModelState = MutableStateFlow(State())
@@ -41,11 +41,11 @@ class CreateDialogViewModel(
 
     init {
         val args = CreateDialogFragmentArgs.fromSavedStateHandle(state)
-        viewModelState.update { it.copy(dialogConfig = args.dialog) }
+        viewModelState.update { it.copy(dialog = args.dialog) }
     }
 
     /**
-     * Updates and saves this view model's [DialogConfig] with the given values.
+     * Updates and saves this view model's [Dialog] with the given values.
      * @param title Title.
      * @param message Message.
      * @param positiveButtonText Positive button text.
@@ -67,8 +67,8 @@ class CreateDialogViewModel(
     ) {
         viewModelScope.launch {
             val configuration =
-                DialogConfig(
-                    viewModelState.value.dialogConfig?.id ?: 0,
+                Dialog(
+                    viewModelState.value.dialog?.id ?: 0,
                     title,
                     message,
                     positiveButtonText,

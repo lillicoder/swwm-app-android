@@ -36,7 +36,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.lillicoder.android.domain.dialogs.DialogConfig
 import kotlinx.parcelize.Parcelize
 
 private const val ARGUMENT_BUILDER = "argument_builder"
@@ -274,22 +273,6 @@ class AlertDialogFragment : DialogFragment() {
         private var isLinkable: Boolean = false,
         private var shouldEmbed: Boolean = false,
     ) : Parcelable {
-        /**
-         * Instantiates this builder using the given [DialogConfig].
-         * @param configuration Dialog configuration.
-         * @return Alert dialog builder.
-         */
-        constructor(configuration: DialogConfig) : this(
-            title = configuration.title,
-            message = configuration.message,
-            positiveButtonText = configuration.positiveButtonText,
-            negativeButtonText = configuration.negativeButtonText,
-            neutralButtonText = configuration.neutralButtonText,
-            isCancelable = configuration.isCancelable,
-            isCancelableOnTouchOutside = configuration.isCancelableOnTouchOutside,
-            isLinkable = configuration.isLinkable,
-        )
-
         /**
          * Creates an [AlertDialogFragment] from this builder's configuration.
          * @return Configured dialog.

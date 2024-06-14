@@ -34,7 +34,7 @@ class DialogTypeConverterTest {
     }
 
     /**
-     * Tests if a [DialogConfig] is properly converted by [DialogTypeConverter.convert]
+     * Tests if a [Dialog] is properly converted by [DialogTypeConverter.convert]
      * to an equivalent [DialogEntity].
      */
     @Test
@@ -55,7 +55,7 @@ class DialogTypeConverterTest {
 
     /**
      * Tests if a [DialogEntity] is properly converted by [DialogTypeConverter.convert]
-     * to an equivalent [DialogConfig].
+     * to an equivalent [Dialog].
      */
     @Test
     fun `Converts an entity to a config`() {
@@ -74,11 +74,11 @@ class DialogTypeConverterTest {
     }
 
     /**
-     * Creates a simple [DialogConfig] for use in tests.
+     * Creates a simple [Dialog] for use in tests.
      * @return Test config.
      */
     private fun createConfig() =
-        DialogConfig(
+        Dialog(
             id = 1,
             title = "Test",
             message = "Test dialog",

@@ -16,13 +16,13 @@
 
 package com.lillicoder.android.ui.dialogs
 
-import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.domain.dialogs.Dialog
 
 /**
  * UI model for a [DialogCardView].
  */
 data class DialogItemUiState(
-    val config: DialogConfig,
+    val dialog: Dialog,
     val onDelete: () -> Unit,
     val onDetail: () -> Unit,
     val onEdit: () -> Unit,

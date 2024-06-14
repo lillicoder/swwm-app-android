@@ -26,7 +26,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 /**
- * Repository for dialog configurations.
+ * Repository for dialogs.
  * @param dialogsDao [DialogsDao] that handles CRUD operations for dialog data.
  * @param dispatcher [CoroutineDispatcher] for background work.
  */
@@ -43,9 +43,9 @@ class DialogsRepository(
     )
 
     /**
-     * Gets all known [DialogConfig] as a [Flow].
+     * Gets all known [Dialog] as a [Flow].
      */
-    val configurations: Flow<List<DialogConfig>> =
+    val dialogs: Flow<List<Dialog>> =
         dialogsDao.dialogs().map {
             // TODO What is the perf impact of the transform here?
             it.map { entity ->
@@ -54,22 +54,22 @@ class DialogsRepository(
         }
 
     /**
-     * Deletes the given [DialogConfig] from this repository.
+     * Deletes the given [Dialog] from this repository.
      */
-    suspend fun delete(configuration: DialogConfig) {
+    suspend fun delete(dialog: Dialog) {
         withContext(dispatcher) {
-            val entity = DialogTypeConverter().convert(configuration)
+            val entity = DialogTypeConverter().convert(dialog)
             dialogsDao.delete(entity)
         }
     }
 
     /**
-     * Saves the given [DialogConfig] to this repository.
-     * @param configuration Configuration to save.
+     * Saves the given [Dialog] to this repository.
+     * @param dialog Configuration to save.
      */
-    suspend fun save(configuration: DialogConfig) {
+    suspend fun save(dialog: Dialog) {
         withContext(dispatcher) {
-            val entity = DialogTypeConverter().convert(configuration)
+            val entity = DialogTypeConverter().convert(dialog)
             dialogsDao.upsert(entity)
         }
     }

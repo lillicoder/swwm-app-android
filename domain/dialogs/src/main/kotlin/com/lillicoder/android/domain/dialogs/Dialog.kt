@@ -23,7 +23,7 @@ import kotlinx.parcelize.Parcelize
  * Represents the configuration of a dialog.
  */
 @Parcelize
-data class DialogConfig(
+data class Dialog(
     val id: Int = 0,
     val title: CharSequence? = null,
     val message: CharSequence? = null,

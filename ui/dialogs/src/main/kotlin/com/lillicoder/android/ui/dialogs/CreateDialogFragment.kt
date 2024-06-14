@@ -103,7 +103,7 @@ class CreateDialogFragment : Fragment() {
      * @param state View state.
      */
     private fun bind(state: CreateDialogViewModel.State) {
-        state.dialogConfig?.apply {
+        state.dialog?.apply {
             titleInput.setText(title)
             messageInput.setText(message)
             positiveButtonInput.setText(positiveButtonText)

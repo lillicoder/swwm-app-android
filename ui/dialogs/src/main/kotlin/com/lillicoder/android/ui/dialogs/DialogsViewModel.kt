@@ -19,7 +19,7 @@ package com.lillicoder.android.ui.dialogs
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.domain.dialogs.Dialog
 import com.lillicoder.android.domain.dialogs.DialogsRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -36,8 +36,8 @@ class DialogsViewModel(
 ) : ViewModel() {
     /**
      * UI state for this view model.
-     * @param uiStates List of [DialogItemUiState] for all known dialog configurations.
-     * @param isLoading Indicates if loading dialog configurations is ongoing.
+     * @param uiStates List of [DialogItemUiState].
+     * @param isLoading Indicates if loading dialogs is ongoing.
      */
     data class State(
         val uiStates: List<DialogItemUiState> = listOf(),
@@ -48,8 +48,8 @@ class DialogsViewModel(
      * UI state flow for this view model.
      */
     val uiState =
-        repository.configurations.map { configs ->
-            val states = toUiStates(configs)
+        repository.dialogs.map { dialogs ->
+            val states = toUiStates(dialogs)
             State(states, false)
         }.stateIn(
             viewModelScope,
@@ -57,27 +57,27 @@ class DialogsViewModel(
             State(),
         )
 
-    private val navigateToEdit = MutableSharedFlow<DialogConfig>(replay = 0)
+    private val navigateToEdit = MutableSharedFlow<Dialog>(replay = 0)
 
     /**
-     * Shared flow for when a navigation request to edit a [DialogConfig] is fired.
+     * Shared flow for when a navigation request to edit a [Dialog] is fired.
      */
     val edit = navigateToEdit.asSharedFlow()
 
-    private val navigateToDetail = MutableSharedFlow<DialogConfig>(replay = 0)
+    private val navigateToDetail = MutableSharedFlow<Dialog>(replay = 0)
 
     /**
-     * Shared flow for when a navigation request to view a [DialogConfig] is fired.
+     * Shared flow for when a navigation request to view a [Dialog] is fired.
      */
     val detail = navigateToDetail.asSharedFlow()
 
     /**
-     * Converts the given list of [DialogConfig] to an equivalent list of [DialogItemUiState].
-     * @param configs Dialog configs to convert.
-     * @return Dialog item UI states for each dialog config.
+     * Converts the given list of [Dialog] to an equivalent list of [DialogItemUiState].
+     * @param dialogs Dialogs to convert.
+     * @return Dialog item UI states.
      */
-    private fun toUiStates(configs: List<DialogConfig>): List<DialogItemUiState> {
-        return configs.map { config ->
+    private fun toUiStates(dialogs: List<Dialog>): List<DialogItemUiState> {
+        return dialogs.map { config ->
             DialogItemUiState(
                 config,
                 onDelete = { viewModelScope.launch { repository.delete(config) } },

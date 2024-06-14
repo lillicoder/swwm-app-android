@@ -19,15 +19,15 @@ package com.lillicoder.android.domain.dialogs
 import com.lillicoder.android.data.dialogs.DialogEntity
 
 /**
- * Utility that can convert between instances of [DialogConfig] and [DialogEntity].
+ * Utility that can convert between instances of [Dialog] and [DialogEntity].
  */
 class DialogTypeConverter {
     /**
-     * Converts the given [DialogConfig] to an equivalent [DialogEntity].
+     * Converts the given [Dialog] to an equivalent [DialogEntity].
      * @param source Config to convert.
      * @return Dialog entity.
      */
-    fun convert(source: DialogConfig): DialogEntity {
+    fun convert(source: Dialog): DialogEntity {
         return with(source) {
             DialogEntity(
                 id,
@@ -44,13 +44,13 @@ class DialogTypeConverter {
     }
 
     /**
-     * Converts the given [DialogEntity] to an equivalent [DialogConfig].
+     * Converts the given [DialogEntity] to an equivalent [Dialog].
      * @param source Entity to convert.
      * @return Dialog config.
      */
-    fun convert(source: DialogEntity): DialogConfig {
+    fun convert(source: DialogEntity): Dialog {
         return with(source) {
-            DialogConfig(
+            Dialog(
                 id,
                 title,
                 message,

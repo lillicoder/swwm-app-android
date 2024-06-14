@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lillicoder.android.ui.recycler.BindableViewHolder
 
 class DialogsAdapter : RecyclerView.Adapter<BindableViewHolder<DialogItemUiState>>() {
-    private val configurations: MutableList<DialogItemUiState> = mutableListOf()
+    private val states: MutableList<DialogItemUiState> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -36,16 +36,16 @@ class DialogsAdapter : RecyclerView.Adapter<BindableViewHolder<DialogItemUiState
         holder: BindableViewHolder<DialogItemUiState>,
         position: Int,
     ) {
-        val configuration = configurations[position]
-        holder.bind(configuration)
+        val state = states[position]
+        holder.bind(state)
     }
 
-    override fun getItemCount() = configurations.size
+    override fun getItemCount() = states.size
 
     @SuppressLint("NotifyDataSetChanged")
     fun update(updates: List<DialogItemUiState>) {
-        configurations.clear()
-        configurations.addAll(updates)
+        states.clear()
+        states.addAll(updates)
         notifyDataSetChanged() // TODO Smart updates
     }
 }

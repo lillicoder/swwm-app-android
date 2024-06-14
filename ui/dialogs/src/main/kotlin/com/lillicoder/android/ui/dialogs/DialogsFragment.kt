@@ -34,7 +34,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.lillicoder.android.domain.dialogs.DialogConfig
+import com.lillicoder.android.domain.dialogs.Dialog
 import com.lillicoder.android.domain.dialogs.DialogsRepository
 import com.lillicoder.android.ui.recycler.DefaultSpacingDecoration
 import kotlinx.coroutines.launch
@@ -126,12 +126,12 @@ class DialogsFragment : Fragment() {
     }
 
     /**
-     * Navigates to the detail view for the given [DialogConfig].
-     * @param config Config to show.
+     * Navigates to the detail view for the given [Dialog].
+     * @param dialog Dialog to show.
      */
-    private fun detail(config: DialogConfig) {
-        config.apply {
-            val dialog =
+    private fun detail(dialog: Dialog) {
+        dialog.apply {
+            val alert =
                 AlertDialogFragment.Builder()
                     .title(title)
                     .message(message)
@@ -142,7 +142,7 @@ class DialogsFragment : Fragment() {
                     .isCancelableOnTouchOutside(isCancelableOnTouchOutside)
                     .isLinkable(isLinkable)
                     .create()
-            dialog.show(parentFragmentManager, showDialogTag)
+            alert.show(parentFragmentManager, showDialogTag)
             setFragmentResultListener(showDialogTag) { _, bundle ->
                 val event: AlertDialogFragment.Event? = bundle.getParcelable("event")
                 Toast.makeText(context, "$event received.", Toast.LENGTH_SHORT).show()
@@ -151,11 +151,11 @@ class DialogsFragment : Fragment() {
     }
 
     /**
-     * Navigates to the edit view for the given [DialogConfig].
-     * @param config Config to edit.
+     * Navigates to the edit view for the given [Dialog].
+     * @param dialog Dialog to edit.
      */
-    private fun edit(config: DialogConfig) {
-        val action = DialogsFragmentDirections.actionDialogsToCreate(config)
+    private fun edit(dialog: Dialog) {
+        val action = DialogsFragmentDirections.actionDialogsToCreate(dialog)
         findNavController().navigate(action)
     }
 
