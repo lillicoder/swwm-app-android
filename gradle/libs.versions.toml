@@ -29,10 +29,13 @@ androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "a
 androidx-test-ext-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androix-test-ext" }
 androidx-test-runner = { module = "androidx.test:runner", version = "1.5.2" } # Runner is off version with other androidx.test packages
 junit = { module = "junit:junit", version = "4.13.2" }
+kotlin-logging-android = { module = "io.github.oshai:kotlin-logging-android", version = "7.0.0" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
+slf4j-android = { module = "org.slf4j:slf4j-android", version = "1.7.34" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version = "2.0.13" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }

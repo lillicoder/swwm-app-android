@@ -36,6 +36,7 @@ rootProject.name = "SWWM"
 include(":app")
 include(":data:device")
 include(":data:dialogs")
+include(":data:logging")
 include(":feature:about")
 include(":feature:collections")
 include(":feature:common")

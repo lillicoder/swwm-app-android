@@ -29,8 +29,7 @@ class DeviceInformationRepositoryTest {
 
     @Before
     fun setup() {
-        repository =
-            DeviceInformationRepository(FakeBuildInfoProvider())
+        repository = DeviceInformationRepository(FakeBuildInfoProvider())
     }
 
     /**
