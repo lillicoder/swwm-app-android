@@ -14,11 +14,8 @@
  * limitations under the License.
  */
 
-package com.lillicoder.android.domain.dialogs
+package com.lillicoder.android.data.dialogs
 
-import com.lillicoder.android.data.dialogs.Dialog
-import com.lillicoder.android.data.dialogs.DialogEntity
-import com.lillicoder.android.data.dialogs.DialogTypeConverter
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
