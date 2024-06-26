@@ -30,10 +30,10 @@ import kotlinx.coroutines.launch
  * [ViewModel] that can display basic app information.
  */
 class AboutViewModel(
-    private val repository: com.lillicoder.android.data.device.DeviceInformationRepository,
+    private val repository: DeviceInformationRepository,
 ) : ViewModel() {
     data class State(
-        val info: List<com.lillicoder.android.data.device.BuildInfo> = listOf(),
+        val info: List<BuildInfo> = listOf(),
         val isLoading: Boolean = false,
     )
 
@@ -62,7 +62,7 @@ class AboutViewModel(
         val factory =
             object : ViewModelProvider.Factory {
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return AboutViewModel(com.lillicoder.android.data.device.DeviceInformationRepository()) as T
+                    return AboutViewModel(DeviceInformationRepository()) as T
                 }
             }
     }
