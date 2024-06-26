@@ -27,11 +27,11 @@ import com.lillicoder.android.feature.recycler.Bindable
 /**
  * List item view that displays a [BuildInfo].
  */
-class AboutListItemView : LinearLayoutCompat, Bindable<com.lillicoder.android.data.device.BuildInfo> {
+class AboutListItemView : LinearLayoutCompat, Bindable<BuildInfo> {
     private val title: TextView
     private val body: TextView
 
-    private var information: com.lillicoder.android.data.device.BuildInfo? = null
+    private var information: BuildInfo? = null
 
     constructor(context: Context) : this(context, null)
 
@@ -49,7 +49,7 @@ class AboutListItemView : LinearLayoutCompat, Bindable<com.lillicoder.android.da
         body = findViewById(R.id.body)
     }
 
-    override fun bind(source: com.lillicoder.android.data.device.BuildInfo) {
+    override fun bind(source: BuildInfo) {
         information = source
 
         title.setText(source.name)

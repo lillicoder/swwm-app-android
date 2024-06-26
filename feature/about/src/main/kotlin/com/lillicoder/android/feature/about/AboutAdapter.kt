@@ -24,19 +24,19 @@ import com.lillicoder.android.feature.recycler.BindableViewHolder
 /**
  * [RecyclerView.Adapter] for displaying basic about information.
  */
-class AboutAdapter : RecyclerView.Adapter<BindableViewHolder<com.lillicoder.android.data.device.BuildInfo>>() {
-    private val information: MutableList<com.lillicoder.android.data.device.BuildInfo> = mutableListOf()
+class AboutAdapter : RecyclerView.Adapter<BindableViewHolder<BuildInfo>>() {
+    private val information: MutableList<BuildInfo> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): BindableViewHolder<com.lillicoder.android.data.device.BuildInfo> {
+    ): BindableViewHolder<BuildInfo> {
         val view = AboutListItemView(parent.context)
         return BindableViewHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: BindableViewHolder<com.lillicoder.android.data.device.BuildInfo>,
+        holder: BindableViewHolder<BuildInfo>,
         position: Int,
     ) {
         val info = information[position]
@@ -49,7 +49,7 @@ class AboutAdapter : RecyclerView.Adapter<BindableViewHolder<com.lillicoder.andr
      * Updates this adapter's list of [BuildInfo].
      * @param updates Hardware info to show.
      */
-    fun update(updates: List<com.lillicoder.android.data.device.BuildInfo>) {
+    fun update(updates: List<BuildInfo>) {
         information.clear()
         information.addAll(updates)
         notifyItemRangeInserted(0, information.size)
