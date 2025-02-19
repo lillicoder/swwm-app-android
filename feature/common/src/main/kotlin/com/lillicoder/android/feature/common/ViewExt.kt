@@ -18,8 +18,12 @@ package com.lillicoder.android.feature.common
 
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.AnyRes
 import androidx.annotation.AttrRes
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 
 /**
  * Resolves the given attribute ID into its concrete resource ID.
@@ -52,3 +56,17 @@ fun View.setSelectableBackground() {
     val backgroundId = resolveAttribute(android.R.attr.selectableItemBackground)
     setBackgroundResource(backgroundId)
 }
+
+/**
+ * Updates the insets for this view to accommodate system bars for
+ * edge-to-edge display.
+ */
+fun View.updateSystemBarInsets() =
+    ViewCompat.setOnApplyWindowInsetsListener(this) { view, windowInsets ->
+        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+        view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = insets.bottom
+        }
+
+        WindowInsetsCompat.CONSUMED
+    }

@@ -36,6 +36,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.lillicoder.android.data.dialogs.Dialog
 import com.lillicoder.android.data.dialogs.DialogsRepository
+import com.lillicoder.android.feature.common.updateSystemBarInsets
 import com.lillicoder.android.feature.recycler.DefaultSpacingDecoration
 import kotlinx.coroutines.launch
 
@@ -75,12 +76,14 @@ class DialogsFragment : Fragment() {
             ),
         )
         recyclerView.adapter = DialogsAdapter()
+        recyclerView.updateSystemBarInsets()
 
         fab = root.findViewById(R.id.fab)
         fab.setOnClickListener {
             val action = DialogsFragmentDirections.actionDialogsToCreate()
             it.findNavController().navigate(action)
         }
+        fab.updateSystemBarInsets()
 
         val viewModel: DialogsViewModel by viewModels {
             DialogsViewModelFactory(DialogsRepository(root.context.applicationContext))

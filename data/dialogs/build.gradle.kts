@@ -26,7 +26,7 @@ android {
     namespace = "com.lillicoder.android.data.dialogs"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 26
 
         room {

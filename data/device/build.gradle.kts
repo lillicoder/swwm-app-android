@@ -24,7 +24,7 @@ android {
     namespace = "com.lillicoder.android.data.device"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 26
     }
 

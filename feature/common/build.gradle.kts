@@ -23,7 +23,7 @@ android {
     namespace = "com.lillicoder.android.feature.common"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 26
     }
 
@@ -43,6 +43,7 @@ android {
 
 dependencies {
     // AppCompat
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.appcompat.resources)
 
     // Kotlin

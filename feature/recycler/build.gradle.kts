@@ -23,7 +23,7 @@ android {
     namespace = "com.lillicoder.android.feature.recycler"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 26
     }
 

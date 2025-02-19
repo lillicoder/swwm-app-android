@@ -22,12 +22,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/default_toolbar" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"> <!-- Doesn't handle insets, specify manually -->
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container"
@@ -37,7 +51,7 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/home" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"

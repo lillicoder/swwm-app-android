@@ -23,12 +23,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.lillicoder.android.feature.common.updateSystemBarInsets
 
 /**
  * Activity that shows a grid.
  */
 class GridFragment : Fragment() {
-    private lateinit var mRecyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,15 +37,16 @@ class GridFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         val root = inflater.inflate(R.layout.activity_grid, container, false)
-        mRecyclerView = root.findViewById(R.id.grid)
-        mRecyclerView.layoutManager =
+        recyclerView = root.findViewById(R.id.grid)
+        recyclerView.layoutManager =
             GridLayoutManager(
                 root.context,
                 3,
                 GridLayoutManager.VERTICAL,
                 false,
             )
-        mRecyclerView.adapter = GridAdapter(getItems())
+        recyclerView.adapter = GridAdapter(getItems())
+        recyclerView.updateSystemBarInsets()
 
         return root
     }

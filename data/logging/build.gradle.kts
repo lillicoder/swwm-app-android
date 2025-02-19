@@ -25,7 +25,7 @@ android {
     namespace = "com.lillicoder.android.data.logging"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 26
     }
 

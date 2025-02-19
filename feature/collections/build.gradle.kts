@@ -23,7 +23,7 @@ android {
     namespace = "com.lillicoder.android.feature.collections"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 26
     }
 
@@ -42,6 +42,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature:common"))
+
     // AppCompat
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.fragment.ktx)

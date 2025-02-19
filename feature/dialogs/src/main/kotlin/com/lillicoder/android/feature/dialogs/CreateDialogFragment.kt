@@ -30,6 +30,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.lillicoder.android.feature.common.updateSystemBarInsets
 import kotlinx.coroutines.launch
 
 class CreateDialogFragment : Fragment() {
@@ -58,7 +59,9 @@ class CreateDialogFragment : Fragment() {
                 cancelable = findViewById(R.id.cancelable)
                 cancelableOnTouchOutside = findViewById(R.id.cancelableOnTouchOutside)
                 linkable = findViewById(R.id.linkable)
+
                 fab = findViewById(R.id.fab)
+                fab.updateSystemBarInsets()
 
                 val scrollView = findViewById<ScrollView>(R.id.scrollView)
                 scrollView.viewTreeObserver.addOnScrollChangedListener {
