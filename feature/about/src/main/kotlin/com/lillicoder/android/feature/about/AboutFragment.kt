@@ -29,6 +29,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.lillicoder.android.feature.common.updateSystemBarInsets
 import com.lillicoder.android.feature.recycler.DefaultSpacingDecoration
 import kotlinx.coroutines.launch
@@ -51,10 +52,12 @@ class AboutFragment : Fragment() {
         recyclerView = root.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                context,
+            MaterialDividerItemDecoration(
+                recyclerView.context,
                 DividerItemDecoration.VERTICAL,
-            ),
+            ).apply {
+                isLastItemDecorated = false
+            },
         )
         recyclerView.addItemDecoration(DefaultSpacingDecoration(root.context))
         recyclerView.adapter = AboutAdapter()
