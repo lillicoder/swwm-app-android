@@ -45,6 +45,10 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -52,8 +56,9 @@ dependencies {
     implementation(libs.kotlin.stdlib)
 
     // Logging
-    implementation(libs.kotlin.logging.android)
-    implementation(libs.slf4j.android)
+    implementation(libs.kotlin.logging.jvm)
+    implementation(libs.slf4j.api)
+    implementation(libs.slf4j.handroid)
 
     // Testing
     testFixturesImplementation(libs.slf4j.simple)

@@ -17,6 +17,7 @@
 package com.lillicoder.android.data.logging
 
 import io.github.oshai.kotlinlogging.KotlinLogging
+import org.slf4j.impl.HandroidLoggerAdapter
 
 /**
  * All-purpose logger that works in Android code and unit tests.
@@ -26,6 +27,11 @@ class Logger(
     private val tag: String,
 ) {
     private val delegate = KotlinLogging.logger(tag)
+
+    init {
+        // Enable debug level logs for debug builds only
+        HandroidLoggerAdapter.DEBUG = BuildConfig.DEBUG
+    }
 
     /**
      * Logs the given verbose message.
