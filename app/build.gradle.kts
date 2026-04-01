@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 /*
  * Copyright 2025 Scott Weeden-Moody
  *
@@ -17,7 +19,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -26,9 +27,9 @@ android {
     defaultConfig {
         applicationId = "com.lillicoder.app"
 		
-        compileSdk = 35
+        compileSdk = 36
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
 
         versionCode = 1
         versionName = "0.0.1"
@@ -43,8 +44,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
     }
 }
 

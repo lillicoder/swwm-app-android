@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 /*
  * Copyright 2025 Scott Weeden-Moody
  *
@@ -18,7 +20,6 @@ plugins {
     alias(libs.plugins.android.ksp)
     alias(libs.plugins.android.library)
     alias(libs.plugins.androidx.room)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
 }
 
@@ -49,8 +50,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
     }
 }
 
